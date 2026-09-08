@@ -68,16 +68,40 @@ const CATEGORY_NAMES = {
 // Ready for integration with email services, CRM, webhooks, or database.
 // ==========================================================================
 const LeadSubmissionHandler = {
+  WEB3FORMS_ACCESS_KEY: '5b5b43c9-47f0-4a4f-8508-36a60a953561',
+
   submit: async (planData) => {
-    // Log structured payload
     console.log('[Thorvon Media Lead Submitted]:', planData);
 
-    // Simulated asynchronous submission (replace with your fetch/webhook endpoint)
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ success: true, timestamp: new Date().toISOString() });
-      }, 600);
-    });
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY,
+          from_name: 'Thorvon Media Website',
+          subject: `New Thorvon Plan: ${planData.name || 'Anonymous'} (${planData.company || 'Direct Client'})`,
+          'Client Name': planData.name,
+          'Contact (Email/WhatsApp)': planData.contact,
+          'Company / Brand': planData.company || 'Not specified',
+          'Selected Services': planData.selectedServices.join(', '),
+          'Custom Requirements': planData.customRequirement || 'None',
+          'Estimated Investment': planData.estimatedInvestment,
+          'Brand Presence Score': planData.brandPresenceScore ? `${planData.brandPresenceScore} / 100` : 'Not completed',
+          'Additional Notes': planData.notes || 'None',
+          'Submitted At': planData.submittedAt
+        })
+      });
+
+      const result = await response.json();
+      return { success: result.success };
+    } catch (err) {
+      console.error('[Email Delivery Error]:', err);
+      return { success: false, error: err };
+    }
   }
 };
 
