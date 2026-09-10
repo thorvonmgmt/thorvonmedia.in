@@ -7,14 +7,19 @@
   <meta name="description" content="A modern content and PR agency focused on building stronger visibility through PR, content production and influencer management. Build your custom plan or check your brand presence score.">
   <meta name="keywords" content="Thorvon Media, PR agency, Content production, Influencer management, Brand presence score, PR strategy">
   
-  <!-- Apple-inspired typography fallback: Inter -->
+  <!-- Editorial Typography: Cormorant Garamond & Space Mono paired with Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Top Scroll Progress Line -->
+  <div class="scroll-progress-line" id="scrollProgress"></div>
+  
+  <!-- Ambient Cursor Spotlight Glow -->
+  <div class="ambient-glow" id="ambientGlow"></div>
 
   <!-- Navigation -->
   <header class="site-header" id="top">
@@ -65,14 +70,16 @@
     <section class="hero-section" id="hero">
       <div class="container hero-container">
         <div class="hero-content">
-          <h1 class="hero-headline reveal-text">
-            CONTENT.<br>
-            PR.<br>
-            INFLUENCE.
+          <p class="eyebrow reveal-text"><span class="crosshair">⌖</span> PUBLIC RELATIONS · CONTENT · INFLUENCE</p>
+
+          <h1 class="hero-headline kinetic-heading" aria-label="CONTENT. PR. INFLUENCE.">
+            <span class="word-mask"><span class="reveal-word hero-word-1" style="--w-idx: 0">CONTENT.</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic hero-word-2" style="--w-idx: 1">PR.</span></span>
+            <span class="word-mask"><span class="reveal-word hero-word-3" style="--w-idx: 2">INFLUENCE.</span></span>
           </h1>
           
           <div class="hero-meta reveal-text delay-1">
-            <p class="hero-subbrand">THORVON MEDIA</p>
+            <p class="hero-subbrand font-mono">THORVON MEDIA</p>
             <p class="hero-statement">
               A modern content and PR agency focused on building stronger visibility through PR, content production and influencer management.
             </p>
@@ -86,50 +93,104 @@
       </div>
     </section>
 
+    <!-- Dual-Track Tilted Marquee Ticker (Gupdav Reference) -->
+    <section class="ticker-section" aria-hidden="true">
+      <div class="ticker-container">
+        <!-- Row 1: Solid Grotesk Track -->
+        <div class="ticker-row">
+          <div class="ticker-track">
+            <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">INFLUENCER MANAGEMENT <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">CREATOR PARTNERSHIPS <span class="crosshair">⌖</span></span>
+          </div>
+          <div class="ticker-track" aria-hidden="true">
+            <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">INFLUENCER MANAGEMENT <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">CREATOR PARTNERSHIPS <span class="crosshair">⌖</span></span>
+          </div>
+        </div>
+        <!-- Row 2: Hollow Stroke Italic Serif Track -->
+        <div class="ticker-row">
+          <div class="ticker-track ticker-track-reverse">
+            <span class="ticker-item stroke-text font-serif font-italic">THORVON MEDIA <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">VISIBILITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">AUTHORITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">FOUNDER PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+          </div>
+          <div class="ticker-track ticker-track-reverse" aria-hidden="true">
+            <span class="ticker-item stroke-text font-serif font-italic">THORVON MEDIA <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">VISIBILITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">AUTHORITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">FOUNDER PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item stroke-text font-serif font-italic">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services-section" id="services">
       <div class="container">
-        <div class="section-label-wrap reveal-text">
-          <h2 class="section-heading">SERVICES</h2>
+        <div class="section-label-wrap">
+          <p class="eyebrow"><span class="crosshair">⌖</span> 01 SERVICES</p>
+          <h2 class="section-heading kinetic-heading" aria-label="Three core disciplines we engineer.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Three</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">core</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">disciplines</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">we</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 4">engineer.</span></span>
+          </h2>
         </div>
 
         <div class="services-list">
           <!-- Service 01: PR -->
-          <article class="service-item reveal-text delay-1">
+          <article class="service-item reveal-text delay-1" data-action="open-plan">
             <div class="service-header">
-              <span class="service-num">01</span>
+              <span class="service-num font-numeral">01</span>
               <h3 class="service-title">PR</h3>
             </div>
             <div class="service-body">
               <p class="service-desc">
                 PR for founders and brands.
               </p>
+              <span class="service-explore">Build PR Plan <span class="arrow">→</span></span>
             </div>
           </article>
 
           <!-- Service 02: CONTENT -->
-          <article class="service-item reveal-text delay-2">
+          <article class="service-item reveal-text delay-2" data-action="open-plan">
             <div class="service-header">
-              <span class="service-num">02</span>
+              <span class="service-num font-numeral">02</span>
               <h3 class="service-title">CONTENT</h3>
             </div>
             <div class="service-body">
               <p class="service-desc">
                 End-to-end content production. Thorvon Media handles the complete content process including content production and post-production.
               </p>
+              <span class="service-explore">Build Content Plan <span class="arrow">→</span></span>
             </div>
           </article>
 
           <!-- Service 03: INFLUENCER MANAGEMENT -->
-          <article class="service-item reveal-text delay-3">
+          <article class="service-item reveal-text delay-3" data-action="open-plan">
             <div class="service-header">
-              <span class="service-num">03</span>
+              <span class="service-num font-numeral">03</span>
               <h3 class="service-title">INFLUENCER MANAGEMENT</h3>
             </div>
             <div class="service-body">
               <p class="service-desc">
                 Managing influencers and helping them build stronger opportunities and outcomes.
               </p>
+              <span class="service-explore">Build Influencer Plan <span class="arrow">→</span></span>
             </div>
           </article>
         </div>
@@ -140,9 +201,18 @@
     <section class="tool-section plan-showcase-section" id="plan-tool">
       <div class="container">
         <div class="tool-card reveal-text">
-          <p class="tool-tag">CONFIGURATOR</p>
-          <h2 class="tool-title">BUILD YOUR THORVON PLAN</h2>
-          <p class="tool-desc">Tell us what you need. We'll build your plan.</p>
+          <p class="eyebrow"><span class="crosshair">⌖</span> 02 PLAN CONFIGURATOR</p>
+          <h2 class="tool-title kinetic-heading" aria-label="Tell us your ambition. We build your plan.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Tell</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">us</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">your</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 3">ambition.</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 4">We</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 5">build</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 6">your</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 7">plan.</span></span>
+          </h2>
+          <p class="tool-desc">Select your requirements across PR, Content, and Influencer Management. Receive an instant structured roadmap.</p>
           <div class="tool-action-wrap">
             <button class="btn btn-primary" data-action="open-plan">
               Build Your Plan <span class="arrow">→</span>
@@ -156,9 +226,16 @@
     <section class="tool-section score-showcase-section" id="score-tool">
       <div class="container">
         <div class="tool-card reveal-text">
-          <p class="tool-tag">ASSESSMENT</p>
-          <h2 class="tool-title">HOW STRONG IS YOUR BRAND PRESENCE?</h2>
-          <p class="tool-desc">Get a quick snapshot of your PR, content and influencer presence.</p>
+          <p class="eyebrow"><span class="crosshair">⌖</span> 03 BRAND DIAGNOSIS</p>
+          <h2 class="tool-title kinetic-heading" aria-label="How strong is your brand presence?">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">How</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">strong</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">is</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">your</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 4">brand</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 5">presence?</span></span>
+          </h2>
+          <p class="tool-desc">A 60-second assessment measuring your PR traction, content velocity, and creator leverage.</p>
           <div class="tool-action-wrap">
             <button class="btn btn-primary" data-action="open-score">
               Check Your Score <span class="arrow">→</span>
@@ -172,8 +249,12 @@
     <section class="stage-section" id="stage">
       <div class="container">
         <div class="stage-card reveal-text">
-          <p class="stage-tag">CURRENT STAGE</p>
-          <h2 class="stage-title">MORE COMING SOON.</h2>
+          <p class="eyebrow"><span class="crosshair">⌖</span> CURRENT STAGE</p>
+          <h2 class="stage-title kinetic-heading" aria-label="More coming soon.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">More</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 1">coming</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">soon.</span></span>
+          </h2>
           <p class="stage-desc">We're building something focused. Stay tuned.</p>
         </div>
       </div>
@@ -182,8 +263,15 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
       <div class="container">
-        <div class="contact-header reveal-text">
-          <h2 class="contact-title">CONTACT US.</h2>
+        <div class="contact-header">
+          <p class="eyebrow"><span class="crosshair">⌖</span> DIRECT CONTACT</p>
+          <h2 class="contact-title kinetic-heading" aria-label="Direct lines to the team.">
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 0">Direct</span></span>
+            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 1">lines</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">to</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">the</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 4">team.</span></span>
+          </h2>
           <p class="contact-subtitle">Have something in mind? Reach out directly via Call, WhatsApp, or Email.</p>
         </div>
 

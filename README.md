@@ -65,21 +65,26 @@ const PricingConfig = [
 
 ---
 
-## Connecting Leads (`LeadSubmissionHandler`)
+## Directing Form Submissions to Your Email (`thorvonmedia@gmail.com`)
 
-When a user clicks **GET MY CUSTOM PLAN →**, the plan payload is passed to `LeadSubmissionHandler.submit(planData)` in [script.js](file:///C:/Users/User/.gemini/antigravity/scratch/thorvon-media/script.js#L68-L82).
+Since your site is hosted on Vercel as a static frontend, the fastest and most reliable way to receive submissions directly in `thorvonmedia@gmail.com` is via **Web3Forms** (100% free, 0 server setup required):
 
-The payload contains:
-* User name, contact (Email / WhatsApp), company, and notes
-* Selected categories and exact service requirements
-* Custom requirement text (if provided)
-* Estimated investment (calculated figure or consultation note)
-* Brand Presence Score (if user took the assessment prior to configuring their plan)
+1. Go to **[web3forms.com](https://web3forms.com)**.
+2. Enter `thorvonmedia@gmail.com` and click **Create Access Key**.
+3. Check your Gmail inbox for your unique access key.
+4. Paste your key into [script.js](file:///C:/Users/User/.gemini/antigravity/scratch/thorvon-media/script.js#L71):
+   ```javascript
+   WEB3FORMS_ACCESS_KEY: 'paste_your_key_here',
+   ```
+5. Deploy or push changes to Vercel.
+
+Every time a client submits **"GET MY CUSTOM PLAN →"**, an email will land in `thorvonmedia@gmail.com` containing:
+* Client Name, Email/WhatsApp, Company & Brand
+* Selected Services & Requirements
+* Custom requirements ("Something else in mind?")
+* Estimated Investment
+* Brand Presence Score (if taken)
 * Timestamp
-
-You can easily forward this payload to your webhook (e.g. Make, Zapier, n8n), CRM, or email service.
-
-Additionally, clicking **Chat on WhatsApp →** generates an automated, formatted WhatsApp message with their exact plan summary pre-filled for instant conversation.
 
 ---
 

@@ -65,43 +65,54 @@ const CATEGORY_NAMES = {
 
 // ==========================================================================
 // 3. Modular Lead Submission Handler
-// Ready for integration with email services, CRM, webhooks, or database.
+// Sends all client submissions directly to thorvonmedia@gmail.com
 // ==========================================================================
 const LeadSubmissionHandler = {
+  // Free access key from https://web3forms.com (takes 10 seconds to generate)
   WEB3FORMS_ACCESS_KEY: '5b5b43c9-47f0-4a4f-8508-36a60a953561',
 
   submit: async (planData) => {
     console.log('[Thorvon Media Lead Submitted]:', planData);
 
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY,
-          from_name: 'Thorvon Media Website',
-          subject: `New Thorvon Plan: ${planData.name || 'Anonymous'} (${planData.company || 'Direct Client'})`,
-          'Client Name': planData.name,
-          'Contact (Email/WhatsApp)': planData.contact,
-          'Company / Brand': planData.company || 'Not specified',
-          'Selected Services': planData.selectedServices.join(', '),
-          'Custom Requirements': planData.customRequirement || 'None',
-          'Estimated Investment': planData.estimatedInvestment,
-          'Brand Presence Score': planData.brandPresenceScore ? `${planData.brandPresenceScore} / 100` : 'Not completed',
-          'Additional Notes': planData.notes || 'None',
-          'Submitted At': planData.submittedAt
-        })
-      });
+    // If Web3Forms Access Key is provided, dispatch email directly
+    if (LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY && LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY,
+            from_name: 'Thorvon Media Website',
+            subject: `New Thorvon Plan: ${planData.name || 'Anonymous'} (${planData.company || 'Direct Client'})`,
+            'Client Name': planData.name,
+            'Contact (Email/WhatsApp)': planData.contact,
+            'Company / Brand': planData.company || 'Not specified',
+            'Selected Services': planData.selectedServices.join(', '),
+            'Custom Requirements': planData.customRequirement || 'None',
+            'Estimated Investment': planData.estimatedInvestment,
+            'Brand Presence Score': planData.brandPresenceScore ? `${planData.brandPresenceScore} / 100` : 'Not completed',
+            'Additional Notes': planData.notes || 'None',
+            'Submitted At': planData.submittedAt
+          })
+        });
 
-      const result = await response.json();
-      return { success: result.success };
-    } catch (err) {
-      console.error('[Email Delivery Error]:', err);
-      return { success: false, error: err };
+        const result = await response.json();
+        return { success: result.success };
+      } catch (err) {
+        console.error('[Email Delivery Error]:', err);
+        return { success: false, error: err };
+      }
     }
+
+    // Local / development fallback if key has not been entered yet
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ success: true, timestamp: new Date().toISOString() });
+      }, 600);
+    });
   }
 };
 
@@ -774,16 +785,17 @@ function calculateAndDisplayScore() {
   const barInfluence = document.getElementById('barInfluence');
   const obsText = document.getElementById('observationText');
 
-  if (overallVal) overallVal.textContent = overallScore;
-  if (valPr) valPr.textContent = prScore;
-  if (valContent) valContent.textContent = contentScore;
-  if (valInfluence) valInfluence.textContent = influenceScore;
+  // Animate count-up for numbers
+  if (overallVal) animateCountUp(overallVal, overallScore, 1100);
+  if (valPr) animateCountUp(valPr, prScore, 850);
+  if (valContent) animateCountUp(valContent, contentScore, 850);
+  if (valInfluence) animateCountUp(valInfluence, influenceScore, 850);
 
   setTimeout(() => {
     if (barPr) barPr.style.width = `${prScore}%`;
     if (barContent) barContent.style.width = `${contentScore}%`;
     if (barInfluence) barInfluence.style.width = `${influenceScore}%`;
-  }, 100);
+  }, 120);
 
   // Personalized observation
   if (obsText) {
@@ -935,37 +947,126 @@ function closeContactModal() {
   document.body.classList.remove('modal-open');
 }
 
+/**
+ * Kinetic Reveal Animations (Gupdav.com Signature Heading & Element Reveal)
+ */
 function initializeRevealAnimations() {
+  const kineticHeadings = document.querySelectorAll('.kinetic-heading');
   const revealElements = document.querySelectorAll('.reveal-text');
 
   if (!('IntersectionObserver' in window)) {
+    kineticHeadings.forEach((el) => el.classList.add('is-visible'));
     revealElements.forEach((el) => el.classList.add('is-visible'));
     return;
   }
 
   const observerOptions = {
     root: null,
-    rootMargin: '0px 0px -8% 0px',
-    threshold: 0.1
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.12
   };
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
+        entry.target.closest('section')?.classList.add('in-view');
         obs.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  revealElements.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      el.classList.add('is-visible');
+  // Observe kinetic headings
+  kineticHeadings.forEach((el) => {
+    if (el.closest('#hero')) {
+      setTimeout(() => el.classList.add('is-visible'), 120);
     } else {
       observer.observe(el);
     }
   });
+
+  // Observe general reveal elements
+  revealElements.forEach((el) => {
+    if (el.closest('#hero')) {
+      setTimeout(() => el.classList.add('is-visible'), 220);
+    } else {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
+    }
+  });
+}
+
+/**
+ * Smooth Count-Up Animation for Numeric Displays
+ */
+function animateCountUp(element, target, duration = 1000) {
+  if (!element) return;
+  const start = 0;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Cubic ease-out curve
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const currentVal = Math.round(start + (target - start) * easeProgress);
+    element.textContent = currentVal;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = target;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+/**
+ * Ambient Cursor Spotlight
+ */
+function initializeAmbientSpotlight() {
+  let ticking = false;
+  window.addEventListener('mousemove', (e) => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+/**
+ * Scroll-Linked Header Transitions & Top Progress Line
+ */
+function initializeScrollEffects() {
+  const progressLine = document.getElementById('scrollProgress');
+  const header = document.querySelector('.site-header');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressLine) {
+      progressLine.style.width = `${scrollPercent}%`;
+    }
+
+    if (header) {
+      if (scrollTop > 24) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+  }, { passive: true });
 }
 
 // ==========================================================================
@@ -979,4 +1080,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initializePlanConfigurator();
   initializeScoreTool();
   initializeContactModal();
+  initializeAmbientSpotlight();
+  initializeScrollEffects();
 });
