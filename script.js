@@ -980,6 +980,70 @@ function closeCareersPortalModal() {
   document.body.classList.remove('modal-open');
 }
 
+
+// ==========================================================================
+// Embedded Team & Leadership Modal Controller
+// ==========================================================================
+function openTeamModal() {
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+  teamModal.classList.add('is-open');
+  teamModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeTeamModal() {
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+  teamModal.classList.remove('is-open');
+  teamModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+function initializeTeamModal() {
+  // Triggers to open team modal
+  document.querySelectorAll('[data-action="open-team"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      openTeamModal();
+    });
+  });
+
+  // Triggers to close team modal
+  document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
+    btn.addEventListener('click', () => closeTeamModal());
+  });
+
+  // Backdrop click
+  const teamModal = document.getElementById('teamModal');
+  if (teamModal) {
+    teamModal.addEventListener('click', (e) => {
+      if (e.target === teamModal) closeTeamModal();
+    });
+  }
+
+  // Switch to careers button inside team modal
+  document.querySelectorAll('[data-action="switch-to-careers"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeTeamModal();
+      openCareersPortalModal();
+    });
+  });
+
+  // URL hash navigation support: opens modal if #team is in the address bar
+  function checkTeamHash() {
+    if (window.location.hash === '#team') {
+      openTeamModal();
+    }
+  }
+  window.addEventListener('hashchange', checkTeamHash);
+  if (window.location.hash === '#team') {
+    setTimeout(checkTeamHash, 250);
+  }
+}
+
 function initializeCareers() {
   // Portal open triggers (e.g. footer link)
   document.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
@@ -1031,6 +1095,11 @@ function initializeCareers() {
   // Escape key support
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      const teamModal = document.getElementById('teamModal');
+      if (teamModal && teamModal.classList.contains('is-open')) {
+        closeTeamModal();
+        return;
+      }
       const jobModal = document.getElementById('jobModal');
       if (jobModal && jobModal.classList.contains('is-open')) {
         closeJobModal();
@@ -1108,6 +1177,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeMobileNav();
   initializeRevealAnimations();
   initializePlanConfigurator();
+  initializeTeamModal();
   initializeCareers();
   initializeContactForm();
   initializeScrollEffects();
