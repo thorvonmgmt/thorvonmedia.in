@@ -980,70 +980,6 @@ function closeCareersPortalModal() {
   document.body.classList.remove('modal-open');
 }
 
-
-// ==========================================================================
-// Embedded Team & Leadership Modal Controller
-// ==========================================================================
-function openTeamModal() {
-  const teamModal = document.getElementById('teamModal');
-  if (!teamModal) return;
-  teamModal.classList.add('is-open');
-  teamModal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('modal-open');
-}
-
-function closeTeamModal() {
-  const teamModal = document.getElementById('teamModal');
-  if (!teamModal) return;
-  teamModal.classList.remove('is-open');
-  teamModal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
-}
-
-function initializeTeamModal() {
-  // Triggers to open team modal
-  document.querySelectorAll('[data-action="open-team"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeMobileMenu();
-      openTeamModal();
-    });
-  });
-
-  // Triggers to close team modal
-  document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
-    btn.addEventListener('click', () => closeTeamModal());
-  });
-
-  // Backdrop click
-  const teamModal = document.getElementById('teamModal');
-  if (teamModal) {
-    teamModal.addEventListener('click', (e) => {
-      if (e.target === teamModal) closeTeamModal();
-    });
-  }
-
-  // Switch to careers button inside team modal
-  document.querySelectorAll('[data-action="switch-to-careers"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeTeamModal();
-      openCareersPortalModal();
-    });
-  });
-
-  // URL hash navigation support: opens modal if #team is in the address bar
-  function checkTeamHash() {
-    if (window.location.hash === '#team') {
-      openTeamModal();
-    }
-  }
-  window.addEventListener('hashchange', checkTeamHash);
-  if (window.location.hash === '#team') {
-    setTimeout(checkTeamHash, 250);
-  }
-}
-
 function initializeCareers() {
   // Portal open triggers (e.g. footer link)
   document.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
@@ -1095,11 +1031,6 @@ function initializeCareers() {
   // Escape key support
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      const teamModal = document.getElementById('teamModal');
-      if (teamModal && teamModal.classList.contains('is-open')) {
-        closeTeamModal();
-        return;
-      }
       const jobModal = document.getElementById('jobModal');
       if (jobModal && jobModal.classList.contains('is-open')) {
         closeJobModal();
@@ -1169,146 +1100,6 @@ function initializeCareers() {
 }
 
 // ==========================================================================
-// Portfolio Filtering & Lightbox Player Controller
-// ==========================================================================
-function initializePortfolio() {
-  const filterButtons = document.querySelectorAll('.portfolio-filter-bar .filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-gallery-grid .portfolio-item');
-  const lightboxModal = document.getElementById('mediaLightboxModal');
-  const lightboxBody = document.getElementById('lightboxBody');
-  const lightboxTitle = document.getElementById('lightboxTitle');
-  const lightboxTag = document.getElementById('lightboxTag');
-
-  // 1. Dynamic Category Filtering
-  if (filterButtons.length && portfolioItems.length) {
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter') || 'all';
-
-        // Update active filter button state
-        filterButtons.forEach((b) => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        // Filter grid items
-        portfolioItems.forEach((item) => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.classList.remove('is-hidden');
-            item.classList.add('is-visible');
-          } else {
-            item.classList.add('is-hidden');
-          }
-        });
-      });
-    });
-  }
-
-  // 2. Lightbox Controller (Videos & High-Res Image Previews)
-  function openLightbox(item) {
-    if (!lightboxModal || !lightboxBody) return;
-
-    const mediaType = item.getAttribute('data-type');
-    const mediaSrc = item.getAttribute('data-media');
-    const posterSrc = item.getAttribute('data-poster');
-    const title = item.getAttribute('data-title') || 'Creative Deliverable';
-    const tag = item.getAttribute('data-tag') || 'PORTFOLIO';
-
-    if (lightboxTitle) lightboxTitle.textContent = title;
-    if (lightboxTag) lightboxTag.textContent = tag;
-
-    // Reset container contents
-    lightboxBody.innerHTML = '';
-
-    if (mediaType === 'video') {
-      const video = document.createElement('video');
-      video.src = mediaSrc;
-      video.controls = true;
-      video.playsInline = true;
-      // Requirement: Do not autoplay videos with sound
-      video.muted = true;
-      video.autoplay = true;
-      video.className = 'lightbox-media-video';
-      if (posterSrc) video.poster = posterSrc;
-      lightboxBody.appendChild(video);
-    } else {
-      const img = document.createElement('img');
-      img.src = mediaSrc;
-      img.alt = title;
-      img.className = 'lightbox-media-img';
-      lightboxBody.appendChild(img);
-    }
-
-    lightboxModal.classList.add('is-open');
-    lightboxModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-  }
-
-  function closeLightbox() {
-    if (!lightboxModal || !lightboxBody) return;
-
-    // Stop and clear video playback to prevent audio leaks
-    const video = lightboxBody.querySelector('video');
-    if (video) {
-      video.pause();
-      video.src = '';
-    }
-    lightboxBody.innerHTML = '';
-
-    lightboxModal.classList.remove('is-open');
-    lightboxModal.setAttribute('aria-hidden', 'true');
-
-    // Only clear body overflow if no other modal is currently active
-    const anyModalOpen = document.querySelector('.thorvon-modal-backdrop.is-open');
-    if (!anyModalOpen) {
-      document.body.classList.remove('modal-open');
-    }
-  }
-
-  // Bind click & keyboard handlers to each portfolio card
-  portfolioItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      openLightbox(item);
-    });
-
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openLightbox(item);
-      }
-    });
-  });
-
-  // Lightbox close button handler
-  document.querySelectorAll('[data-action="close-lightbox"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeLightbox();
-    });
-  });
-
-  // Click on dark backdrop to dismiss
-  if (lightboxModal) {
-    lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) {
-        closeLightbox();
-      }
-    });
-  }
-
-  // Escape key support
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('is-open')) {
-      closeLightbox();
-    }
-  });
-}
-
-// ==========================================================================
 // Initialization on DOM Ready
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1317,8 +1108,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeMobileNav();
   initializeRevealAnimations();
   initializePlanConfigurator();
-  initializePortfolio();
-  initializeTeamModal();
   initializeCareers();
   initializeContactForm();
   initializeScrollEffects();
