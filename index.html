@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THORVON MEDIA — Content. PR. Influence.</title>
-  <meta name="description" content="A modern content and PR agency focused on building stronger visibility through PR, content production and influencer management. Build your custom plan or check your brand presence score.">
-  <meta name="keywords" content="Thorvon Media, PR agency, Content production, Influencer management, Brand presence score, PR strategy">
+  <title>THORVON MEDIA — Strategic Content & PR</title>
+  <meta name="description" content="A modern content and PR agency focused on building authoritative visibility through strategic editorial PR and high-impact content production.">
+  <meta name="keywords" content="Thorvon Media, PR agency, Content production, Editorial PR, PR strategy, Media relations">
   
-  <!-- Editorial Typography: Cormorant Garamond & Space Mono paired with Inter -->
+  <!-- Modern Professional Typography: Plus Jakarta Sans & Inter paired with Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Website Favicon & App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -18,22 +24,22 @@
   <!-- Top Scroll Progress Line -->
   <div class="scroll-progress-line" id="scrollProgress"></div>
   
-  <!-- Ambient Cursor Spotlight Glow -->
+  <!-- Ambient Spotlight Glow -->
   <div class="ambient-glow" id="ambientGlow"></div>
 
   <!-- Navigation -->
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a href="#top" class="brand-logo" aria-label="Thorvon Media Home">
-        THORVON MEDIA
+        <img src="assets/logo-white.png" alt="thorvonmedia" class="brand-logo-img">
       </a>
 
       <nav class="site-nav" aria-label="Primary Navigation">
         <ul class="nav-links">
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#plan-tool" class="nav-link">Plan</a></li>
-          <li><a href="#score-tool" class="nav-link">Score</a></li>
-          <li><a href="#contact" class="nav-link" data-action="open-contact">Contact Us</a></li>
+          <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <button class="btn btn-primary nav-cta" data-action="open-plan">
           Build Your Plan <span class="arrow">→</span>
@@ -53,8 +59,8 @@
         <ul class="mobile-nav-links">
           <li><a href="#services" class="mobile-nav-link">Services</a></li>
           <li><a href="#plan-tool" class="mobile-nav-link">Plan</a></li>
-          <li><a href="#score-tool" class="mobile-nav-link">Score</a></li>
-          <li><a href="#contact" class="mobile-nav-link" data-action="open-contact">Contact Us</a></li>
+          <li><a href="#team" class="mobile-nav-link">Team</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-cta-wrap">
           <button class="btn btn-primary mobile-cta" data-action="open-plan">
@@ -70,18 +76,14 @@
     <section class="hero-section" id="hero">
       <div class="container hero-container">
         <div class="hero-content">
-          <p class="eyebrow reveal-text"><span class="crosshair">⌖</span> PUBLIC RELATIONS · CONTENT · INFLUENCE</p>
-
-          <h1 class="hero-headline kinetic-heading" aria-label="CONTENT. PR. INFLUENCE.">
+          <h1 class="hero-headline kinetic-heading" aria-label="CONTENT. PR.">
             <span class="word-mask"><span class="reveal-word hero-word-1" style="--w-idx: 0">CONTENT.</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic hero-word-2" style="--w-idx: 1">PR.</span></span>
-            <span class="word-mask"><span class="reveal-word hero-word-3" style="--w-idx: 2">INFLUENCE.</span></span>
+            <span class="word-mask"><span class="reveal-word hero-word-2" style="--w-idx: 1">PR.</span></span>
           </h1>
           
           <div class="hero-meta reveal-text delay-1">
-            <p class="hero-subbrand font-mono">THORVON MEDIA</p>
             <p class="hero-statement">
-              A modern content and PR agency focused on building stronger visibility through PR, content production and influencer management.
+              A modern content and PR agency focused on building authoritative visibility through strategic editorial PR and high-impact content production.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary hero-cta" data-action="open-plan">
@@ -93,7 +95,7 @@
       </div>
     </section>
 
-    <!-- Dual-Track Tilted Marquee Ticker (Gupdav Reference) -->
+    <!-- Dual-Track Marquee Ticker -->
     <section class="ticker-section" aria-hidden="true">
       <div class="ticker-container">
         <!-- Row 1: Solid Grotesk Track -->
@@ -101,37 +103,37 @@
           <div class="ticker-track">
             <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
             <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">INFLUENCER MANAGEMENT <span class="crosshair">⌖</span></span>
             <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
             <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">CREATOR PARTNERSHIPS <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">EXECUTIVE THOUGHT LEADERSHIP <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">MEDIA DISTRIBUTION <span class="crosshair">⌖</span></span>
           </div>
           <div class="ticker-track" aria-hidden="true">
             <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
             <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">INFLUENCER MANAGEMENT <span class="crosshair">⌖</span></span>
             <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
             <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">CREATOR PARTNERSHIPS <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">EXECUTIVE THOUGHT LEADERSHIP <span class="crosshair">⌖</span></span>
+            <span class="ticker-item">MEDIA DISTRIBUTION <span class="crosshair">⌖</span></span>
           </div>
         </div>
-        <!-- Row 2: Hollow Stroke Italic Serif Track -->
+        <!-- Row 2: Secondary Grotesk Track -->
         <div class="ticker-row">
           <div class="ticker-track ticker-track-reverse">
-            <span class="ticker-item stroke-text font-serif font-italic">THORVON MEDIA <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">VISIBILITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">AUTHORITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">FOUNDER PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">THORVON MEDIA <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">AUTHORITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">FOUNDER PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">PRESS PLACEMENTS <span class="crosshair">⌖</span></span>
           </div>
           <div class="ticker-track ticker-track-reverse" aria-hidden="true">
-            <span class="ticker-item stroke-text font-serif font-italic">THORVON MEDIA <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">VISIBILITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">AUTHORITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">FOUNDER PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item stroke-text font-serif font-italic">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">THORVON MEDIA <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">AUTHORITY <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">FOUNDER PR <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
+            <span class="ticker-item ticker-item-alt">PRESS PLACEMENTS <span class="crosshair">⌖</span></span>
           </div>
         </div>
       </div>
@@ -141,13 +143,12 @@
     <section class="services-section" id="services">
       <div class="container">
         <div class="section-label-wrap">
-          <p class="eyebrow"><span class="crosshair">⌖</span> 01 SERVICES</p>
-          <h2 class="section-heading kinetic-heading" aria-label="Three core disciplines we engineer.">
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Three</span></span>
+          <h2 class="section-heading kinetic-heading" aria-label="Two core disciplines we engineer.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Two</span></span>
             <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">core</span></span>
             <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">disciplines</span></span>
             <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">we</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 4">engineer.</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 4">engineer.</span></span>
           </h2>
         </div>
 
@@ -160,7 +161,7 @@
             </div>
             <div class="service-body">
               <p class="service-desc">
-                PR for founders and brands.
+                Public relations, tier-one press placements, and reputation architecture for founders and ambitious brands.
               </p>
               <span class="service-explore">Build PR Plan <span class="arrow">→</span></span>
             </div>
@@ -174,23 +175,9 @@
             </div>
             <div class="service-body">
               <p class="service-desc">
-                End-to-end content production. Thorvon Media handles the complete content process including content production and post-production.
+                End-to-end content production and post-production engineered for maximum retention, authority, and distribution.
               </p>
               <span class="service-explore">Build Content Plan <span class="arrow">→</span></span>
-            </div>
-          </article>
-
-          <!-- Service 03: INFLUENCER MANAGEMENT -->
-          <article class="service-item reveal-text delay-3" data-action="open-plan">
-            <div class="service-header">
-              <span class="service-num font-numeral">03</span>
-              <h3 class="service-title">INFLUENCER MANAGEMENT</h3>
-            </div>
-            <div class="service-body">
-              <p class="service-desc">
-                Managing influencers and helping them build stronger opportunities and outcomes.
-              </p>
-              <span class="service-explore">Build Influencer Plan <span class="arrow">→</span></span>
             </div>
           </article>
         </div>
@@ -201,18 +188,13 @@
     <section class="tool-section plan-showcase-section" id="plan-tool">
       <div class="container">
         <div class="tool-card reveal-text">
-          <p class="eyebrow"><span class="crosshair">⌖</span> 02 PLAN CONFIGURATOR</p>
-          <h2 class="tool-title kinetic-heading" aria-label="Tell us your ambition. We build your plan.">
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Tell</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">us</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">your</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 3">ambition.</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 4">We</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 5">build</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 6">your</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 7">plan.</span></span>
+          <h2 class="tool-title kinetic-heading" aria-label="Build Your Custom Plan.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Build</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">Your</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">Custom</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">Plan.</span></span>
           </h2>
-          <p class="tool-desc">Select your requirements across PR, Content, and Influencer Management. Receive an instant structured roadmap.</p>
+          <p class="tool-desc">Select your requirements across Content and PR to receive an instant structured roadmap.</p>
           <div class="tool-action-wrap">
             <button class="btn btn-primary" data-action="open-plan">
               Build Your Plan <span class="arrow">→</span>
@@ -222,84 +204,147 @@
       </div>
     </section>
 
-    <!-- Score Tool Showcase: How Strong Is Your Brand Presence? -->
-    <section class="tool-section score-showcase-section" id="score-tool">
+    <!-- Comprehensive Team Section -->
+    <section class="team-section" id="team">
       <div class="container">
-        <div class="tool-card reveal-text">
-          <p class="eyebrow"><span class="crosshair">⌖</span> 03 BRAND DIAGNOSIS</p>
-          <h2 class="tool-title kinetic-heading" aria-label="How strong is your brand presence?">
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">How</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">strong</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">is</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">your</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 4">brand</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 5">presence?</span></span>
+        
+        <!-- Team Section Header -->
+        <div class="team-header">
+          <h2 class="section-heading kinetic-heading" aria-label="The Minds Behind Thorvonmedia.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">The</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">Minds</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">Behind</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">Thorvonmedia.</span></span>
           </h2>
-          <p class="tool-desc">A 60-second assessment measuring your PR traction, content velocity, and creator leverage.</p>
-          <div class="tool-action-wrap">
-            <button class="btn btn-primary" data-action="open-score">
-              Check Your Score <span class="arrow">→</span>
-            </button>
+          <p class="team-subtitle">A dedicated team of writers, publicists, and video creators working together to grow your brand's voice and reach.</p>
+        </div>
+
+        <!-- Leadership & Founding Team Block -->
+        <div class="team-leadership-grid">
+          
+          <!-- Founder Card ("About Me" + LinkedIn) -->
+          <article class="founder-card reveal-text delay-1">
+            <div class="founder-card-header">
+              <div class="founder-profile-group">
+                <img src="assets/drishtanta-portrait.jpg?v=2" alt="Drishtanta Baruah" class="founder-avatar-img">
+                <div class="founder-identity">
+                  <span class="founder-badge">FOUNDER & MANAGING DIRECTOR</span>
+                  <h3 class="founder-name">Drishtanta Baruah</h3>
+                </div>
+              </div>
+              <!-- Official LinkedIn Link -->
+              <a href="https://www.linkedin.com/in/drishtanta-baruah/" target="_blank" rel="noopener noreferrer" class="team-linkedin-btn" aria-label="Connect with Drishtanta Baruah on LinkedIn">
+                <svg class="linkedin-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>Connect on LinkedIn</span>
+                <span class="arrow">↗</span>
+              </a>
+            </div>
+
+            <p class="founder-bio">
+              I help ambitious founders and modern brands get the media visibility they actually deserve. We focus on securing real press features and creating high-impact content that builds genuine trust with your audience—no fluff, just focused execution.
+            </p>
+          </article>
+
+          <!-- Core Founding Leads Grid -->
+          <div class="team-core-cards">
+            <!-- Strategic PR Lead -->
+            <article class="team-core-card reveal-text delay-2">
+              <span class="core-dept-badge">PUBLIC RELATIONS</span>
+              <h4 class="core-card-title">Head of Editorial & PR</h4>
+              <p class="core-card-desc">Leads our media relations and press campaigns. From pitching major publications to crafting compelling press releases, they make sure your story gets in front of the right journalists and readers.</p>
+            </article>
+
+            <!-- Creative Production Lead -->
+            <article class="team-core-card reveal-text delay-3">
+              <span class="core-dept-badge">CONTENT PRODUCTION</span>
+              <h4 class="core-card-title">Head of Creative Production</h4>
+              <p class="core-card-desc">Directs our video and visual content production from start to finish. They turn raw footage and creative ideas into sharp, high-quality media designed to capture attention and keep it.</p>
+            </article>
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Coming Soon / Current Stage Section -->
-    <section class="stage-section" id="stage">
-      <div class="container">
-        <div class="stage-card reveal-text">
-          <p class="eyebrow"><span class="crosshair">⌖</span> CURRENT STAGE</p>
-          <h2 class="stage-title kinetic-heading" aria-label="More coming soon.">
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">More</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 1">coming</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">soon.</span></span>
-          </h2>
-          <p class="stage-desc">We're building something focused. Stay tuned.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- Executive Contact Suite & Inquiry Form -->
     <section class="contact-section" id="contact">
       <div class="container">
+        
         <div class="contact-header">
-          <p class="eyebrow"><span class="crosshair">⌖</span> DIRECT CONTACT</p>
-          <h2 class="contact-title kinetic-heading" aria-label="Direct lines to the team.">
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 0">Direct</span></span>
-            <span class="word-mask"><span class="reveal-word font-serif font-italic" style="--w-idx: 1">lines</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">to</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 3">the</span></span>
-            <span class="word-mask"><span class="reveal-word" style="--w-idx: 4">team.</span></span>
+          <h2 class="contact-title kinetic-heading" aria-label="Start a conversation.">
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Start</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">a</span></span>
+            <span class="word-mask"><span class="reveal-word" style="--w-idx: 2">conversation.</span></span>
           </h2>
-          <p class="contact-subtitle">Have something in mind? Reach out directly via Call, WhatsApp, or Email.</p>
         </div>
 
-        <div class="contact-links-grid">
-          <!-- Primary action: Build Your Plan -->
-          <button type="button" class="contact-action-btn reveal-text delay-1" data-action="open-plan">
-            <span class="link-label">Build Your Plan</span>
-            <span class="link-arrow">→</span>
-          </button>
+        <div class="contact-form-wrapper">
+          <div class="contact-form-panel reveal-text delay-1">
+            <form class="pro-contact-form" id="agencyContactForm" novalidate>
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="contactFullName" class="form-label">Full Name *</label>
+                  <input type="text" id="contactFullName" class="form-input" required>
+                </div>
+                <div class="form-field">
+                  <label for="contactWorkEmail" class="form-label">Work Email *</label>
+                  <input type="email" id="contactWorkEmail" class="form-input" required>
+                </div>
+              </div>
 
-          <!-- Call direct link -->
-          <a href="tel:+916000156191" class="contact-action-link reveal-text delay-2" data-contact="call">
-            <span class="link-label">Call</span>
-            <span class="link-arrow">→</span>
-          </a>
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="contactCompany" class="form-label">Company / Brand</label>
+                  <input type="text" id="contactCompany" class="form-input">
+                </div>
+                <div class="form-field">
+                  <label for="contactBudget" class="form-label">Estimated Retainer</label>
+                  <select id="contactBudget" class="form-input form-select">
+                    <option value="Flexible / Need Consultation">Flexible / Need Consultation</option>
+                    <option value="₹50,000 – ₹1,50,000 / month">₹50,000 – ₹1,50,000 / month</option>
+                    <option value="₹1,50,000 – ₹3,00,000 / month">₹1,50,000 – ₹3,00,000 / month</option>
+                    <option value="₹3,00,000+ / month (Enterprise)">₹3,00,000+ / month (Enterprise)</option>
+                  </select>
+                </div>
+              </div>
 
-          <!-- WhatsApp direct link -->
-          <a href="https://wa.me/917002889463" target="_blank" rel="noopener noreferrer" class="contact-action-link reveal-text delay-3" data-contact="whatsapp">
-            <span class="link-label">WhatsApp</span>
-            <span class="link-arrow">→</span>
-          </a>
+              <!-- Service Selection Pills -->
+              <div class="form-field">
+                <label class="form-label">Discipline Interested In</label>
+                <div class="service-pill-group">
+                  <label class="service-pill">
+                    <input type="radio" name="contactServiceChoice" value="Both Content & PR" checked>
+                    <span>Both Content & PR</span>
+                  </label>
+                  <label class="service-pill">
+                    <input type="radio" name="contactServiceChoice" value="Content Production">
+                    <span>Content Production</span>
+                  </label>
+                  <label class="service-pill">
+                    <input type="radio" name="contactServiceChoice" value="PR & Media Relations">
+                    <span>PR & Media Relations</span>
+                  </label>
+                </div>
+              </div>
 
-          <!-- Email direct link -->
-          <a href="mailto:thorvonmedia@gmail.com" class="contact-action-link reveal-text" data-contact="email">
-            <span class="link-label">Email</span>
-            <span class="link-arrow">→</span>
-          </a>
+              <div class="form-field">
+                <label for="contactMessage" class="form-label">Project Scope & Goals</label>
+                <textarea id="contactMessage" class="form-input form-textarea" rows="4"></textarea>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-primary form-submit-btn" id="btnSubmitContact">
+                  Send Inquiry <span class="arrow">→</span>
+                </button>
+                <p class="form-status-msg" id="contactFormStatus" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -308,24 +353,36 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand-wrap">
-        <p class="footer-brand">THORVON MEDIA</p>
-        <p class="footer-copy">© 2026 Thorvon Media</p>
+        <a href="#top" class="footer-logo-link" aria-label="Thorvon Media Home">
+          <img src="assets/logo-white.png" alt="thorvonmedia" class="footer-logo-img">
+        </a>
+        <p class="footer-copy">© 2026 Thorvon Media. All rights reserved.</p>
       </div>
 
       <ul class="footer-links">
         <li>
-          <a href="tel:+916000156191" class="footer-link" data-contact="call">
-            Call
+          <a href="#services" class="footer-link">
+            Services
           </a>
         </li>
         <li>
-          <a href="https://wa.me/917002889463" target="_blank" rel="noopener noreferrer" class="footer-link" data-contact="whatsapp">
-            WhatsApp
+          <a href="#plan-tool" class="footer-link">
+            Plan
           </a>
         </li>
         <li>
-          <a href="mailto:thorvonmedia@gmail.com" class="footer-link" data-contact="email">
-            Email
+          <a href="#team" class="footer-link">
+            Team
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="footer-link">
+            Contact
+          </a>
+        </li>
+        <li>
+          <a href="#careers" class="footer-link" data-action="open-careers-portal">
+            Careers
           </a>
         </li>
         <li>
@@ -346,9 +403,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <div class="modal-header-text">
-          <p class="modal-kicker">01 Services → 02 Requirements → 03 Your Plan</p>
-          <h2 class="modal-title" id="planModalTitle">BUILD YOUR THORVON PLAN</h2>
-          <p class="modal-subtitle">Tell us what you need. We'll build your plan.</p>
+          <h2 class="modal-title" id="planModalTitle">Build Your Custom Plan</h2>
         </div>
         <button class="modal-close-btn" data-action="close-plan" aria-label="Close Plan Configurator">✕</button>
       </div>
@@ -362,7 +417,7 @@
           <!-- STEP 1: SELECT SERVICES -->
           <div class="configurator-step active" id="planStep1" data-step="1">
             <h3 class="step-headline">WHAT DO YOU NEED?</h3>
-            <p class="step-subheading">Select one, two, or all three services to begin.</p>
+            <p class="step-subheading">Select PR, Content, or both disciplines to begin.</p>
 
             <div class="category-cards-grid">
               <!-- PR Card -->
@@ -380,15 +435,6 @@
                 <div class="card-content">
                   <h4 class="card-title">CONTENT</h4>
                   <p class="card-desc">Content creation and post-production.</p>
-                </div>
-              </div>
-
-              <!-- Influencer Management Card -->
-              <div class="selectable-card" data-category="influence" tabindex="0" role="checkbox" aria-checked="false">
-                <div class="card-indicator"></div>
-                <div class="card-content">
-                  <h4 class="card-title">INFLUENCER MANAGEMENT</h4>
-                  <p class="card-desc">Management and opportunities for influencers.</p>
                 </div>
               </div>
             </div>
@@ -414,8 +460,7 @@
               <textarea 
                 class="thorvon-textarea" 
                 id="customRequirementInput" 
-                rows="3" 
-                placeholder="Tell us what you're looking for..."></textarea>
+                rows="3"></textarea>
             </div>
 
             <div class="step-nav-actions split">
@@ -432,22 +477,22 @@
             <form class="lead-form" id="leadForm" onsubmit="return false;">
               <div class="form-group">
                 <label for="leadName" class="form-label">Name</label>
-                <input type="text" id="leadName" class="thorvon-input" placeholder="Your full name" required>
+                <input type="text" id="leadName" class="thorvon-input" required>
               </div>
 
               <div class="form-group">
-                <label for="leadContact" class="form-label">Email / WhatsApp</label>
-                <input type="text" id="leadContact" class="thorvon-input" placeholder="Email address or WhatsApp number" required>
+                <label for="leadContact" class="form-label">Work Email</label>
+                <input type="email" id="leadContact" class="thorvon-input" required>
               </div>
 
               <div class="form-group">
                 <label for="leadCompany" class="form-label">Company / Brand</label>
-                <input type="text" id="leadCompany" class="thorvon-input" placeholder="Company or personal brand name">
+                <input type="text" id="leadCompany" class="thorvon-input">
               </div>
 
               <div class="form-group">
                 <label for="leadNotes" class="form-label">Anything else you'd like us to know?</label>
-                <textarea id="leadNotes" class="thorvon-textarea" rows="3" placeholder="Additional details or goals..."></textarea>
+                <textarea id="leadNotes" class="thorvon-textarea" rows="3"></textarea>
               </div>
 
               <div class="step-nav-actions split">
@@ -484,9 +529,6 @@
               <button class="btn btn-primary final-cta-btn" id="btnSubmitPlan">
                 GET MY CUSTOM PLAN →
               </button>
-              <a href="https://wa.me/917002889463" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-action" id="whatsappPlanLink">
-                Chat on WhatsApp →
-              </a>
             </div>
 
             <div class="plan-submission-feedback" id="submissionFeedback" style="display: none;">
@@ -516,136 +558,142 @@
   </div>
 
   <!-- ========================================================================
-       MODAL 2: PR & CONTENT SCORE ASSESSMENT
+       EMBEDDED CAREERS PORTAL MODAL
+       Discrete, embedded in the website, accessible via footer or #careers hash
        ======================================================================== -->
-  <div class="thorvon-modal-backdrop" id="scoreModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="scoreModalTitle">
-    <div class="thorvon-modal-container score-modal-container">
+  <div class="thorvon-modal-backdrop" id="careersPortalModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="careersPortalTitle">
+    <div class="thorvon-modal-container careers-portal-modal-container">
       
       <!-- Modal Header -->
       <div class="modal-header">
-        <div class="modal-header-text">
-          <p class="modal-kicker">THORVON ASSESSMENT · 60 SECONDS</p>
-          <h2 class="modal-title" id="scoreModalTitle">BRAND PRESENCE ASSESSMENT</h2>
-          <p class="modal-subtitle">Evaluate your visibility, content engine, and creator influence.</p>
+        <div class="modal-title-group">
+          <h2 class="modal-title" id="careersPortalTitle">We’re Hiring.</h2>
         </div>
-        <button class="modal-close-btn" data-action="close-score" aria-label="Close Brand Assessment">✕</button>
+        <button class="modal-close-btn" data-action="close-careers-portal" aria-label="Close Careers Portal">✕</button>
       </div>
 
-      <!-- Questionnaire Container -->
-      <div class="score-questionnaire" id="scoreQuestionnaire">
-        
-        <!-- Progress Bar -->
-        <div class="score-progress-bar-wrap">
-          <div class="score-progress-bar" id="scoreProgressBar" style="width: 16.66%;"></div>
-        </div>
-        <div class="score-step-counter" id="scoreStepCounter">Question 1 of 6</div>
+      <!-- Portal Body -->
+      <div class="careers-portal-body">
+        <p class="careers-portal-statement">
+          We're always looking for talented, reliable people to join us. If you love writing, visual design, or keeping creative projects on track, take a look at our open roles below.
+        </p>
 
-        <!-- Active Question Card -->
-        <div class="score-question-card" id="scoreQuestionCard">
-          <p class="question-category-tag" id="qCategoryTag">PR</p>
-          <h3 class="question-title" id="qTitle">How strong is your public visibility?</h3>
-          <div class="question-options" id="qOptionsContainer"></div>
-        </div>
+        <div class="careers-grid careers-portal-grid">
+          <!-- Card 1: Content Writers -->
+          <article class="job-card" data-action="open-job" data-role="content-writers" tabindex="0" role="button" aria-label="View Content Writers Position">
+            <div class="job-card-top">
+              <span class="job-badge">OPEN</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Content Writers</h3>
+              <p class="job-desc">Write engaging articles, newsletters, and thought pieces that people genuinely want to read.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
 
-        <div class="score-nav-actions">
-          <button class="btn-text" id="btnScoreBack" style="visibility: hidden;">← Previous</button>
+          <!-- Card 2: Graphic Designers -->
+          <article class="job-card" data-action="open-job" data-role="graphic-designers" tabindex="0" role="button" aria-label="View Graphic Designers Position">
+            <div class="job-card-top">
+              <span class="job-badge">OPEN</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Graphic Designers</h3>
+              <p class="job-desc">Design clean visuals, carousels, and digital assets that capture attention on every feed.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
+
+          <!-- Card 3: Project Manager -->
+          <article class="job-card" data-action="open-job" data-role="project-manager" tabindex="0" role="button" aria-label="View Project Manager Position">
+            <div class="job-card-top">
+              <span class="job-badge">OPEN</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Project Manager</h3>
+              <p class="job-desc">Coordinate daily workflows, deadlines, and deliverables across our PR and content teams.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
         </div>
       </div>
 
-      <!-- Score Results Screen (Initially Hidden) -->
-      <div class="score-results-screen" id="scoreResultsScreen" style="display: none;">
-        <p class="results-kicker">THORVON BRAND PRESENCE ASSESSMENT</p>
-        <h3 class="results-title">YOUR BRAND PRESENCE SCORE</h3>
-        
-        <div class="overall-score-display">
-          <span class="overall-score-num" id="overallScoreVal">72</span>
-          <span class="overall-score-max">/ 100</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4: JOB DETAILS & DIRECT EMAIL APPLICATION
+       ======================================================================== -->
+  <div class="thorvon-modal-backdrop" id="jobModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle">
+    <div class="thorvon-modal-container job-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title" id="jobModalTitle">Role Name</h2>
+        </div>
+        <button class="modal-close-btn" data-action="close-job" aria-label="Close Job Details Dialog">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="job-modal-body">
+        <div class="job-modal-meta">
+          <span class="job-badge" id="jobModalBadge">1 OPENING</span>
+          <span class="job-type" id="jobModalType">REMOTE · FULL-TIME</span>
         </div>
 
-        <div class="score-breakdown-list">
-          <div class="score-breakdown-row">
-            <span class="breakdown-cat">PR</span>
-            <div class="breakdown-bar-wrap">
-              <div class="breakdown-bar" id="barPr" style="width: 0%;"></div>
-            </div>
-            <span class="breakdown-val" id="valPr">0</span>
-          </div>
+        <p class="job-modal-tagline" id="jobModalTagline"></p>
+        <p class="job-modal-desc" id="jobModalDesc"></p>
 
-          <div class="score-breakdown-row">
-            <span class="breakdown-cat">CONTENT</span>
-            <div class="breakdown-bar-wrap">
-              <div class="breakdown-bar" id="barContent" style="width: 0%;"></div>
-            </div>
-            <span class="breakdown-val" id="valContent">0</span>
-          </div>
-
-          <div class="score-breakdown-row">
-            <span class="breakdown-cat">INFLUENCE</span>
-            <div class="breakdown-bar-wrap">
-              <div class="breakdown-bar" id="barInfluence" style="width: 0%;"></div>
-            </div>
-            <span class="breakdown-val" id="valInfluence">0</span>
-          </div>
+        <div class="job-modal-block">
+          <h4 class="job-block-heading">WHAT YOU'LL DO</h4>
+          <ul class="job-block-list" id="jobModalResponsibilities"></ul>
         </div>
 
-        <div class="score-observation-box">
-          <p class="observation-kicker">ASSESSMENT OBSERVATION</p>
-          <p class="observation-text" id="observationText">
-            Your biggest opportunity appears to be content consistency and production.
+        <div class="job-modal-block">
+          <h4 class="job-block-heading">REQUIREMENTS</h4>
+          <ul class="job-block-list job-req-list" id="jobModalRequirements">
+            <li><span class="bullet-check">✓</span> Minimum 1.5 years of relevant experience</li>
+            <li><span class="bullet-check">✓</span> Share your best work / portfolio</li>
+            <li><span class="bullet-check">✓</span> Strong communication & execution skills</li>
+          </ul>
+        </div>
+
+        <!-- Attachment reminder notice box -->
+        <div class="job-note-box">
+          <p class="job-note-text">
+            <span class="crosshair">⌖</span> <strong>Notice:</strong> Please attach your CV/resume and relevant work samples before sending.
           </p>
         </div>
 
-        <div class="score-conversion-box">
-          <h4 class="conversion-title">WANT TO IMPROVE IT?</h4>
-          <p class="conversion-subtitle">Build a custom Thorvon plan based on what you need.</p>
-          <button class="btn btn-primary conversion-cta" id="btnScoreToPlan">
-            BUILD MY PLAN →
-          </button>
+        <!-- Action: Direct Mailto & Fallback -->
+        <div class="job-action-block">
+          <a href="mailto:thorvonmgmt@gmail.com" class="btn btn-primary job-apply-btn" id="jobApplyBtn">
+            Apply Now via Email <span class="arrow">→</span>
+          </a>
+
+          <!-- Fallback Box -->
+          <div class="hiring-fallback-box">
+            <div class="fallback-row">
+              <span class="fallback-label">Direct Application Email:</span>
+              <span class="fallback-email">thorvonmgmt@gmail.com</span>
+            </div>
+            <div class="fallback-actions">
+              <button type="button" class="btn-copy-email" id="btnCopyHiringEmail" aria-label="Copy hiring email address">
+                Copy Email Address
+              </button>
+              <span class="copy-confirm" id="copyConfirmMsg">Copied to clipboard ✓</span>
+            </div>
+          </div>
         </div>
-      </div>
-
-  <!-- ========================================================================
-       MODAL 3: CONTACT US (Call, WhatsApp, Email)
-       ======================================================================== -->
-  <div class="thorvon-modal-backdrop" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-    <div class="thorvon-modal-container contact-modal-container">
-      
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <div class="modal-header-text">
-          <p class="modal-kicker">DIRECT CHANNELS</p>
-          <h2 class="modal-title" id="contactModalTitle">CONTACT US</h2>
-          <p class="modal-subtitle">Connect directly with Thorvon Media through your preferred channel.</p>
-        </div>
-        <button class="modal-close-btn" data-action="close-contact" aria-label="Close Contact Dialog">✕</button>
-      </div>
-
-      <!-- Contact Options List -->
-      <div class="contact-modal-channels">
-        
-        <!-- Call -->
-        <a href="tel:+916000156191" class="channel-card" data-contact="call">
-          <div class="channel-info">
-            <h3 class="channel-name">Call</h3>
-          </div>
-          <span class="channel-arrow">→</span>
-        </a>
-
-        <!-- WhatsApp -->
-        <a href="https://wa.me/917002889463" target="_blank" rel="noopener noreferrer" class="channel-card" data-contact="whatsapp">
-          <div class="channel-info">
-            <h3 class="channel-name">WhatsApp</h3>
-          </div>
-          <span class="channel-arrow">→</span>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:thorvonmedia@gmail.com" class="channel-card" data-contact="email">
-          <div class="channel-info">
-            <h3 class="channel-name">Email</h3>
-          </div>
-          <span class="channel-arrow">→</span>
-        </a>
 
       </div>
 

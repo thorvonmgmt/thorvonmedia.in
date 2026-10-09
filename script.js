@@ -7,12 +7,6 @@
 // 1. Contact Links Configuration
 // ==========================================================================
 const ContactConfig = {
-  PHONE: '+916000156191',
-  PHONE_DISPLAY: '+91 60001 56191',
-  PHONE_LINK: 'tel:+916000156191',
-  WHATSAPP: '+917002889463',
-  WHATSAPP_DISPLAY: '+91 70028 89463',
-  WHATSAPP_LINK: 'https://wa.me/917002889463',
   EMAIL: 'thorvonmedia@gmail.com',
   EMAIL_LINK: 'mailto:thorvonmedia@gmail.com'
 };
@@ -44,23 +38,13 @@ const PricingConfig = [
   { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
   { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
   { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-
-  // --- Influencer Management Requirements ---
-  { id: 'inf_mgmt', label: 'Influencer Management', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_strategy', label: 'Influencer Strategy', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_discovery', label: 'Influencer Discovery', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_campaign_mgmt', label: 'Campaign Management', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_coordination', label: 'Creator Coordination', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_partnerships', label: 'Brand–Creator Partnerships', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'inf_reporting', label: 'Campaign Reporting', category: 'influence', price: null, minPrice: null, maxPrice: null, enabled: true }
+  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true }
 ];
 
 // Category metadata
 const CATEGORY_NAMES = {
   pr: 'PR',
-  content: 'CONTENT',
-  influence: 'INFLUENCER MANAGEMENT'
+  content: 'CONTENT'
 };
 
 // ==========================================================================
@@ -74,9 +58,25 @@ const LeadSubmissionHandler = {
   submit: async (planData) => {
     console.log('[Thorvon Media Lead Submitted]:', planData);
 
-    // If Web3Forms Access Key is provided, dispatch email directly
     if (LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY && LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
       try {
+        const contactVal = (planData.contact || '').trim();
+        const clientEmail = contactVal.includes('@') ? contactVal : 'thorvonmedia@gmail.com';
+        const clientPhone = !contactVal.includes('@') ? contactVal : '';
+
+        const formattedSummary = [
+          `NEW THORVON CLIENT PLAN:`,
+          `-------------------------------------------`,
+          `Client Name: ${planData.name || 'Anonymous Client'}`,
+          `Contact: ${contactVal || 'Not provided'}`,
+          `Company / Brand: ${planData.company || 'Not specified'}`,
+          `Selected Services: ${planData.selectedServices.length > 0 ? planData.selectedServices.join(', ') : 'None selected'}`,
+          `Custom Requirements: ${planData.customRequirement || 'None'}`,
+          `Estimated Investment: ${planData.estimatedInvestment || 'Pricing calculated after consultation'}`,
+          `Additional Notes: ${planData.notes || 'None'}`,
+          `Submitted At: ${planData.submittedAt}`
+        ].join('\n');
+
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
@@ -86,21 +86,20 @@ const LeadSubmissionHandler = {
           body: JSON.stringify({
             access_key: LeadSubmissionHandler.WEB3FORMS_ACCESS_KEY,
             from_name: 'Thorvon Media Website',
+            name: planData.name || 'Anonymous Client',
+            email: clientEmail,
+            phone: clientPhone,
             subject: `New Thorvon Plan: ${planData.name || 'Anonymous'} (${planData.company || 'Direct Client'})`,
-            'Client Name': planData.name,
-            'Contact (Email/WhatsApp)': planData.contact,
-            'Company / Brand': planData.company || 'Not specified',
-            'Selected Services': planData.selectedServices.join(', '),
-            'Custom Requirements': planData.customRequirement || 'None',
-            'Estimated Investment': planData.estimatedInvestment,
-            'Brand Presence Score': planData.brandPresenceScore ? `${planData.brandPresenceScore} / 100` : 'Not completed',
-            'Additional Notes': planData.notes || 'None',
-            'Submitted At': planData.submittedAt
+            company: planData.company || 'Not specified',
+            selected_services: planData.selectedServices.join(', '),
+            custom_requirements: planData.customRequirement || 'None',
+            estimated_investment: planData.estimatedInvestment,
+            message: formattedSummary
           })
         });
 
         const result = await response.json();
-        return { success: result.success };
+        return { success: result.success === true, message: result.message };
       } catch (err) {
         console.error('[Email Delivery Error]:', err);
         return { success: false, error: err };
@@ -131,87 +130,8 @@ const AppState = {
       company: '',
       notes: ''
     }
-  },
-  score: {
-    currentQuestionIndex: 0,
-    answers: [],
-    prScore: 0,
-    contentScore: 0,
-    influenceScore: 0,
-    overallScore: 0,
-    lowestCategory: 'content'
   }
 };
-
-// 6 Questions across PR, Content, Influence
-const AssessmentQuestions = [
-  {
-    category: 'pr',
-    categoryName: 'PR',
-    title: 'How strong is your public visibility?',
-    options: [
-      { text: 'Very strong across all major media channels', score: 100 },
-      { text: 'Strong in our niche, but room to expand', score: 75 },
-      { text: 'Developing; occasional visibility', score: 50 },
-      { text: 'Limited or practically non-existent', score: 25 }
-    ]
-  },
-  {
-    category: 'pr',
-    categoryName: 'PR',
-    title: 'How is your brand reputation and press outreach handled?',
-    options: [
-      { text: 'Active ongoing PR and consistent press mentions', score: 100 },
-      { text: 'Occasional features and coverage', score: 75 },
-      { text: 'Reactive; only managed during announcements or crises', score: 50 },
-      { text: 'No active PR management in place', score: 25 }
-    ]
-  },
-  {
-    category: 'content',
-    categoryName: 'CONTENT',
-    title: 'How consistent is your content publishing engine?',
-    options: [
-      { text: 'Very consistent, highly structured calendar', score: 100 },
-      { text: 'Somewhat consistent, occasional gaps', score: 75 },
-      { text: 'Inconsistent; we publish whenever time allows', score: 50 },
-      { text: "We currently don't have an active content system", score: 25 }
-    ]
-  },
-  {
-    category: 'content',
-    categoryName: 'CONTENT',
-    title: 'How would you rate your content production & post-production quality?',
-    options: [
-      { text: 'Premium end-to-end studio level quality', score: 100 },
-      { text: 'Good quality, handled internally', score: 75 },
-      { text: 'Basic quality; needs sharper polish', score: 50 },
-      { text: 'Needs a complete overhaul and professional standard', score: 25 }
-    ]
-  },
-  {
-    category: 'influence',
-    categoryName: 'INFLUENCER MANAGEMENT',
-    title: 'How are your influencer and creator partnerships managed?',
-    options: [
-      { text: 'Professionally managed with clear ROI and contracts', score: 100 },
-      { text: 'Managed in-house with mixed results', score: 75 },
-      { text: 'Occasional one-off gifting or collaborations', score: 50 },
-      { text: 'Not currently active with influencers', score: 25 }
-    ]
-  },
-  {
-    category: 'influence',
-    categoryName: 'INFLUENCER MANAGEMENT',
-    title: 'What level of strategic outcomes do creators generate for you?',
-    options: [
-      { text: 'High-impact campaigns and long-term brand equity', score: 100 },
-      { text: 'Moderate engagement and awareness', score: 75 },
-      { text: 'Inconsistent or hard to quantify outcomes', score: 50 },
-      { text: 'No creator partnerships or measurable outcomes yet', score: 25 }
-    ]
-  }
-];
 
 // ==========================================================================
 // 5. Plan Configurator Controller
@@ -316,11 +236,25 @@ function initializePlanConfigurator() {
       submittedAt: new Date().toISOString()
     };
 
-    await LeadSubmissionHandler.submit(payload);
+    const result = await LeadSubmissionHandler.submit(payload);
 
-    btnSubmitPlan.textContent = 'Plan Request Sent ✓';
     const feedback = document.getElementById('submissionFeedback');
-    if (feedback) feedback.style.display = 'block';
+    if (result && result.success) {
+      btnSubmitPlan.textContent = 'Plan Request Sent ✓';
+      if (feedback) {
+        feedback.textContent = 'Plan submitted successfully. We will review your details and reach out within 24 hours.';
+        feedback.style.display = 'block';
+        feedback.style.color = '#ffffff';
+      }
+    } else {
+      btnSubmitPlan.disabled = false;
+      btnSubmitPlan.textContent = 'Tap to Retry →';
+      if (feedback) {
+        feedback.textContent = 'Direct delivery encountered an issue. Tap "Chat on WhatsApp →" below to send your plan instantly.';
+        feedback.style.display = 'block';
+        feedback.style.color = '#ff9f0a';
+      }
+    }
   });
 }
 
@@ -541,17 +475,9 @@ function buildFinalPlanScreen() {
   const finalCustomReqWrap = document.getElementById('finalCustomReqWrap');
   const finalCustomReqText = document.getElementById('finalCustomReqText');
   const finalInvestmentValue = document.getElementById('finalInvestmentValue');
-  const whatsappPlanLink = document.getElementById('whatsappPlanLink');
 
   if (!finalReviewServices) return;
   finalReviewServices.innerHTML = '';
-
-  let whatsappTextLines = [
-    'Hi Thorvon Media,',
-    '',
-    'I just built a custom plan on your website:',
-    ''
-  ];
 
   AppState.plan.selectedCategories.forEach((catKey) => {
     const group = document.createElement('div');
@@ -563,8 +489,6 @@ function buildFinalPlanScreen() {
     catHeader.textContent = catName;
     group.appendChild(catHeader);
 
-    whatsappTextLines.push(`*${catName}*`);
-
     const catReqs = PricingConfig.filter(
       (item) => item.category === catKey && AppState.plan.selectedRequirements.has(item.id)
     );
@@ -575,17 +499,14 @@ function buildFinalPlanScreen() {
         sub.className = 'review-subitem';
         sub.textContent = r.label;
         group.appendChild(sub);
-        whatsappTextLines.push(`• ${r.label}`);
       });
     } else {
       const sub = document.createElement('p');
       sub.className = 'review-subitem';
       sub.textContent = 'General Category Engagement';
       group.appendChild(sub);
-      whatsappTextLines.push('• General Engagement');
     }
 
-    whatsappTextLines.push('');
     finalReviewServices.appendChild(group);
   });
 
@@ -595,8 +516,6 @@ function buildFinalPlanScreen() {
       finalCustomReqWrap.style.display = 'block';
       finalCustomReqText.textContent = AppState.plan.customRequirement;
     }
-    whatsappTextLines.push(`*Additional Requirements:* ${AppState.plan.customRequirement}`);
-    whatsappTextLines.push('');
   } else if (finalCustomReqWrap) {
     finalCustomReqWrap.style.display = 'none';
   }
@@ -606,207 +525,6 @@ function buildFinalPlanScreen() {
   if (finalInvestmentValue) {
     finalInvestmentValue.textContent = investment.displayValue;
   }
-  whatsappTextLines.push(`*Estimated Investment:* ${investment.displayValue}`);
-
-  // Contact details if provided
-  if (AppState.plan.userDetails.name) {
-    whatsappTextLines.push(`*Name:* ${AppState.plan.userDetails.name}`);
-  }
-  if (AppState.plan.userDetails.company) {
-    whatsappTextLines.push(`*Company:* ${AppState.plan.userDetails.company}`);
-  }
-
-  // Bind WhatsApp prefilled link
-  if (whatsappPlanLink) {
-    const encoded = encodeURIComponent(whatsappTextLines.join('\n'));
-    whatsappPlanLink.setAttribute('href', `${ContactConfig.WHATSAPP_LINK}?text=${encoded}`);
-  }
-}
-
-// ==========================================================================
-// 6. PR & Content Score Tool Controller
-// ==========================================================================
-function initializeScoreTool() {
-  const scoreModal = document.getElementById('scoreModal');
-  if (!scoreModal) return;
-
-  // Open triggers
-  document.querySelectorAll('[data-action="open-score"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openScoreModal();
-    });
-  });
-
-  // Close triggers
-  document.querySelectorAll('[data-action="close-score"]').forEach((btn) => {
-    btn.addEventListener('click', () => closeScoreModal());
-  });
-
-  // Backdrop click
-  scoreModal.addEventListener('click', (e) => {
-    if (e.target === scoreModal) closeScoreModal();
-  });
-
-  // Back button
-  const btnScoreBack = document.getElementById('btnScoreBack');
-  btnScoreBack.addEventListener('click', () => {
-    if (AppState.score.currentQuestionIndex > 0) {
-      AppState.score.currentQuestionIndex--;
-      AppState.score.answers.pop();
-      renderScoreQuestion();
-    }
-  });
-
-  // Conversion: BUILD MY PLAN →
-  const btnScoreToPlan = document.getElementById('btnScoreToPlan');
-  btnScoreToPlan.addEventListener('click', () => {
-    closeScoreModal();
-    openPlanModal(AppState.score.lowestCategory);
-  });
-}
-
-function openScoreModal() {
-  const scoreModal = document.getElementById('scoreModal');
-  if (!scoreModal) return;
-
-  // Reset questionnaire
-  AppState.score.currentQuestionIndex = 0;
-  AppState.score.answers = [];
-
-  const questionnaire = document.getElementById('scoreQuestionnaire');
-  const resultsScreen = document.getElementById('scoreResultsScreen');
-  if (questionnaire) questionnaire.style.display = 'block';
-  if (resultsScreen) resultsScreen.style.display = 'none';
-
-  renderScoreQuestion();
-  scoreModal.classList.add('is-open');
-  scoreModal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('modal-open');
-}
-
-function closeScoreModal() {
-  const scoreModal = document.getElementById('scoreModal');
-  if (!scoreModal) return;
-  scoreModal.classList.remove('is-open');
-  scoreModal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
-}
-
-function renderScoreQuestion() {
-  const index = AppState.score.currentQuestionIndex;
-  const qData = AssessmentQuestions[index];
-  if (!qData) return;
-
-  const total = AssessmentQuestions.length;
-  const progressPct = ((index + 1) / total) * 100;
-
-  const progressBar = document.getElementById('scoreProgressBar');
-  const counter = document.getElementById('scoreStepCounter');
-  const catTag = document.getElementById('qCategoryTag');
-  const qTitle = document.getElementById('qTitle');
-  const optionsContainer = document.getElementById('qOptionsContainer');
-  const btnBack = document.getElementById('btnScoreBack');
-
-  if (progressBar) progressBar.style.width = `${progressPct}%`;
-  if (counter) counter.textContent = `Question ${index + 1} of ${total}`;
-  if (catTag) catTag.textContent = qData.categoryName;
-  if (qTitle) qTitle.textContent = qData.title;
-  if (btnBack) btnBack.style.visibility = index > 0 ? 'visible' : 'hidden';
-
-  if (!optionsContainer) return;
-  optionsContainer.innerHTML = '';
-
-  qData.options.forEach((opt) => {
-    const row = document.createElement('div');
-    row.className = 'option-row';
-    row.innerHTML = `
-      <span>${opt.text}</span>
-      <span class="opt-arrow">→</span>
-    `;
-
-    row.addEventListener('click', () => {
-      AppState.score.answers.push({
-        category: qData.category,
-        score: opt.score
-      });
-
-      if (AppState.score.currentQuestionIndex < total - 1) {
-        AppState.score.currentQuestionIndex++;
-        renderScoreQuestion();
-      } else {
-        calculateAndDisplayScore();
-      }
-    });
-
-    optionsContainer.appendChild(row);
-  });
-}
-
-function calculateAndDisplayScore() {
-  const answers = AppState.score.answers;
-  const prAnswers = answers.filter((a) => a.category === 'pr');
-  const contentAnswers = answers.filter((a) => a.category === 'content');
-  const influenceAnswers = answers.filter((a) => a.category === 'influence');
-
-  const avg = (arr) => Math.round(arr.reduce((sum, item) => sum + item.score, 0) / (arr.length || 1));
-
-  const prScore = avg(prAnswers);
-  const contentScore = avg(contentAnswers);
-  const influenceScore = avg(influenceAnswers);
-  const overallScore = Math.round((prScore + contentScore + influenceScore) / 3);
-
-  AppState.score.prScore = prScore;
-  AppState.score.contentScore = contentScore;
-  AppState.score.influenceScore = influenceScore;
-  AppState.score.overallScore = overallScore;
-
-  // Determine lowest score category
-  const categories = [
-    { key: 'pr', score: prScore },
-    { key: 'content', score: contentScore },
-    { key: 'influence', score: influenceScore }
-  ];
-  categories.sort((a, b) => a.score - b.score);
-  AppState.score.lowestCategory = categories[0].key;
-
-  // Render results
-  const questionnaire = document.getElementById('scoreQuestionnaire');
-  const resultsScreen = document.getElementById('scoreResultsScreen');
-  if (questionnaire) questionnaire.style.display = 'none';
-  if (resultsScreen) resultsScreen.style.display = 'block';
-
-  const overallVal = document.getElementById('overallScoreVal');
-  const valPr = document.getElementById('valPr');
-  const barPr = document.getElementById('barPr');
-  const valContent = document.getElementById('valContent');
-  const barContent = document.getElementById('barContent');
-  const valInfluence = document.getElementById('valInfluence');
-  const barInfluence = document.getElementById('barInfluence');
-  const obsText = document.getElementById('observationText');
-
-  // Animate count-up for numbers
-  if (overallVal) animateCountUp(overallVal, overallScore, 1100);
-  if (valPr) animateCountUp(valPr, prScore, 850);
-  if (valContent) animateCountUp(valContent, contentScore, 850);
-  if (valInfluence) animateCountUp(valInfluence, influenceScore, 850);
-
-  setTimeout(() => {
-    if (barPr) barPr.style.width = `${prScore}%`;
-    if (barContent) barContent.style.width = `${contentScore}%`;
-    if (barInfluence) barInfluence.style.width = `${influenceScore}%`;
-  }, 120);
-
-  // Personalized observation
-  if (obsText) {
-    if (AppState.score.lowestCategory === 'pr') {
-      obsText.textContent = 'Your biggest opportunity appears to be public visibility and PR.';
-    } else if (AppState.score.lowestCategory === 'content') {
-      obsText.textContent = 'Your biggest opportunity appears to be content consistency and production.';
-    } else {
-      obsText.textContent = 'Your biggest opportunity appears to be influencer and creator management.';
-    }
-  }
 }
 
 // ==========================================================================
@@ -814,8 +532,6 @@ function calculateAndDisplayScore() {
 // ==========================================================================
 function initializeContactLinks() {
   const contactMap = {
-    call: ContactConfig.PHONE_LINK,
-    whatsapp: ContactConfig.WHATSAPP_LINK,
     email: ContactConfig.EMAIL_LINK
   };
 
@@ -881,8 +597,8 @@ function initializeMobileNav() {
     if (e.key === 'Escape') {
       if (mobileDrawerEl && mobileDrawerEl.classList.contains('is-open')) closeMobileMenu();
       closePlanModal();
-      closeScoreModal();
-      closeContactModal();
+      closeCareersPortalModal();
+      closeJobModal();
     }
   });
 }
@@ -901,50 +617,6 @@ function closeMobileMenu() {
   mobileDrawerEl.classList.remove('is-open');
   mobileDrawerEl.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-}
-
-/**
- * Contact Modal Controller
- */
-function initializeContactModal() {
-  const contactModal = document.getElementById('contactModal');
-  if (!contactModal) return;
-
-  // Open triggers
-  document.querySelectorAll('[data-action="open-contact"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      // If triggered by anchor link, prevent jump and open modal
-      e.preventDefault();
-      closeMobileMenu();
-      openContactModal();
-    });
-  });
-
-  // Close triggers
-  document.querySelectorAll('[data-action="close-contact"]').forEach((btn) => {
-    btn.addEventListener('click', () => closeContactModal());
-  });
-
-  // Backdrop click
-  contactModal.addEventListener('click', (e) => {
-    if (e.target === contactModal) closeContactModal();
-  });
-}
-
-function openContactModal() {
-  const contactModal = document.getElementById('contactModal');
-  if (!contactModal) return;
-  contactModal.classList.add('is-open');
-  contactModal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('modal-open');
-}
-
-function closeContactModal() {
-  const contactModal = document.getElementById('contactModal');
-  if (!contactModal) return;
-  contactModal.classList.remove('is-open');
-  contactModal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
 }
 
 /**
@@ -1027,46 +699,404 @@ function animateCountUp(element, target, duration = 1000) {
 }
 
 /**
- * Ambient Cursor Spotlight
+ * Scroll-Linked Header Transitions & Top Progress Line (RAF-throttled for 60-120fps performance)
  */
-function initializeAmbientSpotlight() {
-  let ticking = false;
-  window.addEventListener('mousemove', (e) => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-        ticking = false;
+function initializeScrollEffects() {
+  const progressLine = document.getElementById('scrollProgress');
+  const header = document.querySelector('.site-header');
+  let isTicking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        if (progressLine) {
+          progressLine.style.width = `${scrollPercent}%`;
+        }
+
+        if (header) {
+          if (scrollTop > 24) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+        isTicking = false;
       });
-      ticking = true;
+      isTicking = true;
     }
   }, { passive: true });
 }
 
 /**
- * Scroll-Linked Header Transitions & Top Progress Line
+ * Professional Client Intake Form Controller
+ * Submits lead to Web3Forms / thorvonmedia@gmail.com with instant validation and fallback.
  */
-function initializeScrollEffects() {
-  const progressLine = document.getElementById('scrollProgress');
-  const header = document.querySelector('.site-header');
+function initializeContactForm() {
+  const form = document.getElementById('agencyContactForm');
+  if (!form) return;
 
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const statusMsg = document.getElementById('contactFormStatus');
+  const submitBtn = document.getElementById('btnSubmitContact');
 
-    if (progressLine) {
-      progressLine.style.width = `${scrollPercent}%`;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fullName = (document.getElementById('contactFullName')?.value || '').trim();
+    const workEmail = (document.getElementById('contactWorkEmail')?.value || '').trim();
+    const company = (document.getElementById('contactCompany')?.value || '').trim();
+    const budget = (document.getElementById('contactBudget')?.value || 'Flexible / Need Consultation').trim();
+    const serviceRadio = document.querySelector('input[name="contactServiceChoice"]:checked');
+    const serviceChoice = serviceRadio ? serviceRadio.value : 'Both Content & PR';
+    const message = (document.getElementById('contactMessage')?.value || '').trim();
+
+    // Basic validation
+    if (!fullName || !workEmail) {
+      if (statusMsg) {
+        statusMsg.textContent = 'Please provide both your name and work email.';
+        statusMsg.className = 'form-status-msg error';
+      }
+      return;
     }
 
-    if (header) {
-      if (scrollTop > 24) {
-        header.classList.add('scrolled');
+    if (!workEmail.includes('@') || !workEmail.includes('.')) {
+      if (statusMsg) {
+        statusMsg.textContent = 'Please enter a valid work email address.';
+        statusMsg.className = 'form-status-msg error';
+      }
+      return;
+    }
+
+    // UI loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending Inquiry...';
+    }
+    if (statusMsg) {
+      statusMsg.textContent = 'Transmitting your brief...';
+      statusMsg.className = 'form-status-msg';
+    }
+
+    const payload = {
+      name: fullName,
+      contact: workEmail,
+      company: company || 'Not specified',
+      selectedServices: [serviceChoice],
+      customRequirement: `Retainer Scope: ${budget}`,
+      notes: message || 'None provided',
+      estimatedInvestment: budget,
+      submittedAt: new Date().toLocaleString()
+    };
+
+    try {
+      const result = await LeadSubmissionHandler.submit(payload);
+
+      if (result && result.success) {
+        if (statusMsg) {
+          statusMsg.textContent = `Thank you, ${fullName}. Your inquiry has been sent. We'll reply within 4–6 business hours.`;
+          statusMsg.className = 'form-status-msg success';
+        }
+        form.reset();
       } else {
-        header.classList.remove('scrolled');
+        // Mailto fallback if Web3Forms fails or is blocked
+        const subject = encodeURIComponent(`Agency Inquiry: ${fullName} (${company || 'New Client'})`);
+        const body = encodeURIComponent(
+          `Name: ${fullName}\n` +
+          `Email: ${workEmail}\n` +
+          `Company: ${company}\n` +
+          `Service: ${serviceChoice}\n` +
+          `Budget: ${budget}\n\n` +
+          `Project Scope:\n${message}\n`
+        );
+        window.location.href = `mailto:thorvonmedia@gmail.com?subject=${subject}&body=${body}`;
+
+        if (statusMsg) {
+          statusMsg.textContent = 'Opening your email client to send inquiry to thorvonmedia@gmail.com...';
+          statusMsg.className = 'form-status-msg success';
+        }
+      }
+    } catch (err) {
+      console.error('[Form Submit Error]:', err);
+      const subject = encodeURIComponent(`Agency Inquiry: ${fullName}`);
+      const body = encodeURIComponent(`Name: ${fullName}\nEmail: ${workEmail}\nService: ${serviceChoice}\nBudget: ${budget}\nMessage: ${message}`);
+      window.location.href = `mailto:thorvonmedia@gmail.com?subject=${subject}&body=${body}`;
+
+      if (statusMsg) {
+        statusMsg.textContent = 'Redirecting to email client...';
+        statusMsg.className = 'form-status-msg';
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Inquiry <span class="arrow">→</span>';
       }
     }
-  }, { passive: true });
+  });
+}
+
+// ==========================================================================
+// Careers & Job Details Modal System (Direct Email Flow)
+// Target: thorvonmgmt@gmail.com | Agency Name: Thorvonmedia
+// ==========================================================================
+
+const CareerPositions = {
+  'content-writers': {
+    title: 'Content Writers',
+    openings: 'OPEN',
+    type: 'REMOTE · FULL-TIME',
+    tagline: 'Clear, engaging writing for modern founders and fast-growing brands.',
+    desc: 'We are looking for strong writers who can turn complex ideas into simple, compelling stories. You will write founder thought pieces, articles, press pitches, and newsletters that build real credibility.',
+    responsibilities: [
+      'Write clear, well-researched articles, LinkedIn posts, and newsletters.',
+      'Draft press releases and media pitches that catch editors’ attention.',
+      'Turn messy notes and rough ideas from founders into polished, readable stories.',
+      'Work directly with our design and PR team to deliver work on time.'
+    ],
+    requirements: [
+      'Minimum 1.5 years of relevant writing or editorial experience',
+      'Share your best work / portfolio (published articles, essays, or client copy)',
+      'Clear communication and strong attention to detail'
+    ],
+    emailSubject: 'Application for Content Writer — Thorvonmedia'
+  },
+  'graphic-designers': {
+    title: 'Graphic Designers',
+    openings: 'OPEN',
+    type: 'REMOTE · FULL-TIME',
+    tagline: 'Clean typography and modern visual design that stops the scroll.',
+    desc: 'We need a creative designer who cares about details and has a strong sense of modern aesthetics. You will create eye-catching social graphics, carousels, brand kits, and slide decks for our clients.',
+    responsibilities: [
+      'Design clean social media graphics, carousels, and visual posts.',
+      'Build modern slide decks, media kits, and brand assets for clients.',
+      'Keep visual branding consistent across all client deliverables.',
+      'Work with writers and video editors to bring creative concepts to life.'
+    ],
+    requirements: [
+      'Minimum 1.5 years of professional design experience',
+      'Share your portfolio / best visual work (Figma, Behance, or web link)',
+      'Strong eye for typography, layouts, and color'
+    ],
+    emailSubject: 'Application for Graphic Designer — Thorvonmedia'
+  },
+  'project-manager': {
+    title: 'Project Manager',
+    openings: 'OPEN',
+    type: 'REMOTE · FULL-TIME',
+    tagline: 'Keeping creative projects organized, on time, and stress-free.',
+    desc: 'We are looking for an organized, proactive person who loves making order out of chaos. You will keep our writers, designers, and video editors aligned so client work is delivered smoothly and on schedule.',
+    responsibilities: [
+      'Plan project timelines and ensure daily tasks are completed on time.',
+      'Coordinate communication between clients, writers, designers, and editors.',
+      'Review deliverables before client handover to ensure top quality.',
+      'Spot bottlenecks early and help the team solve problems quickly.'
+    ],
+    requirements: [
+      'Minimum 1.5 years of project management or coordination experience',
+      'Proven ability to manage deadlines and keep teams organized',
+      'Clear, friendly communication and strong problem-solving skills'
+    ],
+    emailSubject: 'Application for Project Manager — Thorvonmedia'
+  }
+};
+
+function openJobModal(roleId) {
+  const position = CareerPositions[roleId];
+  const jobModal = document.getElementById('jobModal');
+  if (!position || !jobModal) return;
+
+  const titleEl = document.getElementById('jobModalTitle');
+  const badgeEl = document.getElementById('jobModalBadge');
+  const typeEl = document.getElementById('jobModalType');
+  const taglineEl = document.getElementById('jobModalTagline');
+  const descEl = document.getElementById('jobModalDesc');
+  const respEl = document.getElementById('jobModalResponsibilities');
+  const reqEl = document.getElementById('jobModalRequirements');
+  const applyBtn = document.getElementById('jobApplyBtn');
+
+  if (titleEl) titleEl.textContent = position.title;
+  if (badgeEl) badgeEl.textContent = position.openings;
+  if (typeEl) typeEl.textContent = position.type;
+  if (taglineEl) taglineEl.textContent = position.tagline;
+  if (descEl) descEl.textContent = position.desc;
+
+  if (respEl) {
+    respEl.innerHTML = '';
+    position.responsibilities.forEach((item) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="bullet-check">✓</span> <span>${item}</span>`;
+      respEl.appendChild(li);
+    });
+  }
+
+  if (reqEl && position.requirements) {
+    reqEl.innerHTML = '';
+    position.requirements.forEach((item) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="bullet-check">✓</span> <span>${item}</span>`;
+      reqEl.appendChild(li);
+    });
+  }
+
+  const emailBodyTemplate = `Name: \nPhone: \nYears of Experience: \nPortfolio / Best Work: \nMessage: \n\n(Please attach your CV/resume and relevant work samples before sending)`;
+  const mailtoUrl = `mailto:thorvonmgmt@gmail.com?subject=${encodeURIComponent(position.emailSubject)}&body=${encodeURIComponent(emailBodyTemplate)}`;
+
+  if (applyBtn) {
+    applyBtn.href = mailtoUrl;
+  }
+
+  // Reset copy confirmation state
+  const confirmMsg = document.getElementById('copyConfirmMsg');
+  if (confirmMsg) confirmMsg.classList.remove('is-visible');
+
+  jobModal.classList.add('is-open');
+  jobModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeJobModal() {
+  const jobModal = document.getElementById('jobModal');
+  if (!jobModal) return;
+  jobModal.classList.remove('is-open');
+  jobModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+function openCareersPortalModal() {
+  const portalModal = document.getElementById('careersPortalModal');
+  if (!portalModal) return;
+  portalModal.classList.add('is-open');
+  portalModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeCareersPortalModal() {
+  const portalModal = document.getElementById('careersPortalModal');
+  if (!portalModal) return;
+  portalModal.classList.remove('is-open');
+  portalModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+function initializeCareers() {
+  // Portal open triggers (e.g. footer link)
+  document.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      openCareersPortalModal();
+    });
+  });
+
+  // Portal close triggers
+  document.querySelectorAll('[data-action="close-careers-portal"]').forEach((btn) => {
+    btn.addEventListener('click', () => closeCareersPortalModal());
+  });
+
+  // Portal backdrop click
+  const portalModal = document.getElementById('careersPortalModal');
+  if (portalModal) {
+    portalModal.addEventListener('click', (e) => {
+      if (e.target === portalModal) closeCareersPortalModal();
+    });
+  }
+
+  // Job cards inside portal
+  document.querySelectorAll('[data-action="open-job"]').forEach((card) => {
+    const roleId = card.getAttribute('data-role');
+    card.addEventListener('click', () => openJobModal(roleId));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openJobModal(roleId);
+      }
+    });
+  });
+
+  // Modal close buttons
+  document.querySelectorAll('[data-action="close-job"]').forEach((btn) => {
+    btn.addEventListener('click', () => closeJobModal());
+  });
+
+  // Modal backdrop click
+  const jobModal = document.getElementById('jobModal');
+  if (jobModal) {
+    jobModal.addEventListener('click', (e) => {
+      if (e.target === jobModal) closeJobModal();
+    });
+  }
+
+  // Escape key support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const jobModal = document.getElementById('jobModal');
+      if (jobModal && jobModal.classList.contains('is-open')) {
+        closeJobModal();
+        return;
+      }
+      const portalModal = document.getElementById('careersPortalModal');
+      if (portalModal && portalModal.classList.contains('is-open')) {
+        closeCareersPortalModal();
+      }
+    }
+  });
+
+  // URL hash navigation support: opens portal if #careers is in the address bar
+  function checkCareersHash() {
+    if (window.location.hash === '#careers') {
+      openCareersPortalModal();
+    }
+  }
+
+  window.addEventListener('hashchange', checkCareersHash);
+  if (window.location.hash === '#careers') {
+    setTimeout(checkCareersHash, 250);
+  }
+
+  // Copy email fallback button
+  const copyBtn = document.getElementById('btnCopyHiringEmail');
+  const confirmMsg = document.getElementById('copyConfirmMsg');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const email = 'thorvonmgmt@gmail.com';
+      function showSuccess() {
+        if (confirmMsg) {
+          confirmMsg.classList.add('is-visible');
+          setTimeout(() => confirmMsg.classList.remove('is-visible'), 2500);
+        }
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email)
+          .then(showSuccess)
+          .catch(() => {
+            fallbackCopy(email);
+            showSuccess();
+          });
+      } else {
+        fallbackCopy(email);
+        showSuccess();
+      }
+    });
+  }
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.error('Fallback copy error:', err);
+    }
+    document.body.removeChild(ta);
+  }
 }
 
 // ==========================================================================
@@ -1078,8 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeMobileNav();
   initializeRevealAnimations();
   initializePlanConfigurator();
-  initializeScoreTool();
-  initializeContactModal();
-  initializeAmbientSpotlight();
+  initializeCareers();
+  initializeContactForm();
   initializeScrollEffects();
 });
