@@ -2724,3 +2724,35 @@ ul {
     transform: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Embedded Team Modal Styling
+   -------------------------------------------------------------------------- */
+.team-modal-container {
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.team-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.modal-founder-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border);
+}
+
+.modal-team-core-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 680px) {
+  .modal-team-core-cards {
+    grid-template-columns: 1fr;
+  }
+}
