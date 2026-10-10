@@ -1100,6 +1100,65 @@ function initializeCareers() {
 }
 
 // ==========================================================================
+// Embedded Team Modal Controller
+// Accessible via #team URL hash, with no visible button on page flow
+// ==========================================================================
+function openTeamModal() {
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+  teamModal.classList.add('is-open');
+  teamModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeTeamModal() {
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+  teamModal.classList.remove('is-open');
+  teamModal.setAttribute('aria-hidden', 'true');
+  const otherOpenModal = document.querySelector('.thorvon-modal-backdrop.is-open');
+  if (!otherOpenModal) {
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function initializeTeamModal() {
+  // Triggers to close team modal
+  document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
+    btn.addEventListener('click', () => closeTeamModal());
+  });
+
+  // Modal backdrop click
+  const teamModal = document.getElementById('teamModal');
+  if (teamModal) {
+    teamModal.addEventListener('click', (e) => {
+      if (e.target === teamModal) closeTeamModal();
+    });
+  }
+
+  // Escape key support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const teamModal = document.getElementById('teamModal');
+      if (teamModal && teamModal.classList.contains('is-open')) {
+        closeTeamModal();
+      }
+    }
+  });
+
+  // URL hash navigation support: opens modal if #team is in the address bar
+  function checkTeamHash() {
+    if (window.location.hash === '#team') {
+      openTeamModal();
+    }
+  }
+  window.addEventListener('hashchange', checkTeamHash);
+  if (window.location.hash === '#team') {
+    setTimeout(checkTeamHash, 250);
+  }
+}
+
+// ==========================================================================
 // Initialization on DOM Ready
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1109,6 +1168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeRevealAnimations();
   initializePlanConfigurator();
   initializeCareers();
+  initializeTeamModal();
   initializeContactForm();
   initializeScrollEffects();
 });
