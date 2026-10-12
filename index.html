@@ -536,168 +536,67 @@
       <!-- Modal Body -->
       <div class="platform-action-body">
         
-        <!-- Toggle Tabs: Select Plan vs Request Audit -->
-        <div class="platform-action-tabs" role="tablist">
+        <!-- Toggle Tabs: Curated Plans vs Custom Calculator vs Request Audit -->
+        <div class="platform-action-tabs" id="platformActionTabs" role="tablist">
           <button type="button" class="platform-tab-btn active" id="tabBtnPlans" role="tab" aria-selected="true" data-tab="plans">
-            Select a Plan
+            Curated Plans
+          </button>
+          <button type="button" class="platform-tab-btn" id="tabBtnCustom" role="tab" aria-selected="false" data-tab="custom">
+            Custom Calculator
           </button>
           <button type="button" class="platform-tab-btn" id="tabBtnAudit" role="tab" aria-selected="false" data-tab="audit">
             Request Business Audit
           </button>
         </div>
 
-        <!-- TAB CONTENT 1: PLANS (Curated Plans + Custom Plan) -->
+        <!-- TAB CONTENT 1: PLANS (Curated Packages) -->
         <div class="platform-tab-content active" id="tabContentPlans">
-          <p class="platform-tab-intro">
-            Choose a structured growth plan engineered for <span class="platform-name-highlight">this platform</span>, or build a custom plan tailored to your exact creative requirements.
+          <p class="platform-tab-intro" id="platformTabIntro">
+            Choose a structured growth plan engineered for <span class="platform-name-highlight">YouTube</span>, or build a custom plan tailored to your exact creative requirements.
           </p>
 
           <div class="platform-plans-grid" id="platformPlansGrid">
-            
-            <!-- Plan 1: Starter Plan -->
-            <div class="platform-plan-card" data-plan="Starter Plan" data-price="$450 / month">
-              <div class="plan-card-header">
-                <span class="plan-card-kicker">STARTER</span>
-                <h3 class="plan-card-title">Content Foundation</h3>
-                <div class="plan-card-price">$450 <span class="plan-card-freq">/ mo</span></div>
-              </div>
-              <p class="plan-card-desc">Ideal for emerging brands launching consistent, high-retention native presence.</p>
-              
-              <ul class="plan-services-list">
-                <li><span class="check-icon">✓</span> 8–10 Platform-native short-form reels / videos</li>
-                <li><span class="check-icon">✓</span> Full video editing & sound design</li>
-                <li><span class="check-icon">✓</span> High-converting hooks & scriptwriting</li>
-                <li><span class="check-icon">✓</span> Native platform distribution & scheduling</li>
-                <li><span class="check-icon">✓</span> Bi-weekly performance review</li>
-              </ul>
-
-              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Starter Plan" data-plan-price="$450 / month">
-                Opt In to Plan <span class="arrow">→</span>
-              </button>
-            </div>
-
-            <!-- Plan 2: Authority Plan (Featured) -->
-            <div class="platform-plan-card featured" data-plan="Authority Growth Plan" data-price="$890 / month">
-              <div class="plan-featured-tag">MOST POPULAR</div>
-              <div class="plan-card-header">
-                <span class="plan-card-kicker">GROWTH & PR</span>
-                <h3 class="plan-card-title">Authority Scaling</h3>
-                <div class="plan-card-price">$890 <span class="plan-card-freq">/ mo</span></div>
-              </div>
-              <p class="plan-card-desc">Comprehensive content production and founder PR to dominate the feed.</p>
-              
-              <ul class="plan-services-list">
-                <li><span class="check-icon">✓</span> 18–22 Platform-native high-impact videos & reels</li>
-                <li><span class="check-icon">✓</span> Dedicated creative director & scriptwriter</li>
-                <li><span class="check-icon">✓</span> Custom motion graphics & viral editing</li>
-                <li><span class="check-icon">✓</span> Executive thought leadership & personal branding</li>
-                <li><span class="check-icon">✓</span> Omnichannel distribution across feeds</li>
-                <li><span class="check-icon">✓</span> Monthly media & PR outreach pitching</li>
-              </ul>
-
-              <button type="button" class="btn btn-primary plan-opt-btn" data-action="opt-in-plan" data-plan-name="Authority Growth Plan" data-plan-price="$890 / month">
-                Opt In to Plan <span class="arrow">→</span>
-              </button>
-            </div>
-
-            <!-- Plan 3: Enterprise Plan -->
-            <div class="platform-plan-card" data-plan="Enterprise Domination" data-price="$1,450 / month">
-              <div class="plan-card-header">
-                <span class="plan-card-kicker">ENTERPRISE</span>
-                <h3 class="plan-card-title">Category Leader</h3>
-                <div class="plan-card-price">$1,450 <span class="plan-card-freq">/ mo</span></div>
-              </div>
-              <p class="plan-card-desc">Full-scale turnkey creative engine with guaranteed Tier-1 editorial press placements.</p>
-              
-              <ul class="plan-services-list">
-                <li><span class="check-icon">✓</span> Full production (Short-form + Long-form content)</li>
-                <li><span class="check-icon">✓</span> Guaranteed Tier-1 editorial PR placements</li>
-                <li><span class="check-icon">✓</span> Dedicated video editor, animator & PR publicist</li>
-                <li><span class="check-icon">✓</span> Full distribution, community management & SEO</li>
-                <li><span class="check-icon">✓</span> Executive reputation architecture</li>
-                <li><span class="check-icon">✓</span> Weekly 1-on-1 strategic growth calls</li>
-              </ul>
-
-              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Enterprise Domination" data-plan-price="$1,450 / month">
-                Opt In to Plan <span class="arrow">→</span>
-              </button>
-            </div>
-
-            <!-- Plan 4: Custom Plan -->
-            <div class="platform-plan-card custom-plan-card">
-              <div class="plan-card-header">
-                <span class="plan-card-kicker">CUSTOM</span>
-                <h3 class="plan-card-title">Custom Plan</h3>
-                <div class="plan-card-price">Tailored <span class="plan-card-freq">Pricing</span></div>
-              </div>
-              <p class="plan-card-desc">Pick and choose the exact individual services you need with our dynamic pricing calculator.</p>
-              
-              <ul class="plan-services-list">
-                <li><span class="check-icon">✓</span> Select custom video editing, reels, or scriptwriting</li>
-                <li><span class="check-icon">✓</span> Add specific PR, press outreach, or founder branding</li>
-                <li><span class="check-icon">✓</span> Real-time investment calculation in $</li>
-                <li><span class="check-icon">✓</span> Custom deliverable volumes to match your budget</li>
-              </ul>
-
-              <button type="button" class="btn btn-primary plan-opt-btn" data-action="open-custom-plan">
-                Build Custom Plan <span class="arrow">→</span>
-              </button>
-            </div>
-
+            <!-- Dynamically populated per platform by script.js -->
           </div>
-
-          <!-- Quick Opt-In Lead Confirmation Panel for Curated Plans -->
-          <div class="plan-optin-confirm-panel" id="planOptinConfirmPanel" style="display: none;">
-            <div class="confirm-panel-header">
-              <h4 class="confirm-panel-title">Confirm Plan: <span id="confirmPlanNameText">Starter Plan</span> (<span id="confirmPlanPriceText">$450 / month</span>)</h4>
-              <button type="button" class="btn-text" id="btnCancelOptin">← Back to plans</button>
-            </div>
-            <p class="confirm-panel-sub">We will prepare your onboarding roadmap and deliverables schedule.</p>
-            
-            <form class="lead-form plan-optin-form" id="planOptinForm">
-              <input type="hidden" id="optinSelectedPlan" value="">
-              <input type="hidden" id="optinSelectedPrice" value="">
-              <input type="hidden" id="optinSelectedPlatform" value="">
-
-              <div class="form-row form-row-2col">
-                <div class="form-field">
-                  <label for="optinName" class="form-label">Full Name *</label>
-                  <input type="text" id="optinName" class="thorvon-input" required placeholder="Your full name">
-                </div>
-                <div class="form-field">
-                  <label for="optinEmail" class="form-label">Work Email *</label>
-                  <input type="email" id="optinEmail" class="thorvon-input" required placeholder="name@company.com">
-                </div>
-              </div>
-
-              <div class="form-row form-row-2col">
-                <div class="form-field">
-                  <label for="optinCompany" class="form-label">Company / Brand Name</label>
-                  <input type="text" id="optinCompany" class="thorvon-input" placeholder="Brand name">
-                </div>
-                <div class="form-field">
-                  <label for="optinHandle" class="form-label">Platform Handle / URL</label>
-                  <input type="text" id="optinHandle" class="thorvon-input" placeholder="@yourhandle or profile link">
-                </div>
-              </div>
-
-              <div class="form-field">
-                <label for="optinNotes" class="form-label">Specific Goals or Questions (Optional)</label>
-                <textarea id="optinNotes" class="thorvon-textarea" rows="2" placeholder="Tell us about your target audience or goals"></textarea>
-              </div>
-
-              <div class="form-submit-row">
-                <button type="submit" class="btn btn-primary" id="btnSubmitPlanOptin">
-                  Confirm & Request Plan <span class="arrow">→</span>
-                </button>
-                <p class="form-status-msg" id="optinFormStatus" aria-live="polite"></p>
-              </div>
-            </form>
-          </div>
-
         </div>
 
-        <!-- TAB CONTENT 2: REQUEST AUDIT -->
+        <!-- TAB CONTENT 2: CUSTOM CALCULATOR -->
+        <div class="platform-tab-content" id="tabContentCustom">
+          <div class="calculator-header-box">
+            <span class="calculator-kicker">CUSTOM PLAN CALCULATOR</span>
+            <h3 class="calculator-heading">Configure Your <span class="platform-name-highlight">YouTube</span> Scope</h3>
+            <p class="calculator-desc" id="calculatorPlatformDesc">
+              Adjust monthly quantities of deliverables below. Investment updates in real time based on your selected creative volume.
+            </p>
+          </div>
+
+          <!-- Services Grid with Quantity Steppers -->
+          <div class="custom-calc-services-grid" id="customCalcServicesGrid">
+            <!-- Dynamically populated from PlatformPackagesConfig per platform -->
+          </div>
+
+          <!-- Live Calculator Summary Card -->
+          <div class="custom-calc-summary-card" id="customCalcSummaryCard">
+            <div class="calc-summary-header">
+              <span class="calc-summary-kicker">SELECTED DELIVERABLES</span>
+              <div class="calc-deliverables-pills" id="calcDeliverablesPills">
+                <!-- Dynamically populated deliverables pills -->
+              </div>
+            </div>
+
+            <div class="calc-summary-pricing-row">
+              <div class="calc-total-group">
+                <span class="calc-total-label">Estimated Monthly Investment</span>
+                <div class="calc-total-amount" id="calcTotalAmountDisplay">$0 <span class="calc-total-freq">/ month</span></div>
+              </div>
+              <button type="button" class="btn btn-primary calc-request-btn" id="btnRequestCustomPlan">
+                Request This Custom Plan <span class="arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 3: REQUEST AUDIT -->
         <div class="platform-tab-content" id="tabContentAudit">
           <div class="audit-intro-box">
             <span class="audit-kicker">100% COMPLIMENTARY</span>
@@ -753,6 +652,53 @@
                 Request Free Audit <span class="arrow">→</span>
               </button>
               <p class="form-status-msg" id="auditFormStatus" aria-live="polite"></p>
+            </div>
+          </form>
+        <!-- Quick Opt-In Lead Confirmation Panel for Curated & Custom Plans -->
+        <div class="plan-optin-confirm-panel" id="planOptinConfirmPanel" style="display: none;">
+          <div class="confirm-panel-header">
+            <h4 class="confirm-panel-title">Confirm Plan: <span id="confirmPlanNameText">Starter Plan</span> (<span id="confirmPlanPriceText">$450 / month</span>)</h4>
+            <button type="button" class="btn-text" id="btnCancelOptin">← Back</button>
+          </div>
+          <p class="confirm-panel-sub" id="confirmPanelSubText">We will prepare your onboarding roadmap and deliverables schedule.</p>
+          
+          <form class="lead-form plan-optin-form" id="planOptinForm">
+            <input type="hidden" id="optinSelectedPlan" value="">
+            <input type="hidden" id="optinSelectedPrice" value="">
+            <input type="hidden" id="optinSelectedPlatform" value="">
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="optinName" class="form-label">Full Name *</label>
+                <input type="text" id="optinName" class="thorvon-input" required placeholder="Your full name">
+              </div>
+              <div class="form-field">
+                <label for="optinEmail" class="form-label">Work Email *</label>
+                <input type="email" id="optinEmail" class="thorvon-input" required placeholder="name@company.com">
+              </div>
+            </div>
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="optinCompany" class="form-label">Company / Brand Name</label>
+                <input type="text" id="optinCompany" class="thorvon-input" placeholder="Brand name">
+              </div>
+              <div class="form-field">
+                <label for="optinHandle" class="form-label">Platform Handle / URL</label>
+                <input type="text" id="optinHandle" class="thorvon-input" placeholder="@yourhandle or profile link">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="optinNotes" class="form-label">Deliverables & Goals</label>
+              <textarea id="optinNotes" class="thorvon-textarea" rows="3" placeholder="Tell us about your target audience or custom deliverables breakdown"></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary" id="btnSubmitPlanOptin">
+                Confirm & Request Plan <span class="arrow">→</span>
+              </button>
+              <p class="form-status-msg" id="optinFormStatus" aria-live="polite"></p>
             </div>
           </form>
         </div>
