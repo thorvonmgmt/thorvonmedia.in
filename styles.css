@@ -735,7 +735,7 @@ ul {
 .tool-card {
   border: 1px solid var(--color-border);
   padding: clamp(2.5rem, 6vw, 4.5rem);
-  border-radius: 4px;
+  border-radius: 20px;
   background-color: var(--color-surface);
   transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
 }
@@ -809,7 +809,7 @@ ul {
 
 .founder-card {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 18px;
   background-color: var(--color-surface);
   padding: clamp(2rem, 3.5vw, 3rem);
   position: relative;
@@ -944,7 +944,7 @@ ul {
 
 .team-core-card {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 18px;
   background-color: var(--color-surface);
   padding: clamp(1.75rem, 2.5vw, 2.25rem);
   transition: all 0.25s var(--ease-premium);
@@ -1006,7 +1006,7 @@ ul {
 
 .job-card {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 16px;
   background-color: var(--color-surface);
   padding: clamp(1.75rem, 2.75vw, 2.5rem);
   cursor: pointer;
@@ -1124,7 +1124,7 @@ ul {
 .stage-card {
   border: 1px solid var(--color-border);
   padding: clamp(2.5rem, 6vw, 4.5rem);
-  border-radius: 4px;
+  border-radius: 18px;
   background-color: var(--color-surface);
   transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
 }
@@ -1197,7 +1197,7 @@ ul {
 .contact-form-panel {
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
-  border-radius: 4px;
+  border-radius: 20px;
   padding: clamp(1.75rem, 3.5vw, 2.75rem);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
@@ -1238,7 +1238,7 @@ ul {
   width: 100%;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 0.85rem 1rem;
   color: #ffffff;
   font-family: var(--font-primary);
@@ -1461,7 +1461,7 @@ ul {
   max-width: 1080px;
   background-color: #070707;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  border-radius: 22px;
   padding: clamp(1.75rem, 4vw, 3.25rem);
   position: relative;
   margin-top: auto;
@@ -1493,7 +1493,7 @@ ul {
 
 .channel-card {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 14px;
   background-color: var(--color-surface);
   padding: 1.5rem 1.75rem;
   display: flex;
@@ -1654,7 +1654,7 @@ ul {
 .job-note-box {
   background-color: rgba(255, 255, 255, 0.03);
   border: 1px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 1.15rem 1.25rem;
 }
 
@@ -1700,7 +1700,7 @@ ul {
   padding: 1.15rem 1.35rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .fallback-row {
@@ -1875,7 +1875,7 @@ ul {
 
 .selectable-card {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 14px;
   background-color: var(--color-surface);
   padding: 1.75rem 2rem;
   cursor: pointer;
@@ -2017,7 +2017,7 @@ ul {
   width: 18px;
   height: 18px;
   border: 1px solid var(--color-text-muted);
-  border-radius: 2px;
+  border-radius: 4px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -2076,7 +2076,7 @@ ul {
   width: 100%;
   background: #000000;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 10px;
   color: #ffffff;
   font-family: inherit;
   font-size: 0.95rem;
@@ -2238,13 +2238,13 @@ ul {
   background: rgba(255, 255, 255, 0.05);
   font-size: 0.95rem;
   font-weight: 500;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 /* Configurator Live Summary Panel */
 .configurator-summary-panel {
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 16px;
   background: #020202;
   padding: 1.75rem;
   position: sticky;
@@ -2820,7 +2820,7 @@ ul {
   padding: 0.85rem 1.6rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 9999px;
+  border-radius: 16px;
   white-space: nowrap;
   user-select: none;
   transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
@@ -2946,7 +2946,7 @@ ul {
   overflow-y: auto;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  border-radius: 8px;
+  border-radius: 22px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
 }
 
@@ -2972,7 +2972,7 @@ ul {
   margin-bottom: 0;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface-hover);
-  border-radius: 6px;
+  border-radius: 18px;
   padding: clamp(1.75rem, 3vw, 2.25rem);
 }
 
@@ -3042,7 +3042,7 @@ ul {
   padding: 1.5rem 1.75rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
+  border-radius: 14px;
   margin-top: 0.5rem;
 }
 
@@ -3089,4 +3089,46 @@ ul {
   border: 1px solid rgba(59, 130, 246, 0.28);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
+}
+
+
+/* ==========================================================================
+   MINIMALIST SOFT CORNERS & REFINED SHAPES
+   ========================================================================== */
+.platform-box {
+  border-radius: 16px !important;
+}
+
+.founder-card,
+.modal-founder-card,
+.team-core-card,
+.service-item,
+.tool-card,
+.job-card,
+.stage-card {
+  border-radius: 18px !important;
+}
+
+.thorvon-modal-container,
+.team-modal-container,
+.careers-portal-modal-container,
+.job-modal-container {
+  border-radius: 22px !important;
+}
+
+.selectable-card,
+.configurator-summary-panel,
+.team-modal-careers-banner {
+  border-radius: 14px !important;
+}
+
+.form-input,
+.form-select,
+.form-textarea,
+.thorvon-input,
+.thorvon-textarea,
+.requirement-row,
+.hiring-fallback-box,
+.job-note-box {
+  border-radius: 10px !important;
 }
