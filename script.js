@@ -18,27 +18,27 @@ const ContactConfig = {
 // If null/0, the system displays "Pricing calculated after consultation".
 // ==========================================================================
 const PricingConfig = [
-  // --- PR Requirements ---
-  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
+  // --- PR Requirements ($ prices) ---
+  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: 2500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: 3000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: 1800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: 2000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: 2800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: 2200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: 1500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: 850, minPrice: null, maxPrice: null, enabled: true },
 
-  // --- Content Requirements ---
-  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true }
+  // --- Content Requirements ($ prices) ---
+  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: 600, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: 1500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: 1200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: 1800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: 800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: 1000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: 1100, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: 850, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: 900, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: 750, minPrice: null, maxPrice: null, enabled: true }
 ];
 
 // Category metadata
@@ -339,9 +339,9 @@ function renderRequirements() {
       // Price label formatting
       let priceLabel = '';
       if (item.price !== null && item.price > 0) {
-        priceLabel = `₹${item.price.toLocaleString('en-IN')}`;
+        priceLabel = `$${item.price.toLocaleString('en-US')}`;
       } else if (item.minPrice !== null && item.maxPrice !== null) {
-        priceLabel = `₹${item.minPrice.toLocaleString('en-IN')} – ₹${item.maxPrice.toLocaleString('en-IN')}`;
+        priceLabel = `$${item.minPrice.toLocaleString('en-US')} – $${item.maxPrice.toLocaleString('en-US')}`;
       }
 
       row.innerHTML = `
@@ -399,12 +399,12 @@ function calculateInvestmentSummary() {
   if (hasRangePrices) {
     return {
       type: 'range',
-      displayValue: `₹${minTotal.toLocaleString('en-IN')} – ₹${maxTotal.toLocaleString('en-IN')}`
+      displayValue: `$${minTotal.toLocaleString('en-US')} – $${maxTotal.toLocaleString('en-US')}`
     };
   } else if (hasSetPrices && singleTotal > 0) {
     return {
       type: 'exact',
-      displayValue: `₹${singleTotal.toLocaleString('en-IN')}`
+      displayValue: `$${singleTotal.toLocaleString('en-US')}`
     };
   } else {
     return {
@@ -558,6 +558,12 @@ function initializeSmoothScroll() {
         return;
       }
 
+      if (targetId === '#team') {
+        e.preventDefault();
+        openTeamModal();
+        closeMobileMenu();
+        return;
+      }
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
@@ -597,6 +603,8 @@ function initializeMobileNav() {
     if (e.key === 'Escape') {
       if (mobileDrawerEl && mobileDrawerEl.classList.contains('is-open')) closeMobileMenu();
       closePlanModal();
+      closePlatformActionModal();
+      closeTeamModal();
       closeCareersPortalModal();
       closeJobModal();
     }
@@ -999,7 +1007,9 @@ function initializeCareers() {
   const portalModal = document.getElementById('careersPortalModal');
   if (portalModal) {
     portalModal.addEventListener('click', (e) => {
-      if (e.target === portalModal) closeCareersPortalModal();
+      if (e.target === portalModal) closePlatformActionModal();
+      closeTeamModal();
+      closeCareersPortalModal();
     });
   }
 
@@ -1038,7 +1048,9 @@ function initializeCareers() {
       }
       const portalModal = document.getElementById('careersPortalModal');
       if (portalModal && portalModal.classList.contains('is-open')) {
-        closeCareersPortalModal();
+        closePlatformActionModal();
+      closeTeamModal();
+      closeCareersPortalModal();
       }
     }
   });
@@ -1100,8 +1112,26 @@ function initializeCareers() {
 }
 
 // ==========================================================================
-// Embedded Team Modal Controller
-// Accessible via #team URL hash, with no visible button on page flow
+// Initialization on DOM Ready
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  initializeContactLinks();
+  initializeSmoothScroll();
+  initializeMobileNav();
+  initializeRevealAnimations();
+  initializePlanConfigurator();
+  initializeCareers();
+  initializeTeamModal();
+  initializePlatformClick();
+  initializePlatformActionModal();
+  initializeContactForm();
+  initializeScrollEffects();
+});
+
+
+
+// ==========================================================================
+// EMBEDDED TEAM MODAL CONTROLLER
 // ==========================================================================
 function openTeamModal() {
   const teamModal = document.getElementById('teamModal');
@@ -1116,59 +1146,341 @@ function closeTeamModal() {
   if (!teamModal) return;
   teamModal.classList.remove('is-open');
   teamModal.setAttribute('aria-hidden', 'true');
-  const otherOpenModal = document.querySelector('.thorvon-modal-backdrop.is-open');
-  if (!otherOpenModal) {
+  if (!document.querySelector('.thorvon-modal-backdrop.is-open')) {
     document.body.classList.remove('modal-open');
   }
 }
 
 function initializeTeamModal() {
-  // Triggers to close team modal
-  document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+
+  // Open buttons across header, mobile menu, footer
+  document.querySelectorAll('[data-action="open-team"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      openTeamModal();
+    });
+  });
+
+  // Close buttons
+  teamModal.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
     btn.addEventListener('click', () => closeTeamModal());
   });
 
-  // Modal backdrop click
-  const teamModal = document.getElementById('teamModal');
-  if (teamModal) {
-    teamModal.addEventListener('click', (e) => {
-      if (e.target === teamModal) closeTeamModal();
-    });
-  }
-
-  // Escape key support
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const teamModal = document.getElementById('teamModal');
-      if (teamModal && teamModal.classList.contains('is-open')) {
-        closeTeamModal();
-      }
-    }
+  // Backdrop click outside
+  teamModal.addEventListener('click', (e) => {
+    if (e.target === teamModal) closePlatformActionModal();
+      closeTeamModal();
   });
 
-  // URL hash navigation support: opens modal if #team is in the address bar
+  // Open careers button inside team modal
+  teamModal.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePlatformActionModal();
+      closeTeamModal();
+      openCareersPortalModal();
+    });
+  });
+
+  // Check URL hash on page load
   function checkTeamHash() {
     if (window.location.hash === '#team') {
       openTeamModal();
     }
   }
+  checkTeamHash();
   window.addEventListener('hashchange', checkTeamHash);
-  if (window.location.hash === '#team') {
-    setTimeout(checkTeamHash, 250);
+}
+
+
+// ==========================================================================
+// INTERACTIVE PLATFORM CLICK HANDLER (Select Plan on Click)
+// ==========================================================================
+function initializePlatformClick() {
+  document.querySelectorAll('.platform-box[data-platform]').forEach((box) => {
+    const handlePlatformSelect = (e) => {
+      e.preventDefault();
+      const platformName = box.getAttribute('data-platform') || 'Social Media';
+      const iconEl = box.querySelector('.platform-icon');
+      const iconHtml = iconEl ? iconEl.outerHTML : '';
+      openPlatformActionModal(platformName, iconHtml);
+    };
+
+    box.addEventListener('click', handlePlatformSelect);
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        handlePlatformSelect(e);
+      }
+    });
+  });
+}
+
+
+// ==========================================================================
+// PLATFORM ACTION MODAL CONTROLLER (Audit Request & Curated / Custom Plans)
+// ==========================================================================
+let currentActivePlatform = 'YouTube';
+
+function openPlatformActionModal(platformName, iconHtml) {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+
+  currentActivePlatform = platformName;
+
+  // Update Header & Highlights
+  const badgeName = document.getElementById('platformModalName');
+  if (badgeName) badgeName.textContent = platformName;
+
+  const iconWrap = document.getElementById('platformModalIconWrap');
+  if (iconWrap && iconHtml) {
+    iconWrap.innerHTML = iconHtml;
+  }
+
+  // Highlight platform in text
+  modal.querySelectorAll('.platform-name-highlight').forEach((el) => {
+    el.textContent = platformName;
+  });
+
+  // Pre-fill hidden inputs
+  const auditHidden = document.getElementById('auditPlatformHidden');
+  if (auditHidden) auditHidden.value = platformName;
+
+  const optinHidden = document.getElementById('optinSelectedPlatform');
+  if (optinHidden) optinHidden.value = platformName;
+
+  // Reset tab to Plans
+  switchPlatformTab('plans');
+
+  // Hide confirm panel if showing
+  const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const plansGrid = document.getElementById('platformPlansGrid');
+  if (confirmPanel) confirmPanel.style.display = 'none';
+  if (plansGrid) plansGrid.style.display = 'grid';
+
+  // Open modal
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closePlatformActionModal() {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  if (!document.querySelector('.thorvon-modal-backdrop.is-open')) {
+    document.body.classList.remove('modal-open');
   }
 }
 
-// ==========================================================================
-// Initialization on DOM Ready
-// ==========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-  initializeContactLinks();
-  initializeSmoothScroll();
-  initializeMobileNav();
-  initializeRevealAnimations();
-  initializePlanConfigurator();
-  initializeCareers();
-  initializeTeamModal();
-  initializeContactForm();
-  initializeScrollEffects();
-});
+function switchPlatformTab(tabName) {
+  const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnAudit = document.getElementById('tabBtnAudit');
+  const contentPlans = document.getElementById('tabContentPlans');
+  const contentAudit = document.getElementById('tabContentAudit');
+
+  if (tabName === 'audit') {
+    tabBtnPlans?.classList.remove('active');
+    tabBtnPlans?.setAttribute('aria-selected', 'false');
+    tabBtnAudit?.classList.add('active');
+    tabBtnAudit?.setAttribute('aria-selected', 'true');
+
+    contentPlans?.classList.remove('active');
+    contentAudit?.classList.add('active');
+  } else {
+    tabBtnAudit?.classList.remove('active');
+    tabBtnAudit?.setAttribute('aria-selected', 'false');
+    tabBtnPlans?.classList.add('active');
+    tabBtnPlans?.setAttribute('aria-selected', 'true');
+
+    contentAudit?.classList.remove('active');
+    contentPlans?.classList.add('active');
+  }
+}
+
+function initializePlatformActionModal() {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+
+  // Close triggers
+  modal.querySelectorAll('[data-action="close-platform-modal"]').forEach((btn) => {
+    btn.addEventListener('click', () => closePlatformActionModal());
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePlatformActionModal();
+  });
+
+  // Tab switching
+  const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnAudit = document.getElementById('tabBtnAudit');
+  tabBtnPlans?.addEventListener('click', () => switchPlatformTab('plans'));
+  tabBtnAudit?.addEventListener('click', () => switchPlatformTab('audit'));
+
+  // Opt-in buttons on curated plans
+  modal.querySelectorAll('[data-action="opt-in-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const planName = btn.getAttribute('data-plan-name') || 'Growth Plan';
+      const planPrice = btn.getAttribute('data-plan-price') || '$2,500 / month';
+
+      const plansGrid = document.getElementById('platformPlansGrid');
+      const confirmPanel = document.getElementById('planOptinConfirmPanel');
+      const planNameText = document.getElementById('confirmPlanNameText');
+      const planPriceText = document.getElementById('confirmPlanPriceText');
+      const hiddenPlan = document.getElementById('optinSelectedPlan');
+      const hiddenPrice = document.getElementById('optinSelectedPrice');
+
+      if (planNameText) planNameText.textContent = planName;
+      if (planPriceText) planPriceText.textContent = planPrice;
+      if (hiddenPlan) hiddenPlan.value = planName;
+      if (hiddenPrice) hiddenPrice.value = planPrice;
+
+      if (plansGrid) plansGrid.style.display = 'none';
+      if (confirmPanel) {
+        confirmPanel.style.display = 'block';
+        confirmPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+
+  // Back to plans button
+  const btnCancelOptin = document.getElementById('btnCancelOptin');
+  btnCancelOptin?.addEventListener('click', () => {
+    const plansGrid = document.getElementById('platformPlansGrid');
+    const confirmPanel = document.getElementById('planOptinConfirmPanel');
+    if (confirmPanel) confirmPanel.style.display = 'none';
+    if (plansGrid) plansGrid.style.display = 'grid';
+  });
+
+  // Custom Plan trigger -> opens custom configurator
+  modal.querySelectorAll('[data-action="open-custom-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePlatformActionModal();
+      openPlanModal('content');
+      const customReq = document.getElementById('customRequirementInput');
+      if (customReq) {
+        customReq.value = `Target Platform: ${currentActivePlatform} custom plan`;
+      }
+      goToPlanStep(2);
+    });
+  });
+
+  // Opt-in Form Submission
+  const optinForm = document.getElementById('planOptinForm');
+  optinForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnSubmit = document.getElementById('btnSubmitPlanOptin');
+    const statusMsg = document.getElementById('optinFormStatus');
+
+    const name = (document.getElementById('optinName')?.value || '').trim();
+    const email = (document.getElementById('optinEmail')?.value || '').trim();
+    const company = (document.getElementById('optinCompany')?.value || '').trim();
+    const handle = (document.getElementById('optinHandle')?.value || '').trim();
+    const notes = (document.getElementById('optinNotes')?.value || '').trim();
+    const plan = (document.getElementById('optinSelectedPlan')?.value || 'Curated Plan');
+    const price = (document.getElementById('optinSelectedPrice')?.value || '');
+
+    if (!name || !email) return;
+
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Submitting...';
+    }
+
+    const payload = {
+      name,
+      contact: email,
+      company: company || 'Not specified',
+      selectedServices: [`${plan} (${price}) for ${currentActivePlatform}`],
+      customRequirement: `Platform Handle: ${handle || 'None provided'}`,
+      estimatedInvestment: price,
+      notes: notes || 'None',
+      submittedAt: new Date().toLocaleString()
+    };
+
+    const res = await LeadSubmissionHandler.submit(payload);
+    if (btnSubmit) {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Confirm & Request Plan →';
+    }
+
+    if (res.success) {
+      if (statusMsg) {
+        statusMsg.style.color = '#4ade80';
+        statusMsg.textContent = '✓ Request received! We will send your plan details shortly.';
+      }
+      optinForm.reset();
+      setTimeout(() => {
+        closePlatformActionModal();
+        if (statusMsg) statusMsg.textContent = '';
+      }, 2500);
+    } else {
+      if (statusMsg) {
+        statusMsg.style.color = '#f87171';
+        statusMsg.textContent = 'Please email us directly at thorvonmedia@gmail.com';
+      }
+    }
+  });
+
+  // Audit Form Submission
+  const auditForm = document.getElementById('platformAuditForm');
+  auditForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnSubmit = document.getElementById('btnSubmitAudit');
+    const statusMsg = document.getElementById('auditFormStatus');
+
+    const fullName = (document.getElementById('auditFullName')?.value || '').trim();
+    const workEmail = (document.getElementById('auditWorkEmail')?.value || '').trim();
+    const businessName = (document.getElementById('auditBusinessName')?.value || '').trim();
+    const profileUrl = (document.getElementById('auditProfileUrl')?.value || '').trim();
+    const goal = document.getElementById('auditPrimaryGoal')?.value || 'Growth';
+    const notes = (document.getElementById('auditNotes')?.value || '').trim();
+
+    if (!fullName || !workEmail || !businessName || !profileUrl) return;
+
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Submitting Audit Request...';
+    }
+
+    const payload = {
+      name: fullName,
+      contact: workEmail,
+      company: businessName,
+      selectedServices: [`FREE AUDIT for ${currentActivePlatform}`],
+      customRequirement: `Profile URL/Handle: ${profileUrl}
+Primary Goal: ${goal}`,
+      estimatedInvestment: 'Free Business Audit',
+      notes: notes || 'None',
+      submittedAt: new Date().toLocaleString()
+    };
+
+    const res = await LeadSubmissionHandler.submit(payload);
+    if (btnSubmit) {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Request Free Audit →';
+    }
+
+    if (res.success) {
+      if (statusMsg) {
+        statusMsg.style.color = '#4ade80';
+        statusMsg.textContent = '✓ Audit requested! Our directors will review your brand within 24-48 hours.';
+      }
+      auditForm.reset();
+      setTimeout(() => {
+        closePlatformActionModal();
+        if (statusMsg) statusMsg.textContent = '';
+      }, 3000);
+    } else {
+      if (statusMsg) {
+        statusMsg.style.color = '#f87171';
+        statusMsg.textContent = 'Please email us directly at thorvonmedia@gmail.com';
+      }
+    }
+  });
+}

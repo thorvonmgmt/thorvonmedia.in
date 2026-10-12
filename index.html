@@ -17,7 +17,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAABpElEQVR4nO2Uv45BQRTGz9wZEwmikSsqCUJ0FMorUUk8gURDJDyDh1B4AY1WRIOEwn0CidDQ0YkoVONP5p5N3Ow2u1x77Wa3uL9ycs53znxzzgA4ODgQSwsURfny3DCMH7BPuaNuQoh1f48iKKVSymKxWKlUpJSMMQBARI/HAwC6rvd6vdlsRghBRJu9a5qGn1gsFqVSKZfLFQoFQgil9Nvq5IbX6x0Oh6vVaj6fr9drIcT1eh2NRmZMv98PhULwCpRSzrmiKISQRCJxOp0QsVarAUCr1RqPx5zzQCDgcrleKkNuLxmLxaSUl8tFVdVMJoOI+/1+t9tNJhOfz2c2YVOdUkoIiUajiDidTgGg2+1uNhvDMI7HYzKZtBw2C5RbciQSQcRGo+H3+xljnU4HETVNM520rw7vBeLx+Pl8PhwOzWYzHA4jYr1eBwBzdn+mgBACEfP5/GAwaLfbT6p/wzu3273dboPBIOe8Wq0yxqSUllnPXlAIsVwudV1Pp9Plctn8i+ws8GOjstlsKpV6dWzuQSlVVfW31D+wuVD/Qt3B4a94A4IkrVIdSa35AAAAAElFTkSuQmCC">
   
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -39,6 +38,7 @@
         <ul class="nav-links">
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#plan-tool" class="nav-link">Plan</a></li>
+          <li><a href="#team" class="nav-link" data-action="open-team">Team</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <button class="btn btn-primary nav-cta" data-action="open-plan">
@@ -59,6 +59,7 @@
         <ul class="mobile-nav-links">
           <li><a href="#services" class="mobile-nav-link">Services</a></li>
           <li><a href="#plan-tool" class="mobile-nav-link">Plan</a></li>
+          <li><a href="#team" class="mobile-nav-link" data-action="open-team">Team</a></li>
           <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-cta-wrap">
@@ -94,45 +95,136 @@
       </div>
     </section>
 
-    <!-- Dual-Track Marquee Ticker -->
-    <section class="ticker-section" aria-hidden="true">
-      <div class="ticker-container">
-        <!-- Row 1: Solid Grotesk Track -->
-        <div class="ticker-row">
-          <div class="ticker-track">
-            <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">EXECUTIVE THOUGHT LEADERSHIP <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">MEDIA DISTRIBUTION <span class="crosshair">⌖</span></span>
+        <!-- ========================================================================
+         OMNICHANNEL PLATFORM DISTRIBUTION MARQUEE
+         Minimalist & Professional Horizontal Moving Boxes for Growth Feeds
+         ======================================================================== -->
+    <section class="platform-ticker-section" aria-label="Omnichannel Distribution Platforms">
+      <div class="container platform-ticker-header">
+        <span class="platform-ticker-kicker">OMNICHANNEL DISTRIBUTION</span>
+        <h2 class="platform-ticker-title">End-to-end content and distribution for platforms</h2>
+        <p class="platform-ticker-subtitle">High-retention creative engineered, formatted, and deployed natively across the world's highest-converting growth feeds.</p>
+      </div>
+
+      <div class="platform-marquee-wrap" aria-hidden="true">
+        <div class="platform-marquee-track">
+          <!-- 1. Reddit -->
+          <div class="platform-box platform-box-reddit" data-platform="Reddit" role="button" tabindex="0" title="Select Content Plan for Reddit Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true">
+              <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.609a1.24 1.24 0 0 1 1.108-.693zM8.617 10.774c-.907 0-1.644.737-1.644 1.644s.737 1.644 1.644 1.644c.907 0 1.643-.737 1.643-1.644s-.736-1.644-1.643-1.644zm6.766 0c-.906 0-1.643.737-1.643 1.644s.737 1.644 1.643 1.644c.907 0 1.644-.737 1.644-1.644s-.737-1.644-1.644-1.644zm-6.724 3.708a.34.34 0 0 0-.278.435c.348 1.13 1.737 1.83 3.619 1.83 1.882 0 3.27-.7 3.619-1.83a.34.34 0 0 0-.278-.435.34.34 0 0 0-.417.25c-.244.793-1.42 1.344-2.924 1.344-1.503 0-2.68-.55-2.924-1.344a.34.34 0 0 0-.417-.25z"/>
+            </svg>
+            <span class="platform-name reddit-font">reddit</span>
           </div>
-          <div class="ticker-track" aria-hidden="true">
-            <span class="ticker-item">PUBLIC RELATIONS <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">HIGH-IMPACT CONTENT <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">BRAND REPUTATION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">EDITORIAL PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">EXECUTIVE THOUGHT LEADERSHIP <span class="crosshair">⌖</span></span>
-            <span class="ticker-item">MEDIA DISTRIBUTION <span class="crosshair">⌖</span></span>
+
+          <!-- 2. X -->
+          <div class="platform-box platform-box-x" data-platform="X" role="button" tabindex="0" title="Select Content Plan for X (Twitter) Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="platform-name x-font">X</span>
+          </div>
+
+          <!-- 3. LinkedIn -->
+          <div class="platform-box platform-box-linkedin" data-platform="LinkedIn" role="button" tabindex="0" title="Select Content Plan for LinkedIn Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span class="platform-name linkedin-font">Linked<span class="linkedin-in-accent">in</span></span>
+          </div>
+
+          <!-- 4. Snapchat -->
+          <div class="platform-box platform-box-snapchat" data-platform="Snapchat" role="button" tabindex="0" title="Select Content Plan for Snapchat Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FFFC00" aria-hidden="true">
+              <path d="M12.002 2c-3.896 0-6.19 2.748-6.19 5.86 0 .977.29 2.016.732 2.766-.356.12-.99.355-1.28.384-.255.026-.492.17-.464.444.041.385.836.71 1.344.855.127.037.227.127.243.255.07.567.458 2.046 2.048 2.658.232.09.432.253.518.484.286.772.84 1.258 1.637 1.458.337.085.672.23 1.01.442.275.172.582.264.896.264.316 0 .623-.092.898-.264.337-.212.673-.357 1.01-.442.797-.2 1.35-.686 1.637-1.458.086-.231.286-.394.518-.484 1.59-.612 1.978-2.09 2.048-2.658.016-.128.116-.218.243-.255.508-.145 1.303-.47 1.344-.855.028-.274-.209-.418-.464-.444-.29-.029-.924-.264-1.28-.384.442-.75.732-1.789.732-2.766 0-3.112-2.294-5.86-6.19-5.86z"/>
+            </svg>
+            <span class="platform-name snapchat-font">Snapchat</span>
+          </div>
+
+          <!-- 5. YouTube -->
+          <div class="platform-box platform-box-youtube" data-platform="YouTube" role="button" tabindex="0" title="Select Content Plan for YouTube Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span class="platform-name youtube-font">YouTube</span>
+          </div>
+
+          <!-- 6. Instagram -->
+          <div class="platform-box platform-box-instagram" data-platform="Instagram" role="button" tabindex="0" title="Select Content Plan for Instagram Distribution">
+            <svg class="platform-icon ig-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span class="platform-name instagram-font">Instagram</span>
+          </div>
+
+          <!-- 7. Facebook -->
+          <div class="platform-box platform-box-facebook" data-platform="Facebook" role="button" tabindex="0" title="Select Content Plan for Facebook Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#0866FF" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span class="platform-name facebook-font">facebook</span>
           </div>
         </div>
-        <!-- Row 2: Secondary Grotesk Track -->
-        <div class="ticker-row">
-          <div class="ticker-track ticker-track-reverse">
-            <span class="ticker-item ticker-item-alt">THORVON MEDIA <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">AUTHORITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">FOUNDER PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">PRESS PLACEMENTS <span class="crosshair">⌖</span></span>
+
+        <!-- Seamless Duplicate Track for Infinite Loop -->
+        <div class="platform-marquee-track" aria-hidden="true">
+          <!-- 1. Reddit -->
+          <div class="platform-box platform-box-reddit" data-platform="Reddit" role="button" tabindex="0" title="Select Content Plan for Reddit Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true">
+              <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.609a1.24 1.24 0 0 1 1.108-.693zM8.617 10.774c-.907 0-1.644.737-1.644 1.644s.737 1.644 1.644 1.644c.907 0 1.643-.737 1.643-1.644s-.736-1.644-1.643-1.644zm6.766 0c-.906 0-1.643.737-1.643 1.644s.737 1.644 1.643 1.644c.907 0 1.644-.737 1.644-1.644s-.737-1.644-1.644-1.644zm-6.724 3.708a.34.34 0 0 0-.278.435c.348 1.13 1.737 1.83 3.619 1.83 1.882 0 3.27-.7 3.619-1.83a.34.34 0 0 0-.278-.435.34.34 0 0 0-.417.25c-.244.793-1.42 1.344-2.924 1.344-1.503 0-2.68-.55-2.924-1.344a.34.34 0 0 0-.417-.25z"/>
+            </svg>
+            <span class="platform-name reddit-font">reddit</span>
           </div>
-          <div class="ticker-track ticker-track-reverse" aria-hidden="true">
-            <span class="ticker-item ticker-item-alt">THORVON MEDIA <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">AUTHORITY <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">STRATEGIC DISTRIBUTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">FOUNDER PR <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">CONTENT PRODUCTION <span class="crosshair">⌖</span></span>
-            <span class="ticker-item ticker-item-alt">PRESS PLACEMENTS <span class="crosshair">⌖</span></span>
+
+          <!-- 2. X -->
+          <div class="platform-box platform-box-x" data-platform="X" role="button" tabindex="0" title="Select Content Plan for X (Twitter) Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="platform-name x-font">X</span>
+          </div>
+
+          <!-- 3. LinkedIn -->
+          <div class="platform-box platform-box-linkedin" data-platform="LinkedIn" role="button" tabindex="0" title="Select Content Plan for LinkedIn Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span class="platform-name linkedin-font">Linked<span class="linkedin-in-accent">in</span></span>
+          </div>
+
+          <!-- 4. Snapchat -->
+          <div class="platform-box platform-box-snapchat" data-platform="Snapchat" role="button" tabindex="0" title="Select Content Plan for Snapchat Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FFFC00" aria-hidden="true">
+              <path d="M12.002 2c-3.896 0-6.19 2.748-6.19 5.86 0 .977.29 2.016.732 2.766-.356.12-.99.355-1.28.384-.255.026-.492.17-.464.444.041.385.836.71 1.344.855.127.037.227.127.243.255.07.567.458 2.046 2.048 2.658.232.09.432.253.518.484.286.772.84 1.258 1.637 1.458.337.085.672.23 1.01.442.275.172.582.264.896.264.316 0 .623-.092.898-.264.337-.212.673-.357 1.01-.442.797-.2 1.35-.686 1.637-1.458.086-.231.286-.394.518-.484 1.59-.612 1.978-2.09 2.048-2.658.016-.128.116-.218.243-.255.508-.145 1.303-.47 1.344-.855.028-.274-.209-.418-.464-.444-.29-.029-.924-.264-1.28-.384.442-.75.732-1.789.732-2.766 0-3.112-2.294-5.86-6.19-5.86z"/>
+            </svg>
+            <span class="platform-name snapchat-font">Snapchat</span>
+          </div>
+
+          <!-- 5. YouTube -->
+          <div class="platform-box platform-box-youtube" data-platform="YouTube" role="button" tabindex="0" title="Select Content Plan for YouTube Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span class="platform-name youtube-font">YouTube</span>
+          </div>
+
+          <!-- 6. Instagram -->
+          <div class="platform-box platform-box-instagram" data-platform="Instagram" role="button" tabindex="0" title="Select Content Plan for Instagram Distribution">
+            <svg class="platform-icon ig-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span class="platform-name instagram-font">Instagram</span>
+          </div>
+
+          <!-- 7. Facebook -->
+          <div class="platform-box platform-box-facebook" data-platform="Facebook" role="button" tabindex="0" title="Select Content Plan for Facebook Distribution">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="#0866FF" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span class="platform-name facebook-font">facebook</span>
           </div>
         </div>
       </div>
@@ -203,7 +295,7 @@
       </div>
     </section>
 
-
+    
 
     <!-- Executive Contact Suite & Inquiry Form -->
     <section class="contact-section" id="contact">
@@ -240,9 +332,9 @@
                   <label for="contactBudget" class="form-label">Estimated Retainer</label>
                   <select id="contactBudget" class="form-input form-select">
                     <option value="Flexible / Need Consultation">Flexible / Need Consultation</option>
-                    <option value="₹50,000 – ₹1,50,000 / month">₹50,000 – ₹1,50,000 / month</option>
-                    <option value="₹1,50,000 – ₹3,00,000 / month">₹1,50,000 – ₹3,00,000 / month</option>
-                    <option value="₹3,00,000+ / month (Enterprise)">₹3,00,000+ / month (Enterprise)</option>
+                    <option value="$2,000 – $5,000 / month">$2,000 – $5,000 / month</option>
+                    <option value="$5,000 – $10,000 / month">$5,000 – $10,000 / month</option>
+                    <option value="$10,000+ / month (Enterprise)">$10,000+ / month (Enterprise)</option>
                   </select>
                 </div>
               </div>
@@ -304,6 +396,11 @@
         <li>
           <a href="#plan-tool" class="footer-link">
             Plan
+          </a>
+        </li>
+        <li>
+          <a href="#team" class="footer-link" data-action="open-team">
+            Team
           </a>
         </li>
         <li>
@@ -489,6 +586,351 @@
   </div>
 
   <!-- ========================================================================
+       MODAL 2: EMBEDDED TEAM MODAL
+       Embedded modal accessed via Nav, Footer, and direct interactions
+       ======================================================================== -->
+    <!-- ========================================================================
+       MODAL: PLATFORM ACTION MODAL (Audit Request & Curated / Custom Plans)
+       Triggered by clicking any social media platform in the marquee
+       ======================================================================== -->
+  <div class="thorvon-modal-backdrop" id="platformActionModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="platformActionTitle">
+    <div class="thorvon-modal-container platform-action-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="platform-modal-title-group">
+          <div class="platform-modal-badge" id="platformModalBadge">
+            <span class="platform-modal-icon-wrap" id="platformModalIconWrap"></span>
+            <span class="platform-modal-name" id="platformModalName">YouTube</span>
+          </div>
+          <h2 class="modal-title" id="platformActionTitle">Platform Distribution & Growth</h2>
+        </div>
+        <button class="modal-close-btn" data-action="close-platform-modal" aria-label="Close Platform Dialog">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="platform-action-body">
+        
+        <!-- Toggle Tabs: Select Plan vs Request Audit -->
+        <div class="platform-action-tabs" role="tablist">
+          <button type="button" class="platform-tab-btn active" id="tabBtnPlans" role="tab" aria-selected="true" data-tab="plans">
+            Select a Plan
+          </button>
+          <button type="button" class="platform-tab-btn" id="tabBtnAudit" role="tab" aria-selected="false" data-tab="audit">
+            Request Business Audit
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: PLANS (Curated Plans + Custom Plan) -->
+        <div class="platform-tab-content active" id="tabContentPlans">
+          <p class="platform-tab-intro">
+            Choose a structured growth plan engineered for <span class="platform-name-highlight">this platform</span>, or build a custom plan tailored to your exact creative requirements.
+          </p>
+
+          <div class="platform-plans-grid" id="platformPlansGrid">
+            
+            <!-- Plan 1: Starter Plan -->
+            <div class="platform-plan-card" data-plan="Starter Plan" data-price="$2,500 / month">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">STARTER</span>
+                <h3 class="plan-card-title">Content Foundation</h3>
+                <div class="plan-card-price">$2,500 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Ideal for emerging brands launching consistent, high-retention native presence.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> 8–10 Platform-native short-form reels / videos</li>
+                <li><span class="check-icon">✓</span> Full video editing & sound design</li>
+                <li><span class="check-icon">✓</span> High-converting hooks & scriptwriting</li>
+                <li><span class="check-icon">✓</span> Native platform distribution & scheduling</li>
+                <li><span class="check-icon">✓</span> Bi-weekly performance review</li>
+              </ul>
+
+              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Starter Plan" data-plan-price="$2,500 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 2: Authority Plan (Featured) -->
+            <div class="platform-plan-card featured" data-plan="Authority Growth Plan" data-price="$4,800 / month">
+              <div class="plan-featured-tag">MOST POPULAR</div>
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">GROWTH & PR</span>
+                <h3 class="plan-card-title">Authority Scaling</h3>
+                <div class="plan-card-price">$4,800 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Comprehensive content production and founder PR to dominate the feed.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> 18–22 Platform-native high-impact videos & reels</li>
+                <li><span class="check-icon">✓</span> Dedicated creative director & scriptwriter</li>
+                <li><span class="check-icon">✓</span> Custom motion graphics & viral editing</li>
+                <li><span class="check-icon">✓</span> Executive thought leadership & personal branding</li>
+                <li><span class="check-icon">✓</span> Omnichannel distribution across feeds</li>
+                <li><span class="check-icon">✓</span> Monthly media & PR outreach pitching</li>
+              </ul>
+
+              <button type="button" class="btn btn-primary plan-opt-btn" data-action="opt-in-plan" data-plan-name="Authority Growth Plan" data-plan-price="$4,800 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 3: Enterprise Plan -->
+            <div class="platform-plan-card" data-plan="Enterprise Domination" data-price="$8,500 / month">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">ENTERPRISE</span>
+                <h3 class="plan-card-title">Category Leader</h3>
+                <div class="plan-card-price">$8,500 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Full-scale turnkey creative engine with guaranteed Tier-1 editorial press placements.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> Full production (Short-form + Long-form content)</li>
+                <li><span class="check-icon">✓</span> Guaranteed Tier-1 editorial PR placements</li>
+                <li><span class="check-icon">✓</span> Dedicated video editor, animator & PR publicist</li>
+                <li><span class="check-icon">✓</span> Full distribution, community management & SEO</li>
+                <li><span class="check-icon">✓</span> Executive reputation architecture</li>
+                <li><span class="check-icon">✓</span> Weekly 1-on-1 strategic growth calls</li>
+              </ul>
+
+              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Enterprise Domination" data-plan-price="$8,500 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 4: Custom Plan -->
+            <div class="platform-plan-card custom-plan-card">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">CUSTOM</span>
+                <h3 class="plan-card-title">Custom Plan</h3>
+                <div class="plan-card-price">Tailored <span class="plan-card-freq">Pricing</span></div>
+              </div>
+              <p class="plan-card-desc">Pick and choose the exact individual services you need with our dynamic pricing calculator.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> Select custom video editing, reels, or scriptwriting</li>
+                <li><span class="check-icon">✓</span> Add specific PR, press outreach, or founder branding</li>
+                <li><span class="check-icon">✓</span> Real-time investment calculation in $</li>
+                <li><span class="check-icon">✓</span> Custom deliverable volumes to match your budget</li>
+              </ul>
+
+              <button type="button" class="btn btn-primary plan-opt-btn" data-action="open-custom-plan">
+                Build Custom Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Quick Opt-In Lead Confirmation Panel for Curated Plans -->
+          <div class="plan-optin-confirm-panel" id="planOptinConfirmPanel" style="display: none;">
+            <div class="confirm-panel-header">
+              <h4 class="confirm-panel-title">Confirm Plan: <span id="confirmPlanNameText">Starter Plan</span> (<span id="confirmPlanPriceText">$2,500 / month</span>)</h4>
+              <button type="button" class="btn-text" id="btnCancelOptin">← Back to plans</button>
+            </div>
+            <p class="confirm-panel-sub">We will prepare your onboarding roadmap and deliverables schedule.</p>
+            
+            <form class="lead-form plan-optin-form" id="planOptinForm">
+              <input type="hidden" id="optinSelectedPlan" value="">
+              <input type="hidden" id="optinSelectedPrice" value="">
+              <input type="hidden" id="optinSelectedPlatform" value="">
+
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="optinName" class="form-label">Full Name *</label>
+                  <input type="text" id="optinName" class="thorvon-input" required placeholder="Your full name">
+                </div>
+                <div class="form-field">
+                  <label for="optinEmail" class="form-label">Work Email *</label>
+                  <input type="email" id="optinEmail" class="thorvon-input" required placeholder="name@company.com">
+                </div>
+              </div>
+
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="optinCompany" class="form-label">Company / Brand Name</label>
+                  <input type="text" id="optinCompany" class="thorvon-input" placeholder="Brand name">
+                </div>
+                <div class="form-field">
+                  <label for="optinHandle" class="form-label">Platform Handle / URL</label>
+                  <input type="text" id="optinHandle" class="thorvon-input" placeholder="@yourhandle or profile link">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="optinNotes" class="form-label">Specific Goals or Questions (Optional)</label>
+                <textarea id="optinNotes" class="thorvon-textarea" rows="2" placeholder="Tell us about your target audience or goals"></textarea>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-primary" id="btnSubmitPlanOptin">
+                  Confirm & Request Plan <span class="arrow">→</span>
+                </button>
+                <p class="form-status-msg" id="optinFormStatus" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- TAB CONTENT 2: REQUEST AUDIT -->
+        <div class="platform-tab-content" id="tabContentAudit">
+          <div class="audit-intro-box">
+            <span class="audit-kicker">100% COMPLIMENTARY</span>
+            <h3 class="audit-heading">Request a Free Business & Platform Audit</h3>
+            <p class="audit-desc">
+              Our creative and PR directors will review your brand's presence on <span class="platform-name-highlight">this platform</span>. You'll receive a structured breakdown of your content hooks, visual retention, and distribution gaps with actionable recommendations.
+            </p>
+          </div>
+
+          <form class="lead-form platform-audit-form" id="platformAuditForm">
+            <input type="hidden" id="auditPlatformHidden" value="">
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="auditFullName" class="form-label">Full Name *</label>
+                <input type="text" id="auditFullName" class="thorvon-input" required placeholder="Your full name">
+              </div>
+              <div class="form-field">
+                <label for="auditWorkEmail" class="form-label">Work Email *</label>
+                <input type="email" id="auditWorkEmail" class="thorvon-input" required placeholder="name@company.com">
+              </div>
+            </div>
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="auditBusinessName" class="form-label">Company / Brand Name *</label>
+                <input type="text" id="auditBusinessName" class="thorvon-input" required placeholder="Your business name">
+              </div>
+              <div class="form-field">
+                <label for="auditProfileUrl" class="form-label">Platform Profile / Handle *</label>
+                <input type="text" id="auditProfileUrl" class="thorvon-input" required placeholder="e.g. @brand or https://...">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="auditPrimaryGoal" class="form-label">Primary Business Goal</label>
+              <select id="auditPrimaryGoal" class="thorvon-input form-select">
+                <option value="Increase High-Retention Reach & Views">Increase High-Retention Reach & Views</option>
+                <option value="Generate Inbound Leads & Customers">Generate Inbound Leads & Customers</option>
+                <option value="Establish Founder & Executive Authority">Establish Founder & Executive Authority</option>
+                <option value="Secure Tier-1 Editorial Press & PR">Secure Tier-1 Editorial Press & PR</option>
+                <option value="Full Omnichannel Repurposing">Full Omnichannel Repurposing</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="auditNotes" class="form-label">Current Biggest Challenge (Optional)</label>
+              <textarea id="auditNotes" class="thorvon-textarea" rows="2" placeholder="e.g., We get views but low retention, or our editing takes too much time"></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary" id="btnSubmitAudit">
+                Request Free Audit <span class="arrow">→</span>
+              </button>
+              <p class="form-status-msg" id="auditFormStatus" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="thorvon-modal-backdrop" id="teamModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle">
+    <div class="thorvon-modal-container team-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-subtitle-tag">THORVON LEADERSHIP</span>
+          <h2 class="modal-title" id="teamModalTitle">The Minds Behind Thorvonmedia.</h2>
+        </div>
+        <button class="modal-close-btn" data-action="close-team" aria-label="Close Team Dialog">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="team-modal-body">
+        <p class="team-modal-intro">
+          A dedicated team of writers, publicists, and video creators working together to grow your brand's voice, authority, and reach across modern media.
+        </p>
+
+        <!-- Leadership & Founder Card -->
+        <div class="team-modal-grid">
+          <article class="founder-card modal-founder-card">
+            <div class="founder-card-header">
+              <div class="founder-profile-group">
+                <img src="assets/drishtanta-portrait.jpg" alt="Drishtanta Baruah" class="founder-avatar-img">
+                <div class="founder-identity">
+                  <span class="founder-badge">FOUNDER & MANAGING DIRECTOR</span>
+                  <h3 class="founder-name">Drishtanta Baruah</h3>
+                </div>
+              </div>
+              
+              <!-- Official LinkedIn Button -->
+              <a href="https://www.linkedin.com/in/drishtanta-baruah/" target="_blank" rel="noopener noreferrer" class="team-linkedin-btn" aria-label="Connect with Drishtanta Baruah on LinkedIn">
+                <svg class="linkedin-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>Connect on LinkedIn</span>
+                <span class="arrow">↗</span>
+              </a>
+            </div>
+
+            <p class="founder-bio">
+              I help ambitious founders and modern brands get the media visibility they actually deserve. We focus on securing real press features and creating high-impact content that builds genuine trust with your audience—no fluff, just focused execution.
+            </p>
+          </article>
+
+          <!-- Aprateep Bordoloi Card (Just like Founder Card, full width, no split screen) -->
+          <article class="founder-card modal-founder-card">
+            <div class="founder-card-header">
+              <div class="founder-profile-group">
+                <img src="assets/aprateep-portrait.jpg" alt="Aprateep Bordoloi" class="founder-avatar-img">
+                <div class="founder-identity">
+                  <span class="founder-badge">HEAD OF CREATIVE PRODUCTION</span>
+                  <h3 class="founder-name">Aprateep Bordoloi</h3>
+                </div>
+              </div>
+            </div>
+
+            <p class="founder-bio">
+              Directs our video and visual content production from start to finish. They turn raw footage and creative ideas into sharp, high-quality media designed to capture attention and keep it.
+            </p>
+          </article>
+
+          <!-- Strategic PR Lead Card (Full width executive card) -->
+          <article class="founder-card modal-founder-card">
+            <div class="founder-card-header">
+              <div class="founder-identity">
+                <span class="founder-badge">PUBLIC RELATIONS</span>
+                <h3 class="founder-name">Head of Editorial & PR</h3>
+              </div>
+            </div>
+
+            <p class="founder-bio">
+              Leads our media relations and press campaigns. From pitching major publications to crafting compelling press releases, they make sure your story gets in front of the right journalists and readers.
+            </p>
+          </article>
+
+          <!-- Embedded Careers Trigger Banner inside Team Modal -->
+          <div class="team-modal-careers-banner">
+            <div class="team-careers-text">
+              <h4 class="team-careers-title">Want to build with us?</h4>
+              <p class="team-careers-desc">We're expanding our remote content and PR teams worldwide.</p>
+            </div>
+            <button type="button" class="btn btn-outline team-careers-btn" data-action="open-careers-portal">
+              View Open Roles <span class="arrow">↗</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
        EMBEDDED CAREERS PORTAL MODAL
        Discrete, embedded in the website, accessible via footer or #careers hash
        ======================================================================== -->
@@ -626,66 +1068,6 @@
           </div>
         </div>
 
-      </div>
-
-  <!-- ========================================================================
-       EMBEDDED TEAM & LEADERSHIP MODAL
-       Discrete, embedded in the website, accessible via #team URL hash
-       ======================================================================== -->
-  <div class="thorvon-modal-backdrop" id="teamModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle">
-    <div class="thorvon-modal-container team-modal-container">
-      
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <h2 class="modal-title" id="teamModalTitle">The Founding Team</h2>
-        </div>
-        <button class="modal-close-btn" data-action="close-team" aria-label="Close Team Dialog">✕</button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="team-modal-body">
-        <!-- Founder Card ("About Me" + LinkedIn) -->
-        <article class="founder-card modal-founder-card">
-          <div class="founder-card-header">
-            <div class="founder-profile-group">
-              <img src="assets/drishtanta-portrait.jpg" alt="Drishtanta Baruah" class="founder-avatar-img">
-              <div class="founder-identity">
-                <span class="founder-badge">FOUNDER & MANAGING DIRECTOR</span>
-                <h3 class="founder-name">Drishtanta Baruah</h3>
-              </div>
-            </div>
-            <!-- Official LinkedIn Link -->
-            <a href="https://www.linkedin.com/in/drishtantabaruah" target="_blank" rel="noopener noreferrer" class="team-linkedin-btn" aria-label="Connect with Drishtanta Baruah on LinkedIn">
-              <svg class="linkedin-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span>Connect on LinkedIn</span>
-              <span class="arrow">↗</span>
-            </a>
-          </div>
-
-          <p class="founder-bio">
-            I help ambitious founders and modern brands get the media visibility they actually deserve. We focus on securing real press features and creating high-impact content that builds genuine trust with your audience—no fluff, just focused execution.
-          </p>
-        </article>
-
-        <!-- Core Founding Leads Grid -->
-        <div class="modal-team-core-cards">
-          <!-- Strategic PR Lead -->
-          <article class="team-core-card">
-            <span class="core-dept-badge">PUBLIC RELATIONS</span>
-            <h4 class="core-card-title">Head of Editorial & PR</h4>
-            <p class="core-card-desc">Leads our media relations and press campaigns. From pitching major publications to crafting compelling press releases, they make sure your story gets in front of the right journalists and readers.</p>
-          </article>
-
-          <!-- Creative Production Lead -->
-          <article class="team-core-card">
-            <span class="core-dept-badge">CONTENT PRODUCTION</span>
-            <h4 class="core-card-title">Head of Creative Production</h4>
-            <p class="core-card-desc">Directs our video and visual content production from start to finish. They turn raw footage and creative ideas into sharp, high-quality media designed to capture attention and keep it.</p>
-          </article>
-        </div>
       </div>
 
     </div>
