@@ -317,7 +317,7 @@ ul {
 }
 
 .brand-logo-img {
-  height: 25px;
+  height: clamp(26px, 3.2vw, 32px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -361,6 +361,34 @@ ul {
 
 .nav-link:hover::after {
   width: 100%;
+}
+
+.nav-link-careers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.nav-hiring-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover .nav-hiring-indicator,
+.footer-link:hover .nav-hiring-indicator {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #ffffff;
 }
 
 .nav-cta {
@@ -1059,6 +1087,18 @@ ul {
   line-height: 1;
 }
 
+.job-badge-urgent {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.job-badge-lead {
+  color: #c084fc;
+  background-color: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
 .job-type {
   font-family: var(--font-mono);
   font-size: 0.725rem;
@@ -1566,7 +1606,7 @@ ul {
 
 .careers-portal-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
@@ -2706,6 +2746,25 @@ ul {
     align-items: flex-start;
     gap: 1rem;
   }
+
+  .platform-curved-dock {
+    gap: 0.75rem;
+    padding: 0.9rem;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 480px;
+  }
+  .platform-curved-dock .platform-box:last-child {
+    grid-column: span 2;
+    justify-content: center;
+  }
+  .platform-box {
+    padding: 0.75rem 1rem;
+    justify-content: center;
+    border-radius: 14px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -2776,40 +2835,32 @@ ul {
   margin: 0 auto;
 }
 
-/* GPU-composited Marquee Wrap & Track */
-.platform-marquee-wrap {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+/* Static Minimal Curved Rectangle Dock for 5 Platforms */
+.platform-static-container {
   display: flex;
-  contain: paint;
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
-.platform-marquee-track {
-  display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.platform-curved-dock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 1.25rem;
-  padding: 0.5rem 0.625rem;
-  width: max-content;
-  flex-shrink: 0;
-  will-change: transform;
-  animation: platformMarqueeGlide 36s linear infinite;
-  contain: layout style;
+  padding: 1.15rem 1.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  flex-wrap: wrap;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.platform-marquee-wrap:hover .platform-marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes platformMarqueeGlide {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
+.platform-curved-dock:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.65);
 }
 
 /* Platform Boxes: Minimalist, Crisp, Professional */
@@ -2823,13 +2874,19 @@ ul {
   border-radius: 16px;
   white-space: nowrap;
   user-select: none;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .platform-box:hover {
   background-color: var(--color-surface-hover);
   border-color: rgba(255, 255, 255, 0.28);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+.platform-box:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .platform-icon {
@@ -2877,13 +2934,6 @@ ul {
   font-weight: 700;
 }
 
-.snapchat-font {
-  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-}
-
 .youtube-font {
   font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
   font-weight: 700;
@@ -2899,13 +2949,6 @@ ul {
 }
 .ig-icon-svg {
   color: #E1306C;
-}
-
-.facebook-font {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  color: #ffffff;
 }
 
 /* ==========================================================================
