@@ -558,20 +558,12 @@ function initializeSmoothScroll() {
         return;
       }
 
-      if (targetId === '#team' || this.dataset.action === 'open-team') {
+      if (targetId === '#team') {
         e.preventDefault();
-        closeMobileMenu();
         openTeamModal();
-        return;
-      }
-
-      if (targetId === '#careers' || this.dataset.action === 'open-careers-portal') {
-        e.preventDefault();
         closeMobileMenu();
-        openCareersPortalModal();
         return;
       }
-
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
@@ -611,6 +603,7 @@ function initializeMobileNav() {
     if (e.key === 'Escape') {
       if (mobileDrawerEl && mobileDrawerEl.classList.contains('is-open')) closeMobileMenu();
       closePlanModal();
+      closeTeamModal();
       closeCareersPortalModal();
       closeJobModal();
     }
@@ -1013,7 +1006,8 @@ function initializeCareers() {
   const portalModal = document.getElementById('careersPortalModal');
   if (portalModal) {
     portalModal.addEventListener('click', (e) => {
-      if (e.target === portalModal) closeCareersPortalModal();
+      if (e.target === portalModal) closeTeamModal();
+      closeCareersPortalModal();
     });
   }
 
@@ -1052,7 +1046,8 @@ function initializeCareers() {
       }
       const portalModal = document.getElementById('careersPortalModal');
       if (portalModal && portalModal.classList.contains('is-open')) {
-        closeCareersPortalModal();
+        closeTeamModal();
+      closeCareersPortalModal();
       }
     }
   });
@@ -1114,8 +1109,24 @@ function initializeCareers() {
 }
 
 // ==========================================================================
-// Embedded Team Modal Controller
-// Accessible via #team URL hash, with no visible button on page flow
+// Initialization on DOM Ready
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  initializeContactLinks();
+  initializeSmoothScroll();
+  initializeMobileNav();
+  initializeRevealAnimations();
+  initializePlanConfigurator();
+  initializeCareers();
+  initializeTeamModal();
+  initializeContactForm();
+  initializeScrollEffects();
+});
+
+
+
+// ==========================================================================
+// EMBEDDED TEAM MODAL CONTROLLER
 // ==========================================================================
 function openTeamModal() {
   const teamModal = document.getElementById('teamModal');
@@ -1130,14 +1141,16 @@ function closeTeamModal() {
   if (!teamModal) return;
   teamModal.classList.remove('is-open');
   teamModal.setAttribute('aria-hidden', 'true');
-  const otherOpenModal = document.querySelector('.thorvon-modal-backdrop.is-open');
-  if (!otherOpenModal) {
+  if (!document.querySelector('.thorvon-modal-backdrop.is-open')) {
     document.body.classList.remove('modal-open');
   }
 }
 
 function initializeTeamModal() {
-  // Triggers to open team modal
+  const teamModal = document.getElementById('teamModal');
+  if (!teamModal) return;
+
+  // Open buttons across header, mobile menu, footer
   document.querySelectorAll('[data-action="open-team"]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1146,52 +1159,31 @@ function initializeTeamModal() {
     });
   });
 
-  // Triggers to close team modal
-  document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
+  // Close buttons
+  teamModal.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
     btn.addEventListener('click', () => closeTeamModal());
   });
 
-  // Modal backdrop click
-  const teamModal = document.getElementById('teamModal');
-  if (teamModal) {
-    teamModal.addEventListener('click', (e) => {
-      if (e.target === teamModal) closeTeamModal();
-    });
-  }
-
-  // Escape key support
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const teamModal = document.getElementById('teamModal');
-      if (teamModal && teamModal.classList.contains('is-open')) {
-        closeTeamModal();
-      }
-    }
+  // Backdrop click outside
+  teamModal.addEventListener('click', (e) => {
+    if (e.target === teamModal) closeTeamModal();
   });
 
-  // URL hash navigation support: opens modal if #team is in the address bar
+  // Open careers button inside team modal
+  teamModal.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeTeamModal();
+      openCareersPortalModal();
+    });
+  });
+
+  // Check URL hash on page load
   function checkTeamHash() {
     if (window.location.hash === '#team') {
       openTeamModal();
     }
   }
+  checkTeamHash();
   window.addEventListener('hashchange', checkTeamHash);
-  if (window.location.hash === '#team') {
-    setTimeout(checkTeamHash, 250);
-  }
 }
-
-// ==========================================================================
-// Initialization on DOM Ready
-// ==========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-  initializeContactLinks();
-  initializeSmoothScroll();
-  initializeMobileNav();
-  initializeRevealAnimations();
-  initializePlanConfigurator();
-  initializeCareers();
-  initializeTeamModal();
-  initializeContactForm();
-  initializeScrollEffects();
-});

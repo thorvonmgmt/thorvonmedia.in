@@ -859,16 +859,15 @@ ul {
 }
 
 .founder-badge {
-  font-family: var(--font-primary);
-  font-size: 0.76rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #60a5fa;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(37, 99, 235, 0.08));
-  border: 1px solid rgba(96, 165, 250, 0.35);
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.18);
-  padding: 0.38rem 0.9rem;
+  color: #93c5fd;
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  padding: 0.35rem 0.8rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
@@ -2726,476 +2725,26 @@ ul {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Embedded Team Modal Styling
-   -------------------------------------------------------------------------- */
-.team-modal-container {
-  max-width: 860px;
-  max-height: 90vh;
-  overflow-y: auto;
-}
 
-.team-modal-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.modal-founder-card {
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--color-border);
-}
-
-.modal-team-core-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-
-@media (max-width: 680px) {
-  .modal-team-core-cards {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ==========================================================================
-   ONYX-STYLE SECTIONS & COMPONENTS (onyyx.co Reference)
-   ========================================================================== */
-
-/* Hero Kicker & Headline Enhancements */
-.hero-kicker-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #94a3b8;
-  backdrop-filter: blur(8px);
-}
-
-.kicker-pulse {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #3b82f6;
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.9);
-  animation: kickerPulseGlow 2s infinite ease-in-out;
-}
-
-@keyframes kickerPulseGlow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.hero-gradient-text {
-  background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Onyx Platform Ticker Bar */
-.hero-platform-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1rem 0;
-  margin-top: 1.5rem;
-  border-top: 1px dashed rgba(255, 255, 255, 0.08);
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-  width: 100%;
-}
-
-.platform-item {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #94a3b8;
-}
-
-.platform-divider {
-  color: #3b82f6;
-  font-size: 0.65rem;
-}
-
-/* Onyx Key Metrics Row */
-.hero-stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-@media (max-width: 900px) {
-  .hero-stats-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-stats-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.hero-stat-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 4px;
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.stat-number {
-  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-}
-
-/* General Section Block */
-.section-block {
-  padding-top: clamp(4.5rem, 8vh, 7rem);
-  padding-bottom: clamp(4.5rem, 8vh, 7rem);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.section-badge {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #60a5fa;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.22);
-  padding: 0.3rem 0.75rem;
-  border-radius: 9999px;
-  margin-bottom: 1.25rem;
-}
-
-/* Onyx Bento Grid */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.bento-card {
-  grid-column: span 6;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  border-radius: 6px;
-  padding: clamp(2rem, 3.5vw, 2.75rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.75rem;
-  transition: border-color var(--transition-smooth), transform var(--transition-smooth), background-color var(--transition-smooth);
-}
-
-.bento-card-large {
-  grid-column: span 12;
-}
-
-.bento-card:hover {
-  border-color: rgba(59, 130, 246, 0.45);
-  background-color: var(--color-surface-hover);
-  transform: translateY(-4px);
-}
-
-.bento-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.bento-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #93c5fd;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.22);
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
-}
-
-.bento-badge-mono {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
-
-.bento-title {
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-  line-height: 1.25;
-}
-
-.bento-desc {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.bento-feature-list {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
-.bento-pill {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-}
-
-@media (max-width: 900px) {
-  .bento-card, .bento-card-large {
-    grid-column: span 12;
-  }
-}
-
-/* Onyx Steps Grid */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-@media (max-width: 860px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.step-card {
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  border-radius: 6px;
-  padding: clamp(2rem, 3.5vw, 2.75rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  transition: all 0.3s ease;
-}
-
-.step-card:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-  transform: translateY(-4px);
-}
-
-.step-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.step-num {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: #3b82f6;
-  letter-spacing: -0.04em;
-  font-family: var(--font-mono);
-}
-
-.step-phase {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.step-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.015em;
-}
-
-.step-desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-}
-
-/* Onyx Why Grid */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-@media (max-width: 1024px) {
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.why-card {
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  border-radius: 6px;
-  padding: clamp(1.75rem, 3vw, 2.25rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.3s ease;
-}
-
-.why-card:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-  transform: translateY(-4px);
-}
-
-.why-icon {
-  font-size: 1.25rem;
-  color: #3b82f6;
-}
-
-.why-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.015em;
-}
-
-.why-desc {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--color-text-secondary);
-}
-
-/* Team Careers Trigger Banner */
-.team-careers-trigger {
-  border: 1px dashed rgba(255, 255, 255, 0.12);
-  background: rgba(59, 130, 246, 0.03);
-  border-radius: 6px;
-  padding: 1.75rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.careers-trigger-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.25rem;
-}
-
-.careers-trigger-desc {
-  font-size: 0.88rem;
-  color: var(--color-text-secondary);
-}
-
-/* Plan Callout Section */
-.plan-callout-card {
-  border: 1px solid var(--color-border);
-  background: linear-gradient(135deg, rgba(17, 19, 23, 0.95), rgba(26, 30, 40, 0.95));
-  border-radius: 6px;
-  padding: clamp(2.5rem, 4vw, 3.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.plan-callout-badge {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #60a5fa;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.plan-callout-title {
-  font-size: clamp(1.6rem, 2.75vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: 0.6rem;
-}
-
-.plan-callout-desc {
-  font-size: 0.98rem;
-  color: var(--color-text-secondary);
-  max-width: 600px;
-  line-height: 1.55;
-}
-
-.footer-tagline {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* ==========================================================================
-   OMNICHANNEL PLATFORM DISTRIBUTION MARQUEE SECTION
+   OMNICHANNEL PLATFORM DISTRIBUTION MARQUEE
+   Ultra-smooth, hardware-accelerated 60-120fps CSS Marquee
    ========================================================================== */
 .platform-ticker-section {
-  position: relative;
-  padding: clamp(3.25rem, 5vw, 4.5rem) 0 clamp(3.5rem, 5.5vw, 4.75rem);
-  background: #000000;
+  padding-top: clamp(3.5rem, 7vh, 5.5rem);
+  padding-bottom: clamp(3.5rem, 7vh, 5.5rem);
+  background-color: var(--color-bg);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  position: relative;
   overflow: hidden;
 }
 
 .platform-ticker-header {
   text-align: center;
   max-width: 820px;
-  margin: 0 auto clamp(2rem, 3.5vw, 2.75rem);
-  padding: 0 1.5rem;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
 }
 
 .platform-ticker-kicker {
@@ -3204,54 +2753,50 @@ ul {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #60a5fa;
-  margin-bottom: 0.6rem;
+  color: var(--color-accent);
   display: inline-block;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  padding: 0.3rem 0.85rem;
-  border-radius: 9999px;
+  margin-bottom: 0.75rem;
 }
 
 .platform-ticker-title {
-  font-family: var(--font-primary);
-  font-size: clamp(1.5rem, 3vw, 2.35rem);
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 700;
   letter-spacing: -0.025em;
-  color: #ffffff;
+  color: var(--color-text-primary);
   line-height: 1.25;
-  margin-top: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
 .platform-ticker-subtitle {
-  font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 620px;
+  line-height: 1.55;
+  max-width: 680px;
   margin: 0 auto;
 }
 
+/* GPU-composited Marquee Wrap & Track */
 .platform-marquee-wrap {
-  display: flex;
+  position: relative;
   width: 100%;
   overflow: hidden;
-  user-select: none;
+  display: flex;
   contain: paint;
-  position: relative;
-  padding: 0.5rem 0;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
 }
 
 .platform-marquee-track {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  padding: 0.5rem 0.625rem;
+  width: max-content;
   flex-shrink: 0;
-  animation: platformMarqueeGlide 30s linear infinite;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
+  animation: platformMarqueeGlide 36s linear infinite;
+  contain: layout style;
 }
 
 .platform-marquee-wrap:hover .platform-marquee-track {
@@ -3259,177 +2804,210 @@ ul {
 }
 
 @keyframes platformMarqueeGlide {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
-/* Individual Platform Box */
+/* Platform Boxes: Minimalist, Crisp, Professional */
 .platform-box {
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.9rem 1.75rem;
-  background: rgba(16, 19, 26, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.85rem;
+  padding: 0.85rem 1.6rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 9999px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: default;
   white-space: nowrap;
+  user-select: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .platform-box:hover {
-  transform: translateY(-3px);
-  background: rgba(24, 28, 38, 0.95);
+  background-color: var(--color-surface-hover);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
 }
 
 .platform-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
   display: block;
 }
 
 .platform-name {
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  display: inline-block;
   line-height: 1;
-  display: inline-flex;
-  align-items: center;
 }
 
-/* 1. Reddit Brand Styling */
-.platform-box-reddit:hover {
-  border-color: rgba(255, 69, 0, 0.55);
-  box-shadow: 0 6px 24px rgba(255, 69, 0, 0.22);
-}
+/* Brand Fonts & Authentic Identities */
 .reddit-font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 800;
-  font-size: 1.2rem;
+  font-weight: 700;
   letter-spacing: -0.03em;
-  text-transform: lowercase;
   color: #ffffff;
 }
 
-/* 2. X Brand Styling */
-.platform-box-x:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
-}
 .x-font {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 900;
-  font-size: 1.25rem;
-  letter-spacing: 0;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   color: #ffffff;
 }
 
-/* 3. LinkedIn Brand Styling */
-.platform-box-linkedin:hover {
-  border-color: rgba(10, 102, 194, 0.55);
-  box-shadow: 0 6px 24px rgba(10, 102, 194, 0.22);
-}
 .linkedin-font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: #ffffff;
 }
 .linkedin-in-accent {
-  background: #0A66C2;
+  background-color: #0A66C2;
   color: #ffffff;
-  padding: 0.1rem 0.32rem;
-  border-radius: 3px;
+  padding: 0 3px;
+  border-radius: 2px;
+  margin-left: 1px;
   font-weight: 700;
-  margin-left: 2px;
-  font-size: 0.95rem;
 }
 
-/* 4. Snapchat Brand Styling */
-.platform-box-snapchat:hover {
-  border-color: rgba(255, 252, 0, 0.55);
-  box-shadow: 0 6px 24px rgba(255, 252, 0, 0.2);
-}
 .snapchat-font {
-  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
   font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: #ffffff;
 }
 
-/* 5. YouTube Brand Styling */
-.platform-box-youtube:hover {
-  border-color: rgba(255, 0, 0, 0.55);
-  box-shadow: 0 6px 24px rgba(255, 0, 0, 0.22);
-}
 .youtube-font {
-  font-family: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.035em;
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: #ffffff;
 }
 
-/* 6. Instagram Brand Styling */
-.platform-box-instagram:hover {
-  border-color: rgba(225, 48, 108, 0.55);
-  box-shadow: 0 6px 24px rgba(225, 48, 108, 0.22);
-}
-.ig-icon-svg {
-  stroke: #f43f5e;
-}
 .instagram-font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
-  font-size: 1.18rem;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: #ffffff;
+}
+.ig-icon-svg {
+  color: #E1306C;
 }
 
-/* 7. Facebook Brand Styling */
-.platform-box-facebook:hover {
-  border-color: rgba(8, 102, 255, 0.55);
-  box-shadow: 0 6px 24px rgba(8, 102, 255, 0.22);
-}
 .facebook-font {
-  font-family: "Klavika", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 800;
-  font-size: 1.22rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.04em;
   color: #ffffff;
-  text-transform: lowercase;
 }
 
 /* ==========================================================================
-   EMBEDDED OUR TEAM MODAL STYLING
+   IMPROVED FOUNDER TYPOGRAPHY & EXECUTIVE BADGE
+   ========================================================================== */
+.founder-badge {
+  font-family: var(--font-primary) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #93c5fd !important;
+  background: rgba(59, 130, 246, 0.12) !important;
+  border: 1px solid rgba(59, 130, 246, 0.35) !important;
+  padding: 0.35rem 0.9rem !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  width: fit-content !important;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.15) !important;
+}
+
+.founder-name {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(1.6rem, 2.75vw, 2.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   EMBEDDED TEAM MODAL STYLING
    ========================================================================== */
 .team-modal-container {
   max-width: 860px;
   width: 95%;
   max-height: 90vh;
   overflow-y: auto;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
 }
 
 .team-modal-body {
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.team-modal-intro {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 720px;
+}
+
+.team-modal-grid {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  padding: 1.5rem 0 1rem;
-}
-
-.team-modal-lead {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 1.25rem;
-  margin: 0;
 }
 
 .modal-founder-card {
+  margin-bottom: 0;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-hover);
+  border-radius: 6px;
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.modal-team-core-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.team-modal-careers-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 1.75rem;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.team-careers-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.team-careers-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.team-careers-btn {
+  white-space: nowrap;
+  font-size: 0.85rem;
 }
