@@ -603,6 +603,7 @@ function initializeMobileNav() {
     if (e.key === 'Escape') {
       if (mobileDrawerEl && mobileDrawerEl.classList.contains('is-open')) closeMobileMenu();
       closePlanModal();
+      closePlatformActionModal();
       closeTeamModal();
       closeCareersPortalModal();
       closeJobModal();
@@ -1006,7 +1007,8 @@ function initializeCareers() {
   const portalModal = document.getElementById('careersPortalModal');
   if (portalModal) {
     portalModal.addEventListener('click', (e) => {
-      if (e.target === portalModal) closeTeamModal();
+      if (e.target === portalModal) closePlatformActionModal();
+      closeTeamModal();
       closeCareersPortalModal();
     });
   }
@@ -1046,7 +1048,8 @@ function initializeCareers() {
       }
       const portalModal = document.getElementById('careersPortalModal');
       if (portalModal && portalModal.classList.contains('is-open')) {
-        closeTeamModal();
+        closePlatformActionModal();
+      closeTeamModal();
       closeCareersPortalModal();
       }
     }
@@ -1120,6 +1123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeCareers();
   initializeTeamModal();
   initializePlatformClick();
+  initializePlatformActionModal();
   initializeContactForm();
   initializeScrollEffects();
 });
@@ -1167,13 +1171,15 @@ function initializeTeamModal() {
 
   // Backdrop click outside
   teamModal.addEventListener('click', (e) => {
-    if (e.target === teamModal) closeTeamModal();
+    if (e.target === teamModal) closePlatformActionModal();
+      closeTeamModal();
   });
 
   // Open careers button inside team modal
   teamModal.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      closePlatformActionModal();
       closeTeamModal();
       openCareersPortalModal();
     });
@@ -1198,15 +1204,9 @@ function initializePlatformClick() {
     const handlePlatformSelect = (e) => {
       e.preventDefault();
       const platformName = box.getAttribute('data-platform') || 'Social Media';
-      // Open plan modal with Content discipline preselected
-      openPlanModal('content');
-      // Set custom requirement field to target platform
-      const customReq = document.getElementById('customRequirementInput');
-      if (customReq) {
-        customReq.value = `Target Platform: ${platformName} content & distribution`;
-      }
-      // Immediately navigate to Step 2 so client can pick exact services with $ prices
-      goToPlanStep(2);
+      const iconEl = box.querySelector('.platform-icon');
+      const iconHtml = iconEl ? iconEl.outerHTML : '';
+      openPlatformActionModal(platformName, iconHtml);
     };
 
     box.addEventListener('click', handlePlatformSelect);
@@ -1215,5 +1215,272 @@ function initializePlatformClick() {
         handlePlatformSelect(e);
       }
     });
+  });
+}
+
+
+// ==========================================================================
+// PLATFORM ACTION MODAL CONTROLLER (Audit Request & Curated / Custom Plans)
+// ==========================================================================
+let currentActivePlatform = 'YouTube';
+
+function openPlatformActionModal(platformName, iconHtml) {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+
+  currentActivePlatform = platformName;
+
+  // Update Header & Highlights
+  const badgeName = document.getElementById('platformModalName');
+  if (badgeName) badgeName.textContent = platformName;
+
+  const iconWrap = document.getElementById('platformModalIconWrap');
+  if (iconWrap && iconHtml) {
+    iconWrap.innerHTML = iconHtml;
+  }
+
+  // Highlight platform in text
+  modal.querySelectorAll('.platform-name-highlight').forEach((el) => {
+    el.textContent = platformName;
+  });
+
+  // Pre-fill hidden inputs
+  const auditHidden = document.getElementById('auditPlatformHidden');
+  if (auditHidden) auditHidden.value = platformName;
+
+  const optinHidden = document.getElementById('optinSelectedPlatform');
+  if (optinHidden) optinHidden.value = platformName;
+
+  // Reset tab to Plans
+  switchPlatformTab('plans');
+
+  // Hide confirm panel if showing
+  const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const plansGrid = document.getElementById('platformPlansGrid');
+  if (confirmPanel) confirmPanel.style.display = 'none';
+  if (plansGrid) plansGrid.style.display = 'grid';
+
+  // Open modal
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closePlatformActionModal() {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  if (!document.querySelector('.thorvon-modal-backdrop.is-open')) {
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function switchPlatformTab(tabName) {
+  const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnAudit = document.getElementById('tabBtnAudit');
+  const contentPlans = document.getElementById('tabContentPlans');
+  const contentAudit = document.getElementById('tabContentAudit');
+
+  if (tabName === 'audit') {
+    tabBtnPlans?.classList.remove('active');
+    tabBtnPlans?.setAttribute('aria-selected', 'false');
+    tabBtnAudit?.classList.add('active');
+    tabBtnAudit?.setAttribute('aria-selected', 'true');
+
+    contentPlans?.classList.remove('active');
+    contentAudit?.classList.add('active');
+  } else {
+    tabBtnAudit?.classList.remove('active');
+    tabBtnAudit?.setAttribute('aria-selected', 'false');
+    tabBtnPlans?.classList.add('active');
+    tabBtnPlans?.setAttribute('aria-selected', 'true');
+
+    contentAudit?.classList.remove('active');
+    contentPlans?.classList.add('active');
+  }
+}
+
+function initializePlatformActionModal() {
+  const modal = document.getElementById('platformActionModal');
+  if (!modal) return;
+
+  // Close triggers
+  modal.querySelectorAll('[data-action="close-platform-modal"]').forEach((btn) => {
+    btn.addEventListener('click', () => closePlatformActionModal());
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePlatformActionModal();
+  });
+
+  // Tab switching
+  const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnAudit = document.getElementById('tabBtnAudit');
+  tabBtnPlans?.addEventListener('click', () => switchPlatformTab('plans'));
+  tabBtnAudit?.addEventListener('click', () => switchPlatformTab('audit'));
+
+  // Opt-in buttons on curated plans
+  modal.querySelectorAll('[data-action="opt-in-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const planName = btn.getAttribute('data-plan-name') || 'Growth Plan';
+      const planPrice = btn.getAttribute('data-plan-price') || '$2,500 / month';
+
+      const plansGrid = document.getElementById('platformPlansGrid');
+      const confirmPanel = document.getElementById('planOptinConfirmPanel');
+      const planNameText = document.getElementById('confirmPlanNameText');
+      const planPriceText = document.getElementById('confirmPlanPriceText');
+      const hiddenPlan = document.getElementById('optinSelectedPlan');
+      const hiddenPrice = document.getElementById('optinSelectedPrice');
+
+      if (planNameText) planNameText.textContent = planName;
+      if (planPriceText) planPriceText.textContent = planPrice;
+      if (hiddenPlan) hiddenPlan.value = planName;
+      if (hiddenPrice) hiddenPrice.value = planPrice;
+
+      if (plansGrid) plansGrid.style.display = 'none';
+      if (confirmPanel) {
+        confirmPanel.style.display = 'block';
+        confirmPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+
+  // Back to plans button
+  const btnCancelOptin = document.getElementById('btnCancelOptin');
+  btnCancelOptin?.addEventListener('click', () => {
+    const plansGrid = document.getElementById('platformPlansGrid');
+    const confirmPanel = document.getElementById('planOptinConfirmPanel');
+    if (confirmPanel) confirmPanel.style.display = 'none';
+    if (plansGrid) plansGrid.style.display = 'grid';
+  });
+
+  // Custom Plan trigger -> opens custom configurator
+  modal.querySelectorAll('[data-action="open-custom-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePlatformActionModal();
+      openPlanModal('content');
+      const customReq = document.getElementById('customRequirementInput');
+      if (customReq) {
+        customReq.value = `Target Platform: ${currentActivePlatform} custom plan`;
+      }
+      goToPlanStep(2);
+    });
+  });
+
+  // Opt-in Form Submission
+  const optinForm = document.getElementById('planOptinForm');
+  optinForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnSubmit = document.getElementById('btnSubmitPlanOptin');
+    const statusMsg = document.getElementById('optinFormStatus');
+
+    const name = (document.getElementById('optinName')?.value || '').trim();
+    const email = (document.getElementById('optinEmail')?.value || '').trim();
+    const company = (document.getElementById('optinCompany')?.value || '').trim();
+    const handle = (document.getElementById('optinHandle')?.value || '').trim();
+    const notes = (document.getElementById('optinNotes')?.value || '').trim();
+    const plan = (document.getElementById('optinSelectedPlan')?.value || 'Curated Plan');
+    const price = (document.getElementById('optinSelectedPrice')?.value || '');
+
+    if (!name || !email) return;
+
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Submitting...';
+    }
+
+    const payload = {
+      name,
+      contact: email,
+      company: company || 'Not specified',
+      selectedServices: [`${plan} (${price}) for ${currentActivePlatform}`],
+      customRequirement: `Platform Handle: ${handle || 'None provided'}`,
+      estimatedInvestment: price,
+      notes: notes || 'None',
+      submittedAt: new Date().toLocaleString()
+    };
+
+    const res = await LeadSubmissionHandler.submit(payload);
+    if (btnSubmit) {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Confirm & Request Plan →';
+    }
+
+    if (res.success) {
+      if (statusMsg) {
+        statusMsg.style.color = '#4ade80';
+        statusMsg.textContent = '✓ Request received! We will send your plan details shortly.';
+      }
+      optinForm.reset();
+      setTimeout(() => {
+        closePlatformActionModal();
+        if (statusMsg) statusMsg.textContent = '';
+      }, 2500);
+    } else {
+      if (statusMsg) {
+        statusMsg.style.color = '#f87171';
+        statusMsg.textContent = 'Please email us directly at thorvonmedia@gmail.com';
+      }
+    }
+  });
+
+  // Audit Form Submission
+  const auditForm = document.getElementById('platformAuditForm');
+  auditForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnSubmit = document.getElementById('btnSubmitAudit');
+    const statusMsg = document.getElementById('auditFormStatus');
+
+    const fullName = (document.getElementById('auditFullName')?.value || '').trim();
+    const workEmail = (document.getElementById('auditWorkEmail')?.value || '').trim();
+    const businessName = (document.getElementById('auditBusinessName')?.value || '').trim();
+    const profileUrl = (document.getElementById('auditProfileUrl')?.value || '').trim();
+    const goal = document.getElementById('auditPrimaryGoal')?.value || 'Growth';
+    const notes = (document.getElementById('auditNotes')?.value || '').trim();
+
+    if (!fullName || !workEmail || !businessName || !profileUrl) return;
+
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Submitting Audit Request...';
+    }
+
+    const payload = {
+      name: fullName,
+      contact: workEmail,
+      company: businessName,
+      selectedServices: [`FREE AUDIT for ${currentActivePlatform}`],
+      customRequirement: `Profile URL/Handle: ${profileUrl}
+Primary Goal: ${goal}`,
+      estimatedInvestment: 'Free Business Audit',
+      notes: notes || 'None',
+      submittedAt: new Date().toLocaleString()
+    };
+
+    const res = await LeadSubmissionHandler.submit(payload);
+    if (btnSubmit) {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Request Free Audit →';
+    }
+
+    if (res.success) {
+      if (statusMsg) {
+        statusMsg.style.color = '#4ade80';
+        statusMsg.textContent = '✓ Audit requested! Our directors will review your brand within 24-48 hours.';
+      }
+      auditForm.reset();
+      setTimeout(() => {
+        closePlatformActionModal();
+        if (statusMsg) statusMsg.textContent = '';
+      }, 3000);
+    } else {
+      if (statusMsg) {
+        statusMsg.style.color = '#f87171';
+        statusMsg.textContent = 'Please email us directly at thorvonmedia@gmail.com';
+      }
+    }
   });
 }

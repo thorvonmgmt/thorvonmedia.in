@@ -589,6 +589,254 @@
        MODAL 2: EMBEDDED TEAM MODAL
        Embedded modal accessed via Nav, Footer, and direct interactions
        ======================================================================== -->
+    <!-- ========================================================================
+       MODAL: PLATFORM ACTION MODAL (Audit Request & Curated / Custom Plans)
+       Triggered by clicking any social media platform in the marquee
+       ======================================================================== -->
+  <div class="thorvon-modal-backdrop" id="platformActionModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="platformActionTitle">
+    <div class="thorvon-modal-container platform-action-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="platform-modal-title-group">
+          <div class="platform-modal-badge" id="platformModalBadge">
+            <span class="platform-modal-icon-wrap" id="platformModalIconWrap"></span>
+            <span class="platform-modal-name" id="platformModalName">YouTube</span>
+          </div>
+          <h2 class="modal-title" id="platformActionTitle">Platform Distribution & Growth</h2>
+        </div>
+        <button class="modal-close-btn" data-action="close-platform-modal" aria-label="Close Platform Dialog">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="platform-action-body">
+        
+        <!-- Toggle Tabs: Select Plan vs Request Audit -->
+        <div class="platform-action-tabs" role="tablist">
+          <button type="button" class="platform-tab-btn active" id="tabBtnPlans" role="tab" aria-selected="true" data-tab="plans">
+            Select a Plan
+          </button>
+          <button type="button" class="platform-tab-btn" id="tabBtnAudit" role="tab" aria-selected="false" data-tab="audit">
+            Request Business Audit
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: PLANS (Curated Plans + Custom Plan) -->
+        <div class="platform-tab-content active" id="tabContentPlans">
+          <p class="platform-tab-intro">
+            Choose a structured growth plan engineered for <span class="platform-name-highlight">this platform</span>, or build a custom plan tailored to your exact creative requirements.
+          </p>
+
+          <div class="platform-plans-grid" id="platformPlansGrid">
+            
+            <!-- Plan 1: Starter Plan -->
+            <div class="platform-plan-card" data-plan="Starter Plan" data-price="$2,500 / month">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">STARTER</span>
+                <h3 class="plan-card-title">Content Foundation</h3>
+                <div class="plan-card-price">$2,500 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Ideal for emerging brands launching consistent, high-retention native presence.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> 8–10 Platform-native short-form reels / videos</li>
+                <li><span class="check-icon">✓</span> Full video editing & sound design</li>
+                <li><span class="check-icon">✓</span> High-converting hooks & scriptwriting</li>
+                <li><span class="check-icon">✓</span> Native platform distribution & scheduling</li>
+                <li><span class="check-icon">✓</span> Bi-weekly performance review</li>
+              </ul>
+
+              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Starter Plan" data-plan-price="$2,500 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 2: Authority Plan (Featured) -->
+            <div class="platform-plan-card featured" data-plan="Authority Growth Plan" data-price="$4,800 / month">
+              <div class="plan-featured-tag">MOST POPULAR</div>
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">GROWTH & PR</span>
+                <h3 class="plan-card-title">Authority Scaling</h3>
+                <div class="plan-card-price">$4,800 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Comprehensive content production and founder PR to dominate the feed.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> 18–22 Platform-native high-impact videos & reels</li>
+                <li><span class="check-icon">✓</span> Dedicated creative director & scriptwriter</li>
+                <li><span class="check-icon">✓</span> Custom motion graphics & viral editing</li>
+                <li><span class="check-icon">✓</span> Executive thought leadership & personal branding</li>
+                <li><span class="check-icon">✓</span> Omnichannel distribution across feeds</li>
+                <li><span class="check-icon">✓</span> Monthly media & PR outreach pitching</li>
+              </ul>
+
+              <button type="button" class="btn btn-primary plan-opt-btn" data-action="opt-in-plan" data-plan-name="Authority Growth Plan" data-plan-price="$4,800 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 3: Enterprise Plan -->
+            <div class="platform-plan-card" data-plan="Enterprise Domination" data-price="$8,500 / month">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">ENTERPRISE</span>
+                <h3 class="plan-card-title">Category Leader</h3>
+                <div class="plan-card-price">$8,500 <span class="plan-card-freq">/ mo</span></div>
+              </div>
+              <p class="plan-card-desc">Full-scale turnkey creative engine with guaranteed Tier-1 editorial press placements.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> Full production (Short-form + Long-form content)</li>
+                <li><span class="check-icon">✓</span> Guaranteed Tier-1 editorial PR placements</li>
+                <li><span class="check-icon">✓</span> Dedicated video editor, animator & PR publicist</li>
+                <li><span class="check-icon">✓</span> Full distribution, community management & SEO</li>
+                <li><span class="check-icon">✓</span> Executive reputation architecture</li>
+                <li><span class="check-icon">✓</span> Weekly 1-on-1 strategic growth calls</li>
+              </ul>
+
+              <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Enterprise Domination" data-plan-price="$8,500 / month">
+                Opt In to Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Plan 4: Custom Plan -->
+            <div class="platform-plan-card custom-plan-card">
+              <div class="plan-card-header">
+                <span class="plan-card-kicker">CUSTOM</span>
+                <h3 class="plan-card-title">Custom Plan</h3>
+                <div class="plan-card-price">Tailored <span class="plan-card-freq">Pricing</span></div>
+              </div>
+              <p class="plan-card-desc">Pick and choose the exact individual services you need with our dynamic pricing calculator.</p>
+              
+              <ul class="plan-services-list">
+                <li><span class="check-icon">✓</span> Select custom video editing, reels, or scriptwriting</li>
+                <li><span class="check-icon">✓</span> Add specific PR, press outreach, or founder branding</li>
+                <li><span class="check-icon">✓</span> Real-time investment calculation in $</li>
+                <li><span class="check-icon">✓</span> Custom deliverable volumes to match your budget</li>
+              </ul>
+
+              <button type="button" class="btn btn-primary plan-opt-btn" data-action="open-custom-plan">
+                Build Custom Plan <span class="arrow">→</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Quick Opt-In Lead Confirmation Panel for Curated Plans -->
+          <div class="plan-optin-confirm-panel" id="planOptinConfirmPanel" style="display: none;">
+            <div class="confirm-panel-header">
+              <h4 class="confirm-panel-title">Confirm Plan: <span id="confirmPlanNameText">Starter Plan</span> (<span id="confirmPlanPriceText">$2,500 / month</span>)</h4>
+              <button type="button" class="btn-text" id="btnCancelOptin">← Back to plans</button>
+            </div>
+            <p class="confirm-panel-sub">We will prepare your onboarding roadmap and deliverables schedule.</p>
+            
+            <form class="lead-form plan-optin-form" id="planOptinForm">
+              <input type="hidden" id="optinSelectedPlan" value="">
+              <input type="hidden" id="optinSelectedPrice" value="">
+              <input type="hidden" id="optinSelectedPlatform" value="">
+
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="optinName" class="form-label">Full Name *</label>
+                  <input type="text" id="optinName" class="thorvon-input" required placeholder="Your full name">
+                </div>
+                <div class="form-field">
+                  <label for="optinEmail" class="form-label">Work Email *</label>
+                  <input type="email" id="optinEmail" class="thorvon-input" required placeholder="name@company.com">
+                </div>
+              </div>
+
+              <div class="form-row form-row-2col">
+                <div class="form-field">
+                  <label for="optinCompany" class="form-label">Company / Brand Name</label>
+                  <input type="text" id="optinCompany" class="thorvon-input" placeholder="Brand name">
+                </div>
+                <div class="form-field">
+                  <label for="optinHandle" class="form-label">Platform Handle / URL</label>
+                  <input type="text" id="optinHandle" class="thorvon-input" placeholder="@yourhandle or profile link">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="optinNotes" class="form-label">Specific Goals or Questions (Optional)</label>
+                <textarea id="optinNotes" class="thorvon-textarea" rows="2" placeholder="Tell us about your target audience or goals"></textarea>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-primary" id="btnSubmitPlanOptin">
+                  Confirm & Request Plan <span class="arrow">→</span>
+                </button>
+                <p class="form-status-msg" id="optinFormStatus" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- TAB CONTENT 2: REQUEST AUDIT -->
+        <div class="platform-tab-content" id="tabContentAudit">
+          <div class="audit-intro-box">
+            <span class="audit-kicker">100% COMPLIMENTARY</span>
+            <h3 class="audit-heading">Request a Free Business & Platform Audit</h3>
+            <p class="audit-desc">
+              Our creative and PR directors will review your brand's presence on <span class="platform-name-highlight">this platform</span>. You'll receive a structured breakdown of your content hooks, visual retention, and distribution gaps with actionable recommendations.
+            </p>
+          </div>
+
+          <form class="lead-form platform-audit-form" id="platformAuditForm">
+            <input type="hidden" id="auditPlatformHidden" value="">
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="auditFullName" class="form-label">Full Name *</label>
+                <input type="text" id="auditFullName" class="thorvon-input" required placeholder="Your full name">
+              </div>
+              <div class="form-field">
+                <label for="auditWorkEmail" class="form-label">Work Email *</label>
+                <input type="email" id="auditWorkEmail" class="thorvon-input" required placeholder="name@company.com">
+              </div>
+            </div>
+
+            <div class="form-row form-row-2col">
+              <div class="form-field">
+                <label for="auditBusinessName" class="form-label">Company / Brand Name *</label>
+                <input type="text" id="auditBusinessName" class="thorvon-input" required placeholder="Your business name">
+              </div>
+              <div class="form-field">
+                <label for="auditProfileUrl" class="form-label">Platform Profile / Handle *</label>
+                <input type="text" id="auditProfileUrl" class="thorvon-input" required placeholder="e.g. @brand or https://...">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="auditPrimaryGoal" class="form-label">Primary Business Goal</label>
+              <select id="auditPrimaryGoal" class="thorvon-input form-select">
+                <option value="Increase High-Retention Reach & Views">Increase High-Retention Reach & Views</option>
+                <option value="Generate Inbound Leads & Customers">Generate Inbound Leads & Customers</option>
+                <option value="Establish Founder & Executive Authority">Establish Founder & Executive Authority</option>
+                <option value="Secure Tier-1 Editorial Press & PR">Secure Tier-1 Editorial Press & PR</option>
+                <option value="Full Omnichannel Repurposing">Full Omnichannel Repurposing</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="auditNotes" class="form-label">Current Biggest Challenge (Optional)</label>
+              <textarea id="auditNotes" class="thorvon-textarea" rows="2" placeholder="e.g., We get views but low retention, or our editing takes too much time"></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary" id="btnSubmitAudit">
+                Request Free Audit <span class="arrow">→</span>
+              </button>
+              <p class="form-status-msg" id="auditFormStatus" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
   <div class="thorvon-modal-backdrop" id="teamModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle">
     <div class="thorvon-modal-container team-modal-container">
       
