@@ -2982,6 +2982,57 @@ ul {
   gap: 1.25rem;
 }
 
+.team-member-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin-bottom: 1.15rem;
+}
+
+.team-member-avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-premium), border-color 0.3s var(--ease-premium);
+}
+
+.team-core-card:hover .team-member-avatar-img {
+  transform: scale(1.05);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.team-member-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-member-info .core-dept-badge {
+  margin-bottom: 0.35rem;
+}
+
+.core-card-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+}
+
+.core-card-role {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #93c5fd;
+  letter-spacing: -0.01em;
+  margin-top: 0.2rem;
+}
+
+
 .team-modal-careers-banner {
   display: flex;
   align-items: center;
