@@ -2795,7 +2795,7 @@ ul {
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: platformMarqueeGlide 36s linear infinite;
+  animation: platformMarqueeGlide 28s linear infinite;
   contain: layout style;
 }
 
@@ -2877,13 +2877,6 @@ ul {
   font-weight: 700;
 }
 
-.snapchat-font {
-  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-}
-
 .youtube-font {
   font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
   font-weight: 700;
@@ -2899,13 +2892,6 @@ ul {
 }
 .ig-icon-svg {
   color: #E1306C;
-}
-
-.facebook-font {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  color: #ffffff;
 }
 
 /* ==========================================================================

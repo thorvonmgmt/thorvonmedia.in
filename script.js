@@ -19,26 +19,26 @@ const ContactConfig = {
 // ==========================================================================
 const PricingConfig = [
   // --- PR Requirements ($ prices) ---
-  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: 2500, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: 3000, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: 1800, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: 2000, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: 2800, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: 2200, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: 1500, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: 850, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: 450, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: 550, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: 350, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: 400, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: 500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: 450, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: 300, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: 200, minPrice: null, maxPrice: null, enabled: true },
 
   // --- Content Requirements ($ prices) ---
-  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: 600, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: 1500, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: 1200, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: 1800, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: 800, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: 1000, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: 1100, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: 850, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: 900, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: 750, minPrice: null, maxPrice: null, enabled: true }
+  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: 150, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: 350, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: 300, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: 450, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: 200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: 250, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: 300, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: 200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: 250, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: 200, minPrice: null, maxPrice: null, enabled: true }
 ];
 
 // Category metadata
