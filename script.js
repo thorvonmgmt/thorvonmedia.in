@@ -18,27 +18,27 @@ const ContactConfig = {
 // If null/0, the system displays "Pricing calculated after consultation".
 // ==========================================================================
 const PricingConfig = [
-  // --- PR Requirements ---
-  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: null, minPrice: null, maxPrice: null, enabled: true },
+  // --- PR Requirements ($ prices) ---
+  { id: 'pr_founder', label: 'Founder PR', category: 'pr', price: 2500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_brand', label: 'Brand PR', category: 'pr', price: 3000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_personal', label: 'Personal Branding', category: 'pr', price: 1800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_mgmt', label: 'Reputation Management', category: 'pr', price: 2000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_rep_recov', label: 'Reputation Recovery', category: 'pr', price: 2800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_media_outreach', label: 'Media / Press Outreach', category: 'pr', price: 2200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_strategy', label: 'PR Strategy', category: 'pr', price: 1500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'pr_smo', label: 'Social Media Optimization', category: 'pr', price: 850, minPrice: null, maxPrice: null, enabled: true },
 
-  // --- Content Requirements ---
-  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true },
-  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: null, minPrice: null, maxPrice: null, enabled: true }
+  // --- Content Requirements ($ prices) ---
+  { id: 'cnt_scriptwriting', label: 'Scriptwriting', category: 'content', price: 600, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_video_editing', label: 'Video Editing', category: 'content', price: 1500, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_short_form', label: 'Short-form Content', category: 'content', price: 1200, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_long_form', label: 'Long-form Content', category: 'content', price: 1800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_strategy', label: 'Content Strategy', category: 'content', price: 800, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_social_content', label: 'Social Media Content', category: 'content', price: 1000, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_post_prod', label: 'Content Post-Production', category: 'content', price: 1100, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_smo', label: 'Social Media Optimization', category: 'content', price: 850, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_motion_graphics', label: 'Motion Graphics', category: 'content', price: 900, minPrice: null, maxPrice: null, enabled: true },
+  { id: 'cnt_repurposing', label: 'Content Repurposing', category: 'content', price: 750, minPrice: null, maxPrice: null, enabled: true }
 ];
 
 // Category metadata
@@ -339,9 +339,9 @@ function renderRequirements() {
       // Price label formatting
       let priceLabel = '';
       if (item.price !== null && item.price > 0) {
-        priceLabel = `₹${item.price.toLocaleString('en-IN')}`;
+        priceLabel = `$${item.price.toLocaleString('en-US')}`;
       } else if (item.minPrice !== null && item.maxPrice !== null) {
-        priceLabel = `₹${item.minPrice.toLocaleString('en-IN')} – ₹${item.maxPrice.toLocaleString('en-IN')}`;
+        priceLabel = `$${item.minPrice.toLocaleString('en-US')} – $${item.maxPrice.toLocaleString('en-US')}`;
       }
 
       row.innerHTML = `
@@ -399,12 +399,12 @@ function calculateInvestmentSummary() {
   if (hasRangePrices) {
     return {
       type: 'range',
-      displayValue: `₹${minTotal.toLocaleString('en-IN')} – ₹${maxTotal.toLocaleString('en-IN')}`
+      displayValue: `$${minTotal.toLocaleString('en-US')} – $${maxTotal.toLocaleString('en-US')}`
     };
   } else if (hasSetPrices && singleTotal > 0) {
     return {
       type: 'exact',
-      displayValue: `₹${singleTotal.toLocaleString('en-IN')}`
+      displayValue: `$${singleTotal.toLocaleString('en-US')}`
     };
   } else {
     return {
@@ -1119,6 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializePlanConfigurator();
   initializeCareers();
   initializeTeamModal();
+  initializePlatformClick();
   initializeContactForm();
   initializeScrollEffects();
 });
@@ -1186,4 +1187,33 @@ function initializeTeamModal() {
   }
   checkTeamHash();
   window.addEventListener('hashchange', checkTeamHash);
+}
+
+
+// ==========================================================================
+// INTERACTIVE PLATFORM CLICK HANDLER (Select Plan on Click)
+// ==========================================================================
+function initializePlatformClick() {
+  document.querySelectorAll('.platform-box[data-platform]').forEach((box) => {
+    const handlePlatformSelect = (e) => {
+      e.preventDefault();
+      const platformName = box.getAttribute('data-platform') || 'Social Media';
+      // Open plan modal with Content discipline preselected
+      openPlanModal('content');
+      // Set custom requirement field to target platform
+      const customReq = document.getElementById('customRequirementInput');
+      if (customReq) {
+        customReq.value = `Target Platform: ${platformName} content & distribution`;
+      }
+      // Immediately navigate to Step 2 so client can pick exact services with $ prices
+      goToPlanStep(2);
+    };
+
+    box.addEventListener('click', handlePlatformSelect);
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        handlePlatformSelect(e);
+      }
+    });
+  });
 }
