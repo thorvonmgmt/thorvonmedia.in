@@ -39,6 +39,7 @@
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#plan-tool" class="nav-link">Plan</a></li>
           <li><a href="#team" class="nav-link" data-action="open-team">Team</a></li>
+          <li><a href="#careers" class="nav-link nav-link-careers" data-action="open-careers-portal">Careers <span class="nav-hiring-indicator">Hiring</span></a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <button class="btn btn-primary nav-cta" data-action="open-plan">
@@ -60,6 +61,7 @@
           <li><a href="#services" class="mobile-nav-link">Services</a></li>
           <li><a href="#plan-tool" class="mobile-nav-link">Plan</a></li>
           <li><a href="#team" class="mobile-nav-link" data-action="open-team">Team</a></li>
+          <li><a href="#careers" class="mobile-nav-link" data-action="open-careers-portal">Careers <span class="nav-hiring-indicator">Hiring</span></a></li>
           <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-cta-wrap">
@@ -377,8 +379,8 @@
           </a>
         </li>
         <li>
-          <a href="#careers" class="footer-link" data-action="open-careers-portal">
-            Careers
+          <a href="#careers" class="footer-link nav-link-careers" data-action="open-careers-portal">
+            Careers <span class="nav-hiring-indicator">Hiring</span>
           </a>
         </li>
         <li>
@@ -885,7 +887,7 @@
           <div class="team-modal-careers-banner">
             <div class="team-careers-text">
               <h4 class="team-careers-title">Want to build with us?</h4>
-              <p class="team-careers-desc">We're expanding our remote content and PR teams worldwide.</p>
+              <p class="team-careers-desc">We're expanding our team worldwide — actively hiring Clippers, Social Media Managers, Content Creators, and Acquisition Heads.</p>
             </div>
             <button type="button" class="btn btn-outline team-careers-btn" data-action="open-careers-portal">
               View Open Roles <span class="arrow">↗</span>
@@ -900,7 +902,7 @@
 
   <!-- ========================================================================
        EMBEDDED CAREERS PORTAL MODAL
-       Discrete, embedded in the website, accessible via footer or #careers hash
+       Discrete, embedded in the website, accessible via nav, footer, or #careers hash
        ======================================================================== -->
   <div class="thorvon-modal-backdrop" id="careersPortalModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="careersPortalTitle">
     <div class="thorvon-modal-container careers-portal-modal-container">
@@ -916,11 +918,71 @@
       <!-- Portal Body -->
       <div class="careers-portal-body">
         <p class="careers-portal-statement">
-          We're always looking for talented, reliable people to join us. If you love writing, visual design, or keeping creative projects on track, take a look at our open roles below.
+          We're actively growing our remote creative and growth team worldwide. If you're a high-craft clipper, social media manager, content creator, or creator & brand acquisition leader, explore our open positions below.
         </p>
 
         <div class="careers-grid careers-portal-grid">
-          <!-- Card 1: Content Writers -->
+          <!-- Card 1: Clipper -->
+          <article class="job-card" data-action="open-job" data-role="clipper" tabindex="0" role="button" aria-label="View Clipper Position">
+            <div class="job-card-top">
+              <span class="job-badge job-badge-urgent">URGENT HIRING</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Clipper</h3>
+              <p class="job-desc">Extract high-retention clips, dynamic captions, and viral moments from long-form footage.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
+
+          <!-- Card 2: Social Media Manager -->
+          <article class="job-card" data-action="open-job" data-role="social-media-manager" tabindex="0" role="button" aria-label="View Social Media Manager Position">
+            <div class="job-card-top">
+              <span class="job-badge job-badge-urgent">URGENT HIRING</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Social Media Manager</h3>
+              <p class="job-desc">Drive native distribution, community engagement, and calendar growth across our 5 core feeds.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
+
+          <!-- Card 3: Content Creator -->
+          <article class="job-card" data-action="open-job" data-role="content-creator" tabindex="0" role="button" aria-label="View Content Creator Position">
+            <div class="job-card-top">
+              <span class="job-badge job-badge-urgent">URGENT HIRING</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Content Creator</h3>
+              <p class="job-desc">On-camera storytelling, viral scripting, and magnetic video delivery for founder campaigns.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
+
+          <!-- Card 4: Creator & Brand Acquisition Head -->
+          <article class="job-card" data-action="open-job" data-role="brand-acquisition-head" tabindex="0" role="button" aria-label="View Creator & Brand Acquisition Head Position">
+            <div class="job-card-top">
+              <span class="job-badge job-badge-lead">LEADERSHIP</span>
+              <span class="job-type">REMOTE · FULL-TIME</span>
+            </div>
+            <div class="job-card-main">
+              <h3 class="job-title">Creator & Brand Acquisition Head</h3>
+              <p class="job-desc">Lead creator talent scouting, strategic brand partnerships, and client acquisition retainers.</p>
+            </div>
+            <div class="job-card-bottom">
+              <span class="job-cta">View Position <span class="arrow">→</span></span>
+            </div>
+          </article>
+
+          <!-- Card 5: Content Writers -->
           <article class="job-card" data-action="open-job" data-role="content-writers" tabindex="0" role="button" aria-label="View Content Writers Position">
             <div class="job-card-top">
               <span class="job-badge">OPEN</span>
@@ -935,7 +997,7 @@
             </div>
           </article>
 
-          <!-- Card 2: Graphic Designers -->
+          <!-- Card 6: Graphic Designers -->
           <article class="job-card" data-action="open-job" data-role="graphic-designers" tabindex="0" role="button" aria-label="View Graphic Designers Position">
             <div class="job-card-top">
               <span class="job-badge">OPEN</span>
@@ -950,7 +1012,7 @@
             </div>
           </article>
 
-          <!-- Card 3: Project Manager -->
+          <!-- Card 7: Project Manager -->
           <article class="job-card" data-action="open-job" data-role="project-manager" tabindex="0" role="button" aria-label="View Project Manager Position">
             <div class="job-card-top">
               <span class="job-badge">OPEN</span>

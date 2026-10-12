@@ -363,6 +363,34 @@ ul {
   width: 100%;
 }
 
+.nav-link-careers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.nav-hiring-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover .nav-hiring-indicator,
+.footer-link:hover .nav-hiring-indicator {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
 .nav-cta {
   padding: 0.65rem 1.3rem;
   font-size: 0.9rem;
@@ -1059,6 +1087,18 @@ ul {
   line-height: 1;
 }
 
+.job-badge-urgent {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.job-badge-lead {
+  color: #c084fc;
+  background-color: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
 .job-type {
   font-family: var(--font-mono);
   font-size: 0.725rem;
@@ -1566,7 +1606,7 @@ ul {
 
 .careers-portal-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 

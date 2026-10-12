@@ -851,6 +851,90 @@ function initializeContactForm() {
 // ==========================================================================
 
 const CareerPositions = {
+  'clipper': {
+    title: 'Clipper (Short-Form Video Editor)',
+    openings: 'URGENT HIRING',
+    type: 'REMOTE · FULL-TIME / PART-TIME',
+    tagline: 'High-retention video cutting, pacing, kinetic typography, and viral clip extraction.',
+    desc: 'We are seeking a fast, creative Clipper who lives and breathes modern short-form video algorithms. You will extract high-impact viral moments from podcasts, long-form interviews, and raw founder footage, formatting them into retention-optimized reels, Shorts, and X clips.',
+    responsibilities: [
+      'Extract high-retention 30–60s clips from long-form podcasts, streams, and founder recordings.',
+      'Craft captivating first 3-second hooks with dynamic pacing, motion graphics, and sound design.',
+      'Add clean kinetic captions, B-roll overlays, visual zooms, and seamless jump cuts.',
+      'Format and export tailored aspect ratios optimized natively for X, YouTube Shorts, and Instagram Reels.',
+      'Collaborate with our creative director to maintain premier visual standards across all client deliverables.'
+    ],
+    requirements: [
+      'Proven portfolio or links to viral short-form clips you have edited (Reels, TikTok, Shorts, X)',
+      'Proficiency in Adobe Premiere Pro, After Effects, DaVinci Resolve, or CapCut Pro',
+      'Sharp understanding of viral retention curves, pacing, sound effects, and hook psychology',
+      'Ability to turn around fast, reliable iterations in a high-growth remote agency workflow'
+    ],
+    emailSubject: 'Application for Clipper — Thorvonmedia'
+  },
+  'social-media-manager': {
+    title: 'Social Media Manager',
+    openings: 'URGENT HIRING',
+    type: 'REMOTE · FULL-TIME',
+    tagline: 'Omnichannel feed ownership, native distribution, and high-converting audience growth.',
+    desc: 'We are looking for an analytical and culturally plugged-in Social Media Manager to take full ownership of publishing, feed optimization, and audience engagement across Reddit, X, LinkedIn, YouTube, and Instagram for our founder and brand clients.',
+    responsibilities: [
+      'Manage and deploy native publishing schedules across Reddit, X, LinkedIn, YouTube, and Instagram.',
+      'Write platform-native captions, threads, and post descriptions tailored to each platform’s unique tone.',
+      'Engage in comment sections, founder communities, subreddits, and target industry discussions to drive authority.',
+      'Monitor audience retention, impression analytics, and generate actionable weekly performance reports.',
+      'Partner with writers and editors to continuously optimize hooks and content formats based on live data.'
+    ],
+    requirements: [
+      'Minimum 1.5+ years of experience managing active social feeds for founders, creators, or B2B/consumer brands',
+      'Deep fluency in native mechanics and etiquette across Reddit, X, LinkedIn, and Instagram',
+      'Excellent written English with a sharp voice suited for executive and founder communication',
+      'Organized, proactive, and proficient with scheduling suites and native analytics tools'
+    ],
+    emailSubject: 'Application for Social Media Manager — Thorvonmedia'
+  },
+  'content-creator': {
+    title: 'Content Creator',
+    openings: 'URGENT HIRING',
+    type: 'REMOTE · FULL-TIME / PART-TIME',
+    tagline: 'Charismatic on-camera storytelling, creative scripting, and viral concept development.',
+    desc: 'We are looking for an engaging, on-camera Content Creator who knows how to captivate an audience. You will script, shoot, and direct original short-form and long-form video concepts that translate complex founder insights, tech innovations, and brand stories into magnetic media.',
+    responsibilities: [
+      'Ideate, script, and record high-retention video content for social feeds and brand campaigns.',
+      'Transform complex founder ideas, case studies, and PR storylines into captivating, digestible videos.',
+      'Test emerging viral formats, audio trends, visual framing, and hooks to drive exponential reach.',
+      'Collaborate with our video clippers and creative directors to produce flawless final exports.',
+      'Maintain an authentic, confident, and persuasive on-camera persona.'
+    ],
+    requirements: [
+      'Demonstrated portfolio or links showcasing strong on-camera performance (YouTube, Reels, TikTok, or X)',
+      'Natural charisma, articulate delivery, and strong scriptwriting / storytelling capability',
+      'Clean recording setup (clean audio mic, high-resolution camera/phone, good lighting)',
+      'Passionate about internet culture, creator trends, and media psychology'
+    ],
+    emailSubject: 'Application for Content Creator — Thorvonmedia'
+  },
+  'brand-acquisition-head': {
+    title: 'Creator & Brand Acquisition Head',
+    openings: 'LEADERSHIP ROLE',
+    type: 'REMOTE · FULL-TIME',
+    tagline: 'Leading creator talent scouting, strategic brand partnerships, and agency client acquisition.',
+    desc: 'We are seeking a driven, commercially minded Creator & Brand Acquisition Head to accelerate Thorvonmedia’s market presence. You will spearhead outbound relationships with high-caliber creators, tech founders, and top brands, structuring high-impact content production and PR retainers.',
+    responsibilities: [
+      'Identify, scout, and sign top-tier digital creators and prominent founders for our talent and distribution roster.',
+      'Initiate and manage outbound BD pipelines targeting venture-backed startups, brands, and executive teams.',
+      'Lead introductory strategy calls, pitch Thorvonmedia’s full-suite creative infrastructure, and close retainer deals.',
+      'Structure win-win brand sponsorships, content syndication agreements, and PR partnerships.',
+      'Work directly with agency leadership to develop high-converting commercial packages and onboarding pipelines.'
+    ],
+    requirements: [
+      '2+ years of proven track record in talent acquisition, brand partnerships, creator management, or agency sales',
+      'Existing network of connections across digital creators, agency leaders, or founder communities',
+      'Exceptional consultative sales, negotiation, and high-stakes relationship-building skills',
+      'Autonomous, goal-driven mindset with a hunger to lead a high-growth business development arm'
+    ],
+    emailSubject: 'Application for Creator & Brand Acquisition Head — Thorvonmedia'
+  },
   'content-writers': {
     title: 'Content Writers',
     openings: 'OPEN',
