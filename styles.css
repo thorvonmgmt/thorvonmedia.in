@@ -317,7 +317,7 @@ ul {
 }
 
 .brand-logo-img {
-  height: 25px;
+  height: clamp(26px, 3.2vw, 32px);
   width: auto;
   display: block;
   object-fit: contain;
