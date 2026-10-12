@@ -1304,45 +1304,747 @@ function initializePlatformClick() {
 
 
 // ==========================================================================
-// PLATFORM ACTION MODAL CONTROLLER (Audit Request & Curated / Custom Plans)
+// PLATFORM ACTION MODAL CONFIGURATION & CONTROLLER
+// Platform-Specific Packages, Deliverables & Interactive Calculators
 // ==========================================================================
+const PlatformPackagesConfig = {
+  YouTube: {
+    name: 'YouTube',
+    title: 'YouTube — Video Content & Channel Growth',
+    subtitle: 'High-retention creative engineered, formatted, and natively deployed for YouTube channel growth.',
+    auditDesc: "Our creative and PR directors will review your brand's YouTube presence. You'll receive an in-depth breakdown of your video retention curves, thumbnail CTR, title packaging, and distribution gaps.",
+    plans: {
+      starter: {
+        kicker: 'STARTER',
+        title: 'Channel Foundation',
+        price: '$450',
+        freq: '/ mo',
+        desc: 'Consistent video editing and Shorts production to establish an active, optimized channel foundation.',
+        deliverables: [
+          '8 YouTube Shorts with kinetic captions, sound design & B-roll',
+          '1 Long-form video edited (up to 12 mins with retention pacing)',
+          '2 Custom high-CTR thumbnail concepts & title packaging',
+          '4 YouTube Community engagement posts (polls & updates)',
+          'Basic channel SEO metadata, tags & end-screen setup',
+          'Monthly performance analytics review'
+        ]
+      },
+      growth: {
+        kicker: 'GROWTH & PR',
+        title: 'Channel Growth',
+        price: '$890',
+        freq: '/ mo',
+        featured: true,
+        desc: 'Aggressive channel scaling engineered for algorithmic reach, high retention, and subscriber conversion.',
+        deliverables: [
+          '18 YouTube Shorts engineered for the Shorts feed algorithm',
+          '3 Long-form videos fully edited (motion graphics, sound design & zooms)',
+          '4 Custom 3D/vector high-CTR thumbnails with A/B title concepts',
+          '8 YouTube Community tab posts & audience engagement',
+          'Comprehensive video SEO, chapter markers & tag optimization',
+          'Dedicated YouTube creative director & monthly strategy review'
+        ]
+      },
+      enterprise: {
+        kicker: 'ENTERPRISE',
+        title: 'Channel Authority',
+        price: '$1,450',
+        freq: '/ mo',
+        desc: 'Turnkey studio production engine to build undisputed industry authority and scale long-term viewership.',
+        deliverables: [
+          '30 YouTube Shorts (daily Shorts publishing frequency)',
+          '6 Flagship long-form videos with bespoke animation & storycraft',
+          '8 Premium custom thumbnails with retention-tested hook packaging',
+          'Full Community management, pinned comments & audience interaction',
+          'Complete channel management, upload scheduling & playlist architecture',
+          'Bi-weekly 1-on-1 growth strategy calls & deep analytics audits'
+        ]
+      },
+      custom: {
+        kicker: 'CUSTOM',
+        title: 'Custom Channel Plan',
+        price: 'Tailored',
+        freq: 'Pricing',
+        desc: 'Select your preferred quantities of long-form videos, Shorts, thumbnails, Community posts, and channel management.',
+        deliverables: [
+          'Select custom quantities of long-form videos & YouTube Shorts',
+          'Add custom high-CTR thumbnails and Community tab posts',
+          'Include turnkey channel management, SEO & scheduling',
+          'Real-time investment calculation in $ to match your exact budget'
+        ]
+      }
+    },
+    calculatorServices: [
+      { id: 'yt_longform', name: 'Long-form Video Editing (up to 15 min)', unitPrice: 180, unitLabel: '/ video', defaultQty: 2, minQty: 0, maxQty: 20, desc: 'Pacing, motion graphics, sound design & 1080p/4K master' },
+      { id: 'yt_shorts', name: 'YouTube Shorts (Captions & B-roll)', unitPrice: 35, unitLabel: '/ short', defaultQty: 8, minQty: 0, maxQty: 60, desc: 'Vertical 9:16 cuts with kinetic subtitles & retention hooks' },
+      { id: 'yt_thumbnails', name: 'Custom High-CTR Thumbnails', unitPrice: 40, unitLabel: '/ thumbnail', defaultQty: 4, minQty: 0, maxQty: 30, desc: 'High-contrast typography, face cutouts & A/B variants' },
+      { id: 'yt_community', name: 'Community Tab Posts & Polls', unitPrice: 20, unitLabel: '/ post', defaultQty: 4, minQty: 0, maxQty: 30, desc: 'Interactive audience polls, teasers & subscriber updates' },
+      { id: 'yt_seo', name: 'Channel SEO & Metadata Optimization', unitPrice: 120, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Keyword research, playlist curation, tags & end-screen cards' },
+      { id: 'yt_mgmt', name: 'Turnkey Channel Upload & Scheduling', unitPrice: 100, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Native scheduling, description links & community comment moderation' }
+    ]
+  },
+
+  LinkedIn: {
+    name: 'LinkedIn',
+    title: 'LinkedIn — Ghostwriting & Personal Branding',
+    subtitle: 'Executive ghostwriting, founder storytelling, high-converting carousels, and authority personal branding.',
+    auditDesc: "Our editorial directors will evaluate your LinkedIn personal brand or company page. You'll receive a detailed review of your profile positioning, post hooks, content resonance, and executive voice.",
+    plans: {
+      starter: {
+        kicker: 'STARTER',
+        title: 'Professional Presence',
+        price: '$450',
+        freq: '/ mo',
+        desc: 'Consistent executive visibility to maintain credibility, engage your network, and build professional authority.',
+        deliverables: [
+          '4 High-impact ghostwritten posts per month (1 per week)',
+          'Ghostwriting based on client’s industry expertise & interview notes',
+          'Hook optimization, scannable formatting & headline refinement',
+          'Strategic hashtag & tag positioning',
+          'Basic monthly content calendar & publishing support',
+          'Monthly reach, impressions & engagement report'
+        ]
+      },
+      growth: {
+        kicker: 'GROWTH & PR',
+        title: 'Authority Building',
+        price: '$890',
+        freq: '/ mo',
+        featured: true,
+        desc: 'Rapidly establish top-of-mind industry authority and attract high-value inbound business through thought leadership.',
+        deliverables: [
+          '14 Strategic ghostwritten posts per month (3–4 per week)',
+          'Deep founder storytelling, contrarian insights & frameworks',
+          '2 Custom-designed PDF document / carousel slide decks',
+          'Executive personal branding & headline/bio positioning overhaul',
+          'Proactive comment engagement playbook to spark executive discussions',
+          'Bi-weekly performance review & content refinement calls'
+        ]
+      },
+      enterprise: {
+        kicker: 'ENTERPRISE',
+        title: 'Industry Authority',
+        price: '$1,450',
+        freq: '/ mo',
+        desc: 'Category-defining thought leadership campaigns for founders, CEOs, and venture-backed leadership teams.',
+        deliverables: [
+          '22 Ghostwritten posts per month (daily publishing Monday–Friday)',
+          'Advanced thought leadership campaigns & executive op-eds',
+          '4 Premium branded PDF carousels & infographic slide decks',
+          '2 Monthly long-form LinkedIn newsletter / article editions',
+          'Outbound executive PR positioning & creator tag syndication',
+          'Turnkey profile management, connection strategy & comprehensive analytics'
+        ]
+      },
+      custom: {
+        kicker: 'CUSTOM',
+        title: 'Custom LinkedIn Plan',
+        price: 'Tailored',
+        freq: 'Pricing',
+        desc: 'Select your preferred volume of written posts, carousels, newsletters, and personal branding services.',
+        deliverables: [
+          'Choose exact monthly volume of ghostwritten posts',
+          'Add custom branded PDF carousels & newsletters',
+          'Include executive bio positioning & comment engagement',
+          'Real-time investment calculation in $ tailored to your goals'
+        ]
+      }
+    },
+    calculatorServices: [
+      { id: 'li_posts', name: 'Ghostwritten Thought Leadership Posts', unitPrice: 45, unitLabel: '/ post', defaultQty: 8, minQty: 0, maxQty: 40, desc: 'Scannable copy, strong first-line hooks & founder voice' },
+      { id: 'li_carousels', name: 'Branded PDF Document / Carousel Decks', unitPrice: 80, unitLabel: '/ carousel', defaultQty: 2, minQty: 0, maxQty: 15, desc: '5–8 Slide visual presentations formatted for LinkedIn PDF viewer' },
+      { id: 'li_newsletters', name: 'Long-form LinkedIn Newsletter / Article', unitPrice: 120, unitLabel: '/ edition', defaultQty: 1, minQty: 0, maxQty: 8, desc: '1,000–1,500 Word deep-dive article published on your profile' },
+      { id: 'li_profile', name: 'Executive Profile & Bio Makeover', unitPrice: 150, unitLabel: '/ one-time', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Headline, About section, banner copy & Featured section curation' },
+      { id: 'li_publishing', name: 'Publishing & Native Calendar Scheduling', unitPrice: 90, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Timed publishing at peak executive hours with formatted copy' },
+      { id: 'li_comments', name: 'Strategic Comment Engagement Management', unitPrice: 120, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Targeted replies to industry leaders and prospective partners' }
+    ]
+  },
+
+  Instagram: {
+    name: 'Instagram',
+    title: 'Instagram — Reels & Visual Content',
+    subtitle: 'High-retention Reels, aesthetic carousel design, Story sequences, and cohesive feed curation.',
+    auditDesc: "Our visual directors will inspect your Instagram profile. You'll receive actionable critique on your Reels hooks, grid aesthetic, Story retention, and profile conversion rate.",
+    plans: {
+      starter: {
+        kicker: 'STARTER',
+        title: 'Consistent Presence',
+        price: '$450',
+        freq: '/ mo',
+        desc: 'Establish a polished visual presence with consistent short-form Reels and curated carousel graphics.',
+        deliverables: [
+          '8 Platform-native Reels with kinetic subtitles & trending audio',
+          '2 High-value graphic carousel posts (up to 6 slides each)',
+          '8 Story sequences (interactive stickers, polls & updates)',
+          'Engaging caption copywriting with curated hashtag clusters',
+          'Basic visual grid planning & scheduled publishing',
+          'Monthly follower growth & engagement analytics'
+        ]
+      },
+      growth: {
+        kicker: 'GROWTH & PR',
+        title: 'Audience Growth',
+        price: '$890',
+        freq: '/ mo',
+        featured: true,
+        desc: 'Accelerate organic reach on Explore & Reels with viral hook editing and high-converting carousels.',
+        deliverables: [
+          '18 High-retention Reels with custom motion graphics, B-roll & sound effects',
+          '5 Branded multi-slide carousels and infographics',
+          '20 Story sequences with interactive audience prompts & highlights',
+          'Creative hook scripting & retention-optimized pacing',
+          'Profile bio optimization, highlight covers & grid curation',
+          'Bi-weekly performance reviews & content optimization sprints'
+        ]
+      },
+      enterprise: {
+        kicker: 'ENTERPRISE',
+        title: 'Brand Dominance',
+        price: '$1,450',
+        freq: '/ mo',
+        desc: 'Turnkey daily Instagram media engine driving brand prestige, massive reach, and inbound client conversions.',
+        deliverables: [
+          '28 Platform-native Reels (daily reel publishing cadence)',
+          '8 Editorial carousels & design-forward static brand assets',
+          'Daily Story sequences & interactive community engagement',
+          'Complete feed management, pinned asset strategy & aesthetic direction',
+          'DM lead automation strategy & campaign launches',
+          'Dedicated creative director & comprehensive weekly growth reports'
+        ]
+      },
+      custom: {
+        kicker: 'CUSTOM',
+        title: 'Custom Instagram Plan',
+        price: 'Tailored',
+        freq: 'Pricing',
+        desc: 'Choose your desired volume of Reels, carousels, static graphics, Stories, and account management.',
+        deliverables: [
+          'Select monthly number of short-form Reels & video edits',
+          'Add multi-slide carousels, static designs & Stories',
+          'Include aesthetic feed layout & community management',
+          'Real-time investment calculation in $ to match your goals'
+        ]
+      }
+    },
+    calculatorServices: [
+      { id: 'ig_reels', name: 'High-Retention Instagram Reels', unitPrice: 40, unitLabel: '/ reel', defaultQty: 8, minQty: 0, maxQty: 40, desc: 'Dynamic cuts, kinetic captions, sound effects & trending audio' },
+      { id: 'ig_carousels', name: 'Multi-Slide Carousel Posts (up to 8 slides)', unitPrice: 60, unitLabel: '/ carousel', defaultQty: 2, minQty: 0, maxQty: 15, desc: 'High-save educational carousels with custom graphic styling' },
+      { id: 'ig_stories', name: 'Interactive Story Sequences (3–5 frames)', unitPrice: 25, unitLabel: '/ sequence', defaultQty: 4, minQty: 0, maxQty: 30, desc: 'Engaging stories with polls, quizzes, links & CTA prompts' },
+      { id: 'ig_statics', name: 'Single Static Graphic / Brand Asset', unitPrice: 35, unitLabel: '/ post', defaultQty: 2, minQty: 0, maxQty: 20, desc: 'Branded quotes, announcements & minimal promotional graphics' },
+      { id: 'ig_feed', name: 'Visual Feed Curation & Aesthetic Layout', unitPrice: 110, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Cohesive color palette, cover templates & highlight icons' },
+      { id: 'ig_mgmt', name: 'Turnkey Account Scheduling & Management', unitPrice: 120, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Native publishing, hashtag tracking & comment moderation' }
+    ]
+  },
+
+  X: {
+    name: 'X',
+    title: 'X — Writing & Real-Time Distribution',
+    subtitle: 'Punchy text posts, viral breakdown threads, real-time commentary, and rapid audience growth.',
+    auditDesc: "Our content strategists will evaluate your X profile. You'll receive a detailed assessment of your tweet hooks, thread retention, reply effectiveness, and conversion architecture.",
+    plans: {
+      starter: {
+        kicker: 'STARTER',
+        title: 'Consistent Voice',
+        price: '$450',
+        freq: '/ mo',
+        desc: 'Maintain a consistent, authoritative daily presence with high-signal posts and structured threads.',
+        deliverables: [
+          '24 Concise, high-signal text posts per month',
+          '2 In-depth breakdown threads with hook tweets & takeaways',
+          'Professional profile bio & banner copywriting optimization',
+          'Native scheduling calendar timed for peak follower activity',
+          'Basic impression, retweet & profile visit tracking',
+          'Monthly audience insights & growth recap'
+        ]
+      },
+      growth: {
+        kicker: 'GROWTH & PR',
+        title: 'Audience Expansion',
+        price: '$890',
+        freq: '/ mo',
+        featured: true,
+        desc: 'Expand your reach rapidly across Tech, Founder, and Creator Twitter with viral threads and real-time commentary.',
+        deliverables: [
+          '55 Curated text posts, quotes & insights per month (daily cadence)',
+          '6 Viral breakdown threads dissecting case studies, frameworks & trends',
+          'Real-time commentary & timely newsjacking on trending topics',
+          'Content repurposing (translating founder blogs/podcasts into X formats)',
+          'Reply strategy playbook to engage top industry accounts',
+          'Bi-weekly performance audits & hook conversion testing'
+        ]
+      },
+      enterprise: {
+        kicker: 'ENTERPRISE',
+        title: 'Category Authority',
+        price: '$1,450',
+        freq: '/ mo',
+        desc: 'Establish market leadership on X with high-frequency publishing, flagship threads, and strategic positioning.',
+        deliverables: [
+          '100+ Strategic text posts & quote commentary (3–4 daily drops)',
+          '12 Long-form breakdown threads and published X Articles',
+          'High-profile account reply positioning & network engagement',
+          'End-to-end media repurposing from all client video/audio assets',
+          'Dedicated growth sprint architecture & follower acquisition campaigns',
+          'Full account management, schedule execution & weekly analytics reviews'
+        ]
+      },
+      custom: {
+        kicker: 'CUSTOM',
+        title: 'Custom X Plan',
+        price: 'Tailored',
+        freq: 'Pricing',
+        desc: 'Select your exact monthly volume of text posts, threads, writing support, and account management.',
+        deliverables: [
+          'Choose monthly post volume & thread production',
+          'Add real-time commentary sprints & long-form X articles',
+          'Include profile branding makeover & reply strategy',
+          'Real-time investment calculation in $ to suit your needs'
+        ]
+      }
+    },
+    calculatorServices: [
+      { id: 'x_posts', name: 'Concise High-Signal Text Posts', unitPrice: 12, unitLabel: '/ post', defaultQty: 25, minQty: 0, maxQty: 150, desc: 'Punchy observations, quotes, frameworks & contrarian takes' },
+      { id: 'x_threads', name: 'In-Depth Viral Threads (6–10 tweets)', unitPrice: 65, unitLabel: '/ thread', defaultQty: 3, minQty: 0, maxQty: 20, desc: 'Compelling hook tweet, storytelling body & actionable conclusion' },
+      { id: 'x_articles', name: 'Long-form X Article / Editorial Essay', unitPrice: 95, unitLabel: '/ article', defaultQty: 1, minQty: 0, maxQty: 10, desc: 'Long-form published essay formatted natively on X Premium' },
+      { id: 'x_commentary', name: 'Real-Time Industry Commentary Sprints', unitPrice: 120, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Curated timely takes on breaking news & trending industry topics' },
+      { id: 'x_profile', name: 'Profile Bio, Banner & Pinned Makeover', unitPrice: 90, unitLabel: '/ one-time', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'High-converting bio copy, banner layout & pinned tweet hook' },
+      { id: 'x_mgmt', name: 'Turnkey Schedule Execution & Analytics', unitPrice: 100, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Peak-time scheduling, link tracking & monthly follower growth analysis' }
+    ]
+  },
+
+  Reddit: {
+    name: 'Reddit',
+    title: 'Reddit — Community & Organic Distribution',
+    subtitle: 'Subreddit research, high-value discussion posts, authentic comment engagement, and organic reputation distribution.',
+    auditDesc: "Our community team will conduct an audit of your brand's presence across target subreddits. You'll receive a detailed analysis of community sentiment, brand discussions, rule compliance, and organic opportunities.",
+    plans: {
+      starter: {
+        kicker: 'STARTER',
+        title: 'Community Foundation',
+        price: '$450',
+        freq: '/ mo',
+        desc: 'Establish an authentic, rule-compliant footprint across targeted niche subreddits without spammy promotional tactics.',
+        deliverables: [
+          'Deep niche subreddit mapping & audience rule compliance audit',
+          '4 Authentic, value-first discussion posts written in native markdown',
+          'Non-promotional framing focused on genuine problem-solving',
+          'Basic comment monitoring and engagement response tracking',
+          'Strict compliance with individual subreddit etiquette & karma safety',
+          'Monthly community sentiment & thread traction report'
+        ]
+      },
+      growth: {
+        kicker: 'GROWTH & PR',
+        title: 'Community Expansion',
+        price: '$890',
+        freq: '/ mo',
+        featured: true,
+        desc: 'Scale organic discussions and brand trust across major communities through tailored guides and active participation.',
+        deliverables: [
+          '12 Researched community contributions, teardowns & resource guides',
+          'Subreddit-specific voice adaptation tailored to each community’s culture',
+          'Ongoing comment participation, constructive moderation & discussion replies',
+          'Organic referral architecture and native brand positioning',
+          'Karma and account safety governance with zero spam risks',
+          'Bi-weekly subreddit sentiment, referral traffic & thread performance reports'
+        ]
+      },
+      enterprise: {
+        kicker: 'ENTERPRISE',
+        title: 'Community Authority',
+        price: '$1,450',
+        freq: '/ mo',
+        desc: 'Category-leading organic presence, founder AMA hosting, reputation management, and multi-subreddit reach.',
+        deliverables: [
+          '22 Comprehensive community guides, case studies & discussion threads',
+          'Multi-subreddit strategic campaign architecture across industry & founder subreddits',
+          'Founder AMA (Ask Me Anything) planning, scripting & live moderation support',
+          'Dedicated daily community monitoring, brand mentions & sentiment defense',
+          'Crisis reputation monitoring & organic narrative protection',
+          'Detailed monthly analytics: community sentiment score, thread reach & referral breakdown'
+        ]
+      },
+      custom: {
+        kicker: 'CUSTOM',
+        title: 'Custom Reddit Plan',
+        price: 'Tailored',
+        freq: 'Pricing',
+        desc: 'Select your desired level of subreddit research, post creation, comment management, and reporting services.',
+        deliverables: [
+          'Select number of value-first posts and comprehensive teardowns',
+          'Add ongoing comment participation & community moderation',
+          'Include founder AMA coordination & sentiment monitoring',
+          'Real-time investment calculation in $ strictly following platform rules'
+        ]
+      }
+    },
+    calculatorServices: [
+      { id: 'rd_research', name: 'Target Subreddit Research & Compliance Audit', unitPrice: 120, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Mapping 10–15 high-relevance subreddits, rules, moderators & karma minimums' },
+      { id: 'rd_posts', name: 'Native Value-First Discussion Posts', unitPrice: 55, unitLabel: '/ post', defaultQty: 4, minQty: 0, maxQty: 25, desc: 'Authentic problem-solving discussions written in native markdown' },
+      { id: 'rd_guides', name: 'Comprehensive Teardowns / Resource Guides', unitPrice: 95, unitLabel: '/ guide', defaultQty: 1, minQty: 0, maxQty: 10, desc: 'High-karma comprehensive teardown or resource directory' },
+      { id: 'rd_comments', name: 'Active Comment Engagement & Moderation', unitPrice: 120, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Engaging constructively in thread replies and maintaining organic goodwill' },
+      { id: 'rd_ama', name: 'Founder AMA Strategy & Moderation Support', unitPrice: 200, unitLabel: '/ event', defaultQty: 0, minQty: 0, maxQty: 3, desc: 'Pitching moderators, drafting announcement copy & live reply support' },
+      { id: 'rd_sentiment', name: 'Brand Sentiment & Reputation Monitoring', unitPrice: 110, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Keyword tracking across Reddit for unlinked mentions & reputation risks' }
+    ]
+  }
+};
+
 let currentActivePlatform = 'YouTube';
+let activeCalculatorQuantities = {};
+
+function renderPlatformPackages(platformKey) {
+  const config = PlatformPackagesConfig[platformKey] || PlatformPackagesConfig.YouTube;
+  const plansGrid = document.getElementById('platformPlansGrid');
+  if (!plansGrid) return;
+
+  const p = config.plans;
+
+  plansGrid.innerHTML = `
+    <!-- Plan 1: Starter -->
+    <div class="platform-plan-card" data-plan="${p.starter.title}" data-price="${p.starter.price} / month">
+      <div class="plan-card-header">
+        <span class="plan-card-kicker">${p.starter.kicker}</span>
+        <h3 class="plan-card-title">${p.starter.title}</h3>
+        <div class="plan-card-price">${p.starter.price} <span class="plan-card-freq">${p.starter.freq}</span></div>
+      </div>
+      <p class="plan-card-desc">${p.starter.desc}</p>
+      <ul class="plan-services-list">
+        ${p.starter.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
+      </ul>
+      <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Starter — ${p.starter.title}" data-plan-price="${p.starter.price} / month">
+        Opt In to Plan <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Plan 2: Growth & PR (Featured Most Popular) -->
+    <div class="platform-plan-card featured" data-plan="${p.growth.title}" data-price="${p.growth.price} / month">
+      <div class="plan-featured-tag">MOST POPULAR</div>
+      <div class="plan-card-header">
+        <span class="plan-card-kicker">${p.growth.kicker}</span>
+        <h3 class="plan-card-title">${p.growth.title}</h3>
+        <div class="plan-card-price">${p.growth.price} <span class="plan-card-freq">${p.growth.freq}</span></div>
+      </div>
+      <p class="plan-card-desc">${p.growth.desc}</p>
+      <ul class="plan-services-list">
+        ${p.growth.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
+      </ul>
+      <button type="button" class="btn btn-primary plan-opt-btn" data-action="opt-in-plan" data-plan-name="Growth & PR — ${p.growth.title}" data-plan-price="${p.growth.price} / month">
+        Opt In to Plan <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Plan 3: Enterprise -->
+    <div class="platform-plan-card" data-plan="${p.enterprise.title}" data-price="${p.enterprise.price} / month">
+      <div class="plan-card-header">
+        <span class="plan-card-kicker">${p.enterprise.kicker}</span>
+        <h3 class="plan-card-title">${p.enterprise.title}</h3>
+        <div class="plan-card-price">${p.enterprise.price} <span class="plan-card-freq">${p.enterprise.freq}</span></div>
+      </div>
+      <p class="plan-card-desc">${p.enterprise.desc}</p>
+      <ul class="plan-services-list">
+        ${p.enterprise.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
+      </ul>
+      <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Enterprise — ${p.enterprise.title}" data-plan-price="${p.enterprise.price} / month">
+        Opt In to Plan <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Plan 4: Custom Plan -->
+    <div class="platform-plan-card custom-plan-card">
+      <div class="plan-card-header">
+        <span class="plan-card-kicker">${p.custom.kicker}</span>
+        <h3 class="plan-card-title">${p.custom.title}</h3>
+        <div class="plan-card-price">Tailored <span class="plan-card-freq">Pricing</span></div>
+      </div>
+      <p class="plan-card-desc">${p.custom.desc}</p>
+      <ul class="plan-services-list">
+        ${p.custom.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
+      </ul>
+      <button type="button" class="btn btn-primary plan-opt-btn" data-action="open-custom-plan">
+        Build Custom Plan <span class="arrow">→</span>
+      </button>
+    </div>
+  `;
+
+  // Attach opt-in listeners on newly rendered cards
+  plansGrid.querySelectorAll('[data-action="opt-in-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const planName = btn.getAttribute('data-plan-name') || 'Growth Plan';
+      const planPrice = btn.getAttribute('data-plan-price') || '$890 / month';
+      showPlanOptinPanel(planName, planPrice, `Target Platform: ${config.name}`);
+    });
+  });
+
+  // Attach custom plan button listener
+  plansGrid.querySelectorAll('[data-action="open-custom-plan"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchPlatformTab('custom');
+    });
+  });
+}
+
+function renderPlatformCalculator(platformKey) {
+  const config = PlatformPackagesConfig[platformKey] || PlatformPackagesConfig.YouTube;
+  const gridEl = document.getElementById('customCalcServicesGrid');
+  if (!gridEl) return;
+
+  activeCalculatorQuantities = {};
+  config.calculatorServices.forEach((s) => {
+    activeCalculatorQuantities[s.id] = s.defaultQty;
+  });
+
+  gridEl.innerHTML = config.calculatorServices.map((s) => {
+    const qty = activeCalculatorQuantities[s.id];
+    const subtotal = qty * s.unitPrice;
+    return `
+      <div class="calc-service-item ${qty > 0 ? 'has-quantity' : ''}" data-service-id="${s.id}">
+        <div class="calc-service-info">
+          <div class="calc-service-header">
+            <h4 class="calc-service-name">${s.name}</h4>
+            <span class="calc-unit-price">$${s.unitPrice} ${s.unitLabel}</span>
+          </div>
+          <p class="calc-service-desc">${s.desc}</p>
+        </div>
+        <div class="calc-stepper-wrap">
+          <div class="calc-stepper">
+            <button type="button" class="btn-stepper btn-decrement" data-service-id="${s.id}" aria-label="Decrease ${s.name}">−</button>
+            <input type="number" class="stepper-input" data-service-id="${s.id}" min="${s.minQty}" max="${s.maxQty}" value="${qty}" aria-label="${s.name} Quantity">
+            <button type="button" class="btn-stepper btn-increment" data-service-id="${s.id}" aria-label="Increase ${s.name}">+</button>
+          </div>
+          <div class="calc-item-subtotal" id="subtotal_${s.id}">$${subtotal.toLocaleString()}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Wire up quantity steppers
+  gridEl.querySelectorAll('.btn-decrement').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const sId = btn.getAttribute('data-service-id');
+      const input = gridEl.querySelector(`.stepper-input[data-service-id="${sId}"]`);
+      if (!input) return;
+      const min = parseInt(input.min, 10) || 0;
+      let val = (parseInt(input.value, 10) || 0) - 1;
+      if (val < min) val = min;
+      input.value = val;
+      activeCalculatorQuantities[sId] = val;
+      recalculateCustomPlan(platformKey);
+    });
+  });
+
+  gridEl.querySelectorAll('.btn-increment').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const sId = btn.getAttribute('data-service-id');
+      const input = gridEl.querySelector(`.stepper-input[data-service-id="${sId}"]`);
+      if (!input) return;
+      const max = parseInt(input.max, 10) || 100;
+      let val = (parseInt(input.value, 10) || 0) + 1;
+      if (val > max) val = max;
+      input.value = val;
+      activeCalculatorQuantities[sId] = val;
+      recalculateCustomPlan(platformKey);
+    });
+  });
+
+  gridEl.querySelectorAll('.stepper-input').forEach((input) => {
+    input.addEventListener('input', () => {
+      const sId = input.getAttribute('data-service-id');
+      const min = parseInt(input.min, 10) || 0;
+      const max = parseInt(input.max, 10) || 100;
+      let val = parseInt(input.value, 10);
+      if (isNaN(val) || val < min) val = min;
+      if (val > max) val = max;
+      activeCalculatorQuantities[sId] = val;
+      recalculateCustomPlan(platformKey);
+    });
+  });
+
+  // Wire up Request Custom Plan CTA
+  const btnRequestCustom = document.getElementById('btnRequestCustomPlan');
+  if (btnRequestCustom) {
+    btnRequestCustom.onclick = (e) => {
+      e.preventDefault();
+      const config = PlatformPackagesConfig[platformKey] || PlatformPackagesConfig.YouTube;
+      let total = 0;
+      const deliverablesSummary = [];
+
+      config.calculatorServices.forEach((s) => {
+        const qty = activeCalculatorQuantities[s.id] || 0;
+        if (qty > 0) {
+          const cost = qty * s.unitPrice;
+          total += cost;
+          deliverablesSummary.push(`${qty}× ${s.name} ($${cost.toLocaleString()})`);
+        }
+      });
+
+      const formattedTotal = `$${total.toLocaleString()} / month`;
+      const notesPreFill = deliverablesSummary.length > 0 
+        ? `Configured Deliverables:\n• ${deliverablesSummary.join('\n• ')}\n\nCalculated Monthly Total: ${formattedTotal}`
+        : `Custom tailored plan for ${config.name}.`;
+
+      showPlanOptinPanel(`Custom Plan (${config.name})`, formattedTotal, notesPreFill);
+    };
+  }
+
+  recalculateCustomPlan(platformKey);
+}
+
+function recalculateCustomPlan(platformKey) {
+  const config = PlatformPackagesConfig[platformKey] || PlatformPackagesConfig.YouTube;
+  let total = 0;
+  const pillsEl = document.getElementById('calcDeliverablesPills');
+  const totalEl = document.getElementById('calcTotalAmountDisplay');
+  const gridEl = document.getElementById('customCalcServicesGrid');
+
+  const activePills = [];
+
+  config.calculatorServices.forEach((s) => {
+    const qty = activeCalculatorQuantities[s.id] || 0;
+    const subtotal = qty * s.unitPrice;
+    total += subtotal;
+
+    // Update item subtotal in UI
+    const subtotalEl = document.getElementById(`subtotal_${s.id}`);
+    if (subtotalEl) {
+      subtotalEl.textContent = `$${subtotal.toLocaleString()}`;
+    }
+
+    // Toggle active card class
+    const cardEl = gridEl?.querySelector(`.calc-service-item[data-service-id="${s.id}"]`);
+    if (cardEl) {
+      if (qty > 0) {
+        cardEl.classList.add('has-quantity');
+      } else {
+        cardEl.classList.remove('has-quantity');
+      }
+    }
+
+    if (qty > 0) {
+      activePills.push(`
+        <span class="calc-deliverable-pill">
+          <span class="pill-qty">${qty}×</span> ${s.name}
+        </span>
+      `);
+    }
+  });
+
+  if (totalEl) {
+    totalEl.innerHTML = `$${total.toLocaleString()} <span class="calc-total-freq">/ month</span>`;
+  }
+
+  if (pillsEl) {
+    if (activePills.length > 0) {
+      pillsEl.innerHTML = activePills.join('');
+    } else {
+      pillsEl.innerHTML = `<span class="calc-deliverable-pill-empty">No deliverables selected yet (adjust quantities above)</span>`;
+    }
+  }
+}
+
+function showPlanOptinPanel(planName, planPrice, prefillNotes) {
+  const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsContainer = document.getElementById('platformActionTabs');
+  const contentPlans = document.getElementById('tabContentPlans');
+  const contentCustom = document.getElementById('tabContentCustom');
+  const contentAudit = document.getElementById('tabContentAudit');
+
+  const planNameText = document.getElementById('confirmPlanNameText');
+  const planPriceText = document.getElementById('confirmPlanPriceText');
+  const hiddenPlan = document.getElementById('optinSelectedPlan');
+  const hiddenPrice = document.getElementById('optinSelectedPrice');
+  const hiddenPlatform = document.getElementById('optinSelectedPlatform');
+  const notesField = document.getElementById('optinNotes');
+
+  if (planNameText) planNameText.textContent = planName;
+  if (planPriceText) planPriceText.textContent = planPrice;
+  if (hiddenPlan) hiddenPlan.value = planName;
+  if (hiddenPrice) hiddenPrice.value = planPrice;
+  if (hiddenPlatform) hiddenPlatform.value = currentActivePlatform;
+  if (notesField && prefillNotes) notesField.value = prefillNotes;
+
+  // Hide tab switcher and tabs
+  if (tabsContainer) tabsContainer.style.display = 'none';
+  if (contentPlans) contentPlans.style.display = 'none';
+  if (contentCustom) contentCustom.style.display = 'none';
+  if (contentAudit) contentAudit.style.display = 'none';
+
+  if (confirmPanel) {
+    confirmPanel.style.display = 'block';
+    confirmPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function hidePlanOptinPanel() {
+  const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsContainer = document.getElementById('platformActionTabs');
+  if (confirmPanel) confirmPanel.style.display = 'none';
+  if (tabsContainer) tabsContainer.style.display = 'flex';
+
+  // Restore active tab
+  const activeBtn = document.querySelector('.platform-tab-btn.active');
+  const tabName = activeBtn ? activeBtn.getAttribute('data-tab') : 'plans';
+  switchPlatformTab(tabName);
+}
 
 function openPlatformActionModal(platformName, iconHtml) {
   const modal = document.getElementById('platformActionModal');
   if (!modal) return;
 
   currentActivePlatform = platformName;
+  const config = PlatformPackagesConfig[platformName] || PlatformPackagesConfig.YouTube;
 
-  // Update Header & Highlights
+  // Update Header & Badge
   const badgeName = document.getElementById('platformModalName');
-  if (badgeName) badgeName.textContent = platformName;
+  if (badgeName) badgeName.textContent = config.name;
 
   const iconWrap = document.getElementById('platformModalIconWrap');
   if (iconWrap && iconHtml) {
     iconWrap.innerHTML = iconHtml;
   }
 
+  // Update Main Modal Title
+  const titleEl = document.getElementById('platformActionTitle');
+  if (titleEl) {
+    titleEl.textContent = config.title;
+  }
+
   // Highlight platform in text
   modal.querySelectorAll('.platform-name-highlight').forEach((el) => {
-    el.textContent = platformName;
+    el.textContent = config.name;
   });
+
+  // Update intro texts
+  const tabIntro = document.getElementById('platformTabIntro');
+  if (tabIntro) {
+    tabIntro.innerHTML = `Choose a structured growth plan engineered for <span class="platform-name-highlight">${config.name}</span>, or build a custom plan tailored to your exact creative requirements.`;
+  }
+
+  const calcDesc = document.getElementById('calculatorPlatformDesc');
+  if (calcDesc) {
+    calcDesc.textContent = `Configure your exact monthly deliverables for ${config.name}. Quantities automatically update your monthly total in real time.`;
+  }
+
+  const auditDesc = modal.querySelector('.audit-desc');
+  if (auditDesc && config.auditDesc) {
+    auditDesc.textContent = config.auditDesc;
+  }
 
   // Pre-fill hidden inputs
   const auditHidden = document.getElementById('auditPlatformHidden');
-  if (auditHidden) auditHidden.value = platformName;
+  if (auditHidden) auditHidden.value = config.name;
 
   const optinHidden = document.getElementById('optinSelectedPlatform');
-  if (optinHidden) optinHidden.value = platformName;
+  if (optinHidden) optinHidden.value = config.name;
 
-  // Reset tab to Plans
+  // Render Platform Plans & Calculator
+  renderPlatformPackages(platformName);
+  renderPlatformCalculator(platformName);
+
+  // Hide confirm panel if showing and reset to Plans tab
+  hidePlanOptinPanel();
   switchPlatformTab('plans');
-
-  // Hide confirm panel if showing
-  const confirmPanel = document.getElementById('planOptinConfirmPanel');
-  const plansGrid = document.getElementById('platformPlansGrid');
-  if (confirmPanel) confirmPanel.style.display = 'none';
-  if (plansGrid) plansGrid.style.display = 'grid';
 
   // Open modal
   modal.classList.add('is-open');
@@ -1362,26 +2064,52 @@ function closePlatformActionModal() {
 
 function switchPlatformTab(tabName) {
   const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnCustom = document.getElementById('tabBtnCustom');
   const tabBtnAudit = document.getElementById('tabBtnAudit');
   const contentPlans = document.getElementById('tabContentPlans');
+  const contentCustom = document.getElementById('tabContentCustom');
   const contentAudit = document.getElementById('tabContentAudit');
+  const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsContainer = document.getElementById('platformActionTabs');
 
-  if (tabName === 'audit') {
-    tabBtnPlans?.classList.remove('active');
-    tabBtnPlans?.setAttribute('aria-selected', 'false');
+  // Hide confirm panel if switching tabs
+  if (confirmPanel) confirmPanel.style.display = 'none';
+  if (tabsContainer) tabsContainer.style.display = 'flex';
+
+  // Deactivate all
+  [tabBtnPlans, tabBtnCustom, tabBtnAudit].forEach((btn) => {
+    btn?.classList.remove('active');
+    btn?.setAttribute('aria-selected', 'false');
+  });
+
+  [contentPlans, contentCustom, contentAudit].forEach((c) => {
+    if (c) {
+      c.classList.remove('active');
+      c.style.display = 'none';
+    }
+  });
+
+  if (tabName === 'custom') {
+    tabBtnCustom?.classList.add('active');
+    tabBtnCustom?.setAttribute('aria-selected', 'true');
+    if (contentCustom) {
+      contentCustom.classList.add('active');
+      contentCustom.style.display = 'block';
+    }
+  } else if (tabName === 'audit') {
     tabBtnAudit?.classList.add('active');
     tabBtnAudit?.setAttribute('aria-selected', 'true');
-
-    contentPlans?.classList.remove('active');
-    contentAudit?.classList.add('active');
+    if (contentAudit) {
+      contentAudit.classList.add('active');
+      contentAudit.style.display = 'block';
+    }
   } else {
-    tabBtnAudit?.classList.remove('active');
-    tabBtnAudit?.setAttribute('aria-selected', 'false');
     tabBtnPlans?.classList.add('active');
     tabBtnPlans?.setAttribute('aria-selected', 'true');
-
-    contentAudit?.classList.remove('active');
-    contentPlans?.classList.add('active');
+    if (contentPlans) {
+      contentPlans.classList.add('active');
+      contentPlans.style.display = 'block';
+    }
   }
 }
 
@@ -1398,60 +2126,19 @@ function initializePlatformActionModal() {
     if (e.target === modal) closePlatformActionModal();
   });
 
-  // Tab switching
+  // Tab switching (Plans vs Custom Calculator vs Audit)
   const tabBtnPlans = document.getElementById('tabBtnPlans');
+  const tabBtnCustom = document.getElementById('tabBtnCustom');
   const tabBtnAudit = document.getElementById('tabBtnAudit');
+
   tabBtnPlans?.addEventListener('click', () => switchPlatformTab('plans'));
+  tabBtnCustom?.addEventListener('click', () => switchPlatformTab('custom'));
   tabBtnAudit?.addEventListener('click', () => switchPlatformTab('audit'));
 
-  // Opt-in buttons on curated plans
-  modal.querySelectorAll('[data-action="opt-in-plan"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const planName = btn.getAttribute('data-plan-name') || 'Growth Plan';
-      const planPrice = btn.getAttribute('data-plan-price') || '$2,500 / month';
-
-      const plansGrid = document.getElementById('platformPlansGrid');
-      const confirmPanel = document.getElementById('planOptinConfirmPanel');
-      const planNameText = document.getElementById('confirmPlanNameText');
-      const planPriceText = document.getElementById('confirmPlanPriceText');
-      const hiddenPlan = document.getElementById('optinSelectedPlan');
-      const hiddenPrice = document.getElementById('optinSelectedPrice');
-
-      if (planNameText) planNameText.textContent = planName;
-      if (planPriceText) planPriceText.textContent = planPrice;
-      if (hiddenPlan) hiddenPlan.value = planName;
-      if (hiddenPrice) hiddenPrice.value = planPrice;
-
-      if (plansGrid) plansGrid.style.display = 'none';
-      if (confirmPanel) {
-        confirmPanel.style.display = 'block';
-        confirmPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    });
-  });
-
-  // Back to plans button
+  // Cancel / Back button from Confirmation Panel
   const btnCancelOptin = document.getElementById('btnCancelOptin');
   btnCancelOptin?.addEventListener('click', () => {
-    const plansGrid = document.getElementById('platformPlansGrid');
-    const confirmPanel = document.getElementById('planOptinConfirmPanel');
-    if (confirmPanel) confirmPanel.style.display = 'none';
-    if (plansGrid) plansGrid.style.display = 'grid';
-  });
-
-  // Custom Plan trigger -> opens custom configurator
-  modal.querySelectorAll('[data-action="open-custom-plan"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closePlatformActionModal();
-      openPlanModal('content');
-      const customReq = document.getElementById('customRequirementInput');
-      if (customReq) {
-        customReq.value = `Target Platform: ${currentActivePlatform} custom plan`;
-      }
-      goToPlanStep(2);
-    });
+    hidePlanOptinPanel();
   });
 
   // Opt-in Form Submission
