@@ -859,15 +859,16 @@ ul {
 }
 
 .founder-badge {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-primary);
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #93c5fd;
-  background-color: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.28);
-  padding: 0.35rem 0.8rem;
+  color: #60a5fa;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(37, 99, 235, 0.08));
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.18);
+  padding: 0.38rem 0.9rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
@@ -3176,4 +3177,259 @@ ul {
   color: var(--color-text-muted);
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   OMNICHANNEL PLATFORM DISTRIBUTION MARQUEE SECTION
+   ========================================================================== */
+.platform-ticker-section {
+  position: relative;
+  padding: clamp(3.25rem, 5vw, 4.5rem) 0 clamp(3.5rem, 5.5vw, 4.75rem);
+  background: #000000;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.platform-ticker-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto clamp(2rem, 3.5vw, 2.75rem);
+  padding: 0 1.5rem;
+}
+
+.platform-ticker-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #60a5fa;
+  margin-bottom: 0.6rem;
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.platform-ticker-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.platform-ticker-subtitle {
+  font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.platform-marquee-wrap {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  contain: paint;
+  position: relative;
+  padding: 0.5rem 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.platform-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  animation: platformMarqueeGlide 30s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.platform-marquee-wrap:hover .platform-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes platformMarqueeGlide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Individual Platform Box */
+.platform-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.75rem;
+  background: rgba(16, 19, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.platform-box:hover {
+  transform: translateY(-3px);
+  background: rgba(24, 28, 38, 0.95);
+}
+
+.platform-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.platform-name {
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 1. Reddit Brand Styling */
+.platform-box-reddit:hover {
+  border-color: rgba(255, 69, 0, 0.55);
+  box-shadow: 0 6px 24px rgba(255, 69, 0, 0.22);
+}
+.reddit-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  color: #ffffff;
+}
+
+/* 2. X Brand Styling */
+.platform-box-x:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+}
+.x-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+/* 3. LinkedIn Brand Styling */
+.platform-box-linkedin:hover {
+  border-color: rgba(10, 102, 194, 0.55);
+  box-shadow: 0 6px 24px rgba(10, 102, 194, 0.22);
+}
+.linkedin-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+.linkedin-in-accent {
+  background: #0A66C2;
+  color: #ffffff;
+  padding: 0.1rem 0.32rem;
+  border-radius: 3px;
+  font-weight: 700;
+  margin-left: 2px;
+  font-size: 0.95rem;
+}
+
+/* 4. Snapchat Brand Styling */
+.platform-box-snapchat:hover {
+  border-color: rgba(255, 252, 0, 0.55);
+  box-shadow: 0 6px 24px rgba(255, 252, 0, 0.2);
+}
+.snapchat-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+/* 5. YouTube Brand Styling */
+.platform-box-youtube:hover {
+  border-color: rgba(255, 0, 0, 0.55);
+  box-shadow: 0 6px 24px rgba(255, 0, 0, 0.22);
+}
+.youtube-font {
+  font-family: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+/* 6. Instagram Brand Styling */
+.platform-box-instagram:hover {
+  border-color: rgba(225, 48, 108, 0.55);
+  box-shadow: 0 6px 24px rgba(225, 48, 108, 0.22);
+}
+.ig-icon-svg {
+  stroke: #f43f5e;
+}
+.instagram-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+/* 7. Facebook Brand Styling */
+.platform-box-facebook:hover {
+  border-color: rgba(8, 102, 255, 0.55);
+  box-shadow: 0 6px 24px rgba(8, 102, 255, 0.22);
+}
+.facebook-font {
+  font-family: "Klavika", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.22rem;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-transform: lowercase;
+}
+
+/* ==========================================================================
+   EMBEDDED OUR TEAM MODAL STYLING
+   ========================================================================== */
+.team-modal-container {
+  max-width: 860px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.team-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.5rem 0 1rem;
+}
+
+.team-modal-lead {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.25rem;
+  margin: 0;
+}
+
+.modal-founder-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }

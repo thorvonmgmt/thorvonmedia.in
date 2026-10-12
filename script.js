@@ -558,6 +558,20 @@ function initializeSmoothScroll() {
         return;
       }
 
+      if (targetId === '#team' || this.dataset.action === 'open-team') {
+        e.preventDefault();
+        closeMobileMenu();
+        openTeamModal();
+        return;
+      }
+
+      if (targetId === '#careers' || this.dataset.action === 'open-careers-portal') {
+        e.preventDefault();
+        closeMobileMenu();
+        openCareersPortalModal();
+        return;
+      }
+
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
@@ -1123,6 +1137,15 @@ function closeTeamModal() {
 }
 
 function initializeTeamModal() {
+  // Triggers to open team modal
+  document.querySelectorAll('[data-action="open-team"]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      openTeamModal();
+    });
+  });
+
   // Triggers to close team modal
   document.querySelectorAll('[data-action="close-team"]').forEach((btn) => {
     btn.addEventListener('click', () => closeTeamModal());
