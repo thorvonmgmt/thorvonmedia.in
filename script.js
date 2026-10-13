@@ -2304,9 +2304,8 @@ Primary Goal: ${goal}`,
   });
 }
 
-
 // ==========================================================================
-// PORTFOLIO / SELECTED WORK MODULE
+// PORTFOLIO / SELECTED WORK MODULE (MINIMALIST & EDITORIAL)
 // Interactive Media Showcase with Live Google Drive Video Embed & Lightbox
 // ==========================================================================
 const PortfolioItems = [
@@ -2314,258 +2313,237 @@ const PortfolioItems = [
   {
     id: 'vid-founder',
     category: 'video',
-    badge: 'VIDEO · 4K',
-    badgeClass: 'badge-video',
+    formatBadge: '4K CINEMA',
     title: 'Founder Narrative & Vision',
-    subtitle: 'Executive Flagship Film · 4K Master',
-    description: 'Cinematic founder profile engineered for category leadership, investor trust, and executive personal branding.',
+    discipline: 'Founder PR Film',
+    deliverable: '4K ProRes Master',
+    description: 'Cinematic founder profile engineered for category authority, investor trust, and nationwide digital press syndication.',
     fileId: '1q6vz5B0NShDOhwn-aSF1lKibezpZ9ikJ',
-    type: 'video',
-    meta: '4K CINEMATIC · FLAGSHIP'
+    type: 'video'
   },
   {
     id: 'vid-doc-cinematic',
     category: 'video',
-    badge: 'VIDEO · 4K',
-    badgeClass: 'badge-video',
+    formatBadge: '4K CINEMA',
     title: 'Clinical Authority — Cinematic',
-    subtitle: 'Healthcare Thought Leadership · Brand Film',
+    discipline: 'Doctor Series',
+    deliverable: 'Documentary Master',
     description: 'Authority-building medical documentary cut combining cinematic B-roll with high-trust clinical narrative.',
     fileId: '1pdnWorTvp6s-bcn3pBTtFVTMV3E-Z24O',
-    type: 'video',
-    meta: 'HEALTHCARE PR · CINEMATIC'
+    type: 'video'
   },
   {
     id: 'vid-doc-explanation',
     category: 'video',
-    badge: 'VIDEO · 4K',
-    badgeClass: 'badge-video',
+    formatBadge: '4K CINEMA',
     title: 'Educational Deep-Dive',
-    subtitle: 'High-Retention Clinical Breakdown',
+    discipline: 'Authority Series',
+    deliverable: 'High-Retention Cut',
     description: 'Complex medical and wellness concepts translated into high-retention, accessible visual storytelling.',
     fileId: '1OBUXAm8Dg4gcq8wdu0WtLdE92b8iPoeG',
-    type: 'video',
-    meta: 'AUTHORITY SERIES · HIGH RETENTION'
+    type: 'video'
   },
   {
     id: 'vid-doc-habits',
     category: 'video',
-    badge: 'VIDEO · VIRAL',
-    badgeClass: 'badge-video',
+    formatBadge: 'VIRAL FORMAT',
     title: 'Good vs. Bad Habits Series',
-    subtitle: 'High-Engagement Comparative Framework',
+    discipline: 'Comparative Series',
+    deliverable: 'Split-Screen Framework',
     description: 'Viral split-screen comparison format engineered for algorithmic distribution and maximum save rates.',
     fileId: '1v8bK_VFad9kUIky6P0Q7yghmPZTMZKKA',
-    type: 'video',
-    meta: 'COMPARATIVE EDIT · VIRAL HOOK'
+    type: 'video'
   },
   {
     id: 'vid-doc-consult',
     category: 'video',
-    badge: 'VIDEO · 4K',
-    badgeClass: 'badge-video',
+    formatBadge: '4K CINEMA',
     title: 'Clinical Consultation Case Study',
-    subtitle: 'Professional Practice Showcase',
+    discipline: 'Clinical Case Study',
+    deliverable: 'Patient Narrative Cut',
     description: 'Real patient consultation narrative highlighting practitioner empathy, clinical expertise, and real outcomes.',
     fileId: '1LK_OP3nB8vSjx1LHjuNtMzXD1iuNIoC-',
-    type: 'video',
-    meta: 'CASE STUDY · DOCUMENTARY'
+    type: 'video'
   },
   {
     id: 'vid-doc-rapid',
     category: 'video',
-    badge: 'SHORT-FORM',
-    badgeClass: 'badge-video',
+    formatBadge: 'SHORT-FORM',
     title: 'Rapid Fire Micro-Interview',
-    subtitle: 'Fast-Paced Personality & Q&A',
+    discipline: 'Short-Form Content',
+    deliverable: 'Micro-Interview Cut',
     description: 'Brisk, charismatic Q&A format designed to humanize executive practitioners and build instant audience affinity.',
     fileId: '1jKesp-058CtMJ1qRWK-_MHw0AVxX9pAn',
-    type: 'video',
-    meta: 'MICRO INTERVIEW · SHORT-FORM'
+    type: 'video'
   },
   {
     id: 'vid-pr-1',
     category: 'video',
-    badge: 'PR · BROADCAST',
-    badgeClass: 'badge-video',
+    formatBadge: 'PR BROADCAST',
     title: 'Media & Press Announcement',
-    subtitle: 'Tier-1 Broadcast Distribution Cut',
+    discipline: 'Editorial PR',
+    deliverable: 'Broadcast Distribution Cut',
     description: 'Strategic media broadcast highlighting institutional milestones, press features, and brand momentum.',
     fileId: '1m3tk5BZJ4zkXu6IKkw04ZntAVZIdVX1f',
-    type: 'video',
-    meta: 'EDITORIAL PR · PRESS DISTRIBUTION'
+    type: 'video'
   },
   {
     id: 'vid-pr-2',
     category: 'video',
-    badge: 'PR · BROADCAST',
-    badgeClass: 'badge-video',
+    formatBadge: 'PR BROADCAST',
     title: 'Founder Keynote PR Spotlight',
-    subtitle: 'Public Relations & Stage Cut',
+    discipline: 'Keynote & PR',
+    deliverable: 'Stage Thought Leadership',
     description: 'Stage keynote thought leadership spotlight tailored for corporate stakeholders and digital press syndication.',
     fileId: '1xaWtIMkOvGT76Ih7hm_XCyqCtPRJqm-q',
-    type: 'video',
-    meta: 'FOUNDER KEYNOTE · THOUGHT LEADERSHIP'
+    type: 'video'
   },
 
   // --- 2. High-CTR Thumbnails (12 Items) ---
   {
     id: 'thumb-t01',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 01',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Psychologically tested contrast and hook framing engineered for double-digit CTR across competitive feeds.',
     fileId: '1t1ToMaJ2HVCZmfQSPrtxFjzdZSlrTr5t',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t02',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 02',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Curiosity-gap framing and bold editorial typography tailored for long-form retention algorithms.',
     fileId: '1PAOGnqQwpr2hYAALM8Mp2lwdVQ4JkTEv',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t03',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 03',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Executive authority positioning paired with dramatic lighting and minimal text distractions.',
     fileId: '1mcUm31ZVM-ghd470_qSYsDgfg2fGo4nF',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t04',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 04',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'High-impact visual metaphor designed to capture browse and suggested traffic across tech verticals.',
     fileId: '1pk7Xc11uvfdNudRKyvjPvF5QiTGscrDe',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t05',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 05',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Story-driven character focal point combined with high-saturation color grading.',
     fileId: '1LdQdZeBm7nnAhmyvu-If2i2PKibYQBfT',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t06',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 06',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Clean editorial packaging emphasizing subject expression and high-converting visual tension.',
     fileId: '12jHxwCURQ0F8MI2-ks8xCWqG0spBGpe0',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t07',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 07',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Streamlined design layout engineered specifically for mobile recommendation feeds.',
     fileId: '1UV19N_30v9UBqwTwjoTCJzpiw43kTHT0',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t08',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 08',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Subtle gradient mapping and depth layering to elevate perceived channel production quality.',
     fileId: '1VxWZ8Nhc4sULIqq0L7WOd2fT0GrWxW3d',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t09',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 09',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'High-clarity object isolation and crisp focal hierarchy for rapid scannability.',
     fileId: '1yOfsGrKeRAFKYOZprrfgSjicq0VbHeE5',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t10',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 10',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Emotional hook architecture optimized for audience retention and click velocity.',
     fileId: '17VeNXg9OFZk4gjmTP0TxISB-T5vZcTDw',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t11',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 11',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Premium monochromatic aesthetic with selective neon highlights for high brand recall.',
     fileId: '12Ho0ZN-C_7vvDsBIdf5HCR3mcxHu9ORc',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
   {
     id: 'thumb-t12',
     category: 'thumbnail',
-    badge: 'THUMBNAIL · HIGH CTR',
-    badgeClass: 'badge-thumbnail',
+    formatBadge: 'HIGH-CTR',
     title: 'High-CTR Packaging Concept 12',
-    subtitle: 'YouTube Click-Through Optimization',
+    discipline: 'YouTube Packaging',
+    deliverable: 'High-CTR Visual Asset',
     description: 'Flagship packaging asset combining cinematic tone with clear value proposition.',
     fileId: '1yTZYGomUkH32gRdbKP1LEwasoFsx9Og-',
-    type: 'image',
-    meta: 'YOUTUBE PACKAGING · CTR TESTED'
+    type: 'image'
   },
 
   // --- 3. Podcast Carousel (1 Multi-Slide Collection) ---
   {
     id: 'carousel-podcast',
     category: 'carousel',
-    badge: 'CAROUSEL · 6 SLIDES',
-    badgeClass: 'badge-carousel',
+    formatBadge: 'CAROUSEL · 6',
     title: 'Executive Podcast Carousel Deck',
-    subtitle: 'LinkedIn & Instagram Multi-Slide Editorial',
-    description: '6-slide interactive carousel breaking down podcast takeaways into high-save, swipeable thought leadership.',
+    discipline: 'Editorial Carousel',
+    deliverable: '6-Slide Thought Leadership Deck',
+    description: '6-slide interactive carousel breaking down podcast takeaways into high-save, swipeable thought leadership for LinkedIn and Instagram.',
     fileId: '1UuZnIpq6YEd4SJqkqn-IJIXqbREAWK-f',
     type: 'carousel',
-    meta: '6 EDITORIAL SLIDES · MULTI-PLATFORM',
     slides: [
       { id: '1UuZnIpq6YEd4SJqkqn-IJIXqbREAWK-f', label: 'Slide 1 — The Hook & Premise' },
       { id: '1MECSb9Nk2d6lIeAoXckZpc1oscIJu0sq', label: 'Slide 2 — The Paradigm Shift' },
@@ -2580,38 +2558,35 @@ const PortfolioItems = [
   {
     id: 'reel-rc01',
     category: 'reel',
-    badge: 'REEL COVER · 9:16',
-    badgeClass: 'badge-reel',
+    formatBadge: 'REEL · 9:16',
     title: 'Viral Reel Cover 01',
-    subtitle: 'Vertical Video Hook Packaging',
+    discipline: 'Short-Form Packaging',
+    deliverable: '9:16 Vertical Cover',
     description: 'Thumb-stopping 9:16 vertical cover art designed for Instagram Reels, YouTube Shorts, and TikTok algorithms.',
     fileId: '1oCaE7_TRO_m48NSZSE1ou5EAmPlstAY6',
-    type: 'image',
-    meta: '9:16 VERTICAL · VIRAL HOOK'
+    type: 'image'
   },
   {
     id: 'reel-rc02',
     category: 'reel',
-    badge: 'REEL COVER · 9:16',
-    badgeClass: 'badge-reel',
+    formatBadge: 'REEL · 9:16',
     title: 'Viral Reel Cover 02',
-    subtitle: 'Vertical Video Hook Packaging',
-    description: 'High-contrast vertical packaging built to maximize organic explore grid taps.',
+    discipline: 'Short-Form Packaging',
+    deliverable: '9:16 Vertical Cover',
+    description: 'High-contrast vertical packaging built to maximize organic explore grid taps and profile conversions.',
     fileId: '1jUyiPS7Q4L9-jFjfp635IQIpylQFP9Tw',
-    type: 'image',
-    meta: '9:16 VERTICAL · VIRAL HOOK'
+    type: 'image'
   },
   {
     id: 'reel-rc03',
     category: 'reel',
-    badge: 'REEL COVER · 9:16',
-    badgeClass: 'badge-reel',
+    formatBadge: 'REEL · 9:16',
     title: 'Viral Reel Cover 03',
-    subtitle: 'Vertical Video Hook Packaging',
-    description: 'Clean typographic layout with bold negative space for executive short-form content.',
+    discipline: 'Short-Form Packaging',
+    deliverable: '9:16 Vertical Cover',
+    description: 'Clean typographic layout with bold negative space for executive short-form thought leadership.',
     fileId: '19fGqy4KqCsRDtCLi5euoE0omy7jUQsky',
-    type: 'image',
-    meta: '9:16 VERTICAL · VIRAL HOOK'
+    type: 'image'
   }
 ];
 
@@ -2630,11 +2605,40 @@ function initPortfolioSystem() {
 
   renderPortfolioCards('all');
   initPortfolioFilters();
+  initPortfolioSpotlight();
   initPortfolioLightboxHandlers();
 }
 
 /**
- * Render cards matching filter
+ * Initialize Flagship Spotlight Card click
+ */
+function initPortfolioSpotlight() {
+  const spotlight = document.getElementById('portfolioSpotlight');
+  if (!spotlight) return;
+
+  const triggerOpen = () => {
+    // Open the Founder Flagship Video (first item in PortfolioItems)
+    const founderIndex = currentFilteredList.findIndex(item => item.id === 'vid-founder');
+    if (founderIndex !== -1) {
+      openPortfolioLightbox(founderIndex);
+    } else {
+      // If currently filtered, switch to all and open
+      renderPortfolioCards('all');
+      openPortfolioLightbox(0);
+    }
+  };
+
+  spotlight.addEventListener('click', triggerOpen);
+  spotlight.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      triggerOpen();
+    }
+  });
+}
+
+/**
+ * Render cards matching filter in Minimalist Format
  */
 function renderPortfolioCards(filter) {
   const grid = document.getElementById('portfolioGrid');
@@ -2651,24 +2655,25 @@ function renderPortfolioCards(filter) {
     const isCarousel = item.type === 'carousel';
 
     return `
-      <article class="portfolio-card" data-index="${index}" data-category="${item.category}" tabindex="0" role="button" aria-label="View ${item.title}">
-        <div class="portfolio-card-media">
-          <span class="portfolio-media-badge ${item.badgeClass}">${item.badge}</span>
-          <img src="${thumbUrl}" alt="${item.title}" class="portfolio-thumb-img" loading="lazy" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'450\\' viewBox=\\'0 0 800 450\\'%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' fill=\\'%23111317\\'/ %3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' fill=\\'%2394a3b8\\' font-family=\\'sans-serif\\' font-size=\\'20\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'%3EThorvon Media Portfolio%3C/text%3E%3C/svg%3E';">
-          <div class="portfolio-card-overlay">
-            ${isVideo ? '<span class="play-indicator-btn" aria-label="Play Video">▶</span>' : `<span class="expand-indicator-btn">${isCarousel ? 'Browse 6 Slides ↗' : 'Inspect Asset ↗'}</span>`}
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-meta">
-            <span class="portfolio-card-tag">${item.meta}</span>
-          </div>
-          <h3 class="portfolio-card-title">${item.title}</h3>
-          <p class="portfolio-card-desc">${item.description}</p>
-          <div class="portfolio-card-footer">
-            <span class="portfolio-card-action">
-              ${isVideo ? 'Watch 4K Cut' : isCarousel ? 'View Slide Deck' : 'Inspect Full Asset'} <span class="arrow">→</span>
+      <article class="portfolio-item" data-index="${index}" data-category="${item.category}" tabindex="0" role="button" aria-label="View ${item.title}">
+        <div class="portfolio-media-box format-${item.category}">
+          <img src="${thumbUrl}" alt="${item.title}" class="portfolio-img" loading="lazy" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'450\\' viewBox=\\'0 0 800 450\\'%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' fill=\\'%23111317\\'/ %3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' fill=\\'%2394a3b8\\' font-family=\\'sans-serif\\' font-size=\\'18\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'%3EThorvon Portfolio Artwork%3C/text%3E%3C/svg%3E';">
+          <div class="portfolio-hover-scrim">
+            <span class="portfolio-hover-pill">
+              <span class="hover-pill-icon">${isVideo ? '▶' : '↗'}</span>
+              <span class="hover-pill-label">${isVideo ? 'Play 4K Video' : isCarousel ? 'Explore 6 Slides' : 'Inspect Artwork'}</span>
             </span>
+          </div>
+          <span class="portfolio-format-tag font-mono">${item.formatBadge}</span>
+        </div>
+        <div class="portfolio-meta-row">
+          <div class="meta-title-col">
+            <span class="meta-index font-mono">[${String(index + 1).padStart(2, '0')}]</span>
+            <h3 class="meta-title">${item.title}</h3>
+          </div>
+          <div class="meta-specs-col font-mono">
+            <span class="meta-discipline">${item.discipline}</span>
+            <span class="meta-arrow">↗</span>
           </div>
         </div>
       </article>
@@ -2676,7 +2681,7 @@ function renderPortfolioCards(filter) {
   }).join('');
 
   // Add click listeners to cards
-  grid.querySelectorAll('.portfolio-card').forEach(card => {
+  grid.querySelectorAll('.portfolio-item').forEach(card => {
     card.addEventListener('click', () => {
       const idx = parseInt(card.getAttribute('data-index'), 10);
       openPortfolioLightbox(idx);
@@ -2692,20 +2697,20 @@ function renderPortfolioCards(filter) {
 }
 
 /**
- * Filter Buttons click handling
+ * Filter Tabs click handling
  */
 function initPortfolioFilters() {
-  const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+  const filterTabs = document.querySelectorAll('.portfolio-filter-rail .filter-tab');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
       });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
 
-      const filter = btn.getAttribute('data-filter') || 'all';
+      const filter = tab.getAttribute('data-filter') || 'all';
       renderPortfolioCards(filter);
     });
   });
@@ -2721,6 +2726,7 @@ function openPortfolioLightbox(index) {
 
   const modal = document.getElementById('portfolioLightboxModal');
   const badge = document.getElementById('portfolioLightboxBadge');
+  const counter = document.getElementById('portfolioLightboxCounter');
   const title = document.getElementById('portfolioLightboxTitle');
   const subtitle = document.getElementById('portfolioLightboxSubtitle');
   const caption = document.getElementById('portfolioLightboxCaption');
@@ -2736,11 +2742,13 @@ function openPortfolioLightbox(index) {
 
   // Set Metadata
   if (badge) {
-    badge.textContent = item.badge;
-    badge.className = `portfolio-modal-badge ${item.badgeClass}`;
+    badge.textContent = item.formatBadge;
+  }
+  if (counter) {
+    counter.textContent = `// PROJECT ${String(index + 1).padStart(2, '0')} OF ${String(currentFilteredList.length).padStart(2, '0')}`;
   }
   if (title) title.textContent = item.title;
-  if (subtitle) subtitle.textContent = item.subtitle;
+  if (subtitle) subtitle.textContent = `${item.discipline} · ${item.deliverable}`;
   if (caption) caption.textContent = item.description;
   if (driveLink) {
     driveLink.href = `https://drive.google.com/file/d/${item.fileId}/view?usp=sharing`;
@@ -2800,10 +2808,10 @@ function renderCarouselSlide(item) {
     carouselImg.alt = slide.label;
   }
   if (counter) {
-    counter.textContent = `Slide ${currentCarouselSlide + 1} of ${item.slides.length}`;
+    counter.textContent = `SLIDE ${String(currentCarouselSlide + 1).padStart(2, '0')} / ${String(item.slides.length).padStart(2, '0')}`;
   }
   if (subtitle) {
-    subtitle.textContent = `${item.subtitle} — ${slide.label}`;
+    subtitle.textContent = `${item.discipline} — ${slide.label}`;
   }
 
   if (prevBtn) prevBtn.disabled = currentCarouselSlide === 0;
@@ -2922,7 +2930,7 @@ function initPortfolioLightboxHandlers() {
     }
   });
 
-  // Inquire / Commission Similar Work button in footer
+  // Inquire button in footer
   const btnInquire = modal.querySelector('.btn-inquire-portfolio');
   btnInquire?.addEventListener('click', () => {
     closePortfolioLightbox();

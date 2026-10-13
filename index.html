@@ -227,7 +227,7 @@
 
     <!-- ========================================================================
          PORTFOLIO / SELECTED WORK
-         Curated Media Showcase with Live Video Player & High-CTR Graphics Lightbox
+         Editorial Repertoire with Live 4K Video Player & High-CTR Packaging
          ======================================================================== -->
     <section class="portfolio-section" id="portfolio" aria-label="Selected Work & Portfolio">
       <div class="container">
@@ -235,48 +235,83 @@
         <!-- Section Header -->
         <div class="portfolio-header">
           <div class="portfolio-label-group">
-            <span class="portfolio-eyebrow">CURATED PORTFOLIO</span>
+            <span class="portfolio-eyebrow font-mono">// SELECTED REPERTOIRE</span>
             <h2 class="portfolio-title kinetic-heading" aria-label="Selected Work.">
               <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Selected</span></span>
               <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">Work.</span></span>
             </h2>
           </div>
           <p class="portfolio-subtitle reveal-text delay-1">
-            An editorial showcase of cinematic brand films, retention-engineered health series, high-CTR YouTube packaging, and thought leadership carousels.
+            An editorial catalog of high-retention video productions, tier-one PR broadcasts, algorithmic YouTube packaging, and executive thought leadership carousels.
           </p>
         </div>
 
-        <!-- Filter Controls -->
-        <div class="portfolio-filter-bar reveal-text delay-1" role="tablist" aria-label="Filter portfolio categories">
-          <button type="button" class="portfolio-filter-btn active" data-filter="all" role="tab" aria-selected="true">
-            All Work <span class="filter-count">24</span>
+        <!-- Flagship Cinema Spotlight: 4K Founder Production -->
+        <div class="portfolio-spotlight reveal-text delay-1" id="portfolioSpotlight" tabindex="0" role="button" aria-label="Watch Flagship 4K Film: Founder Narrative & Vision">
+          <div class="spotlight-media-wrap">
+            <img src="https://lh3.googleusercontent.com/d/1q6vz5B0NShDOhwn-aSF1lKibezpZ9ikJ=w1200" alt="Founder Narrative & Vision" class="spotlight-media-img" loading="eager">
+            <div class="spotlight-scrim"></div>
+            <div class="spotlight-play-cluster">
+              <span class="spotlight-play-btn" aria-label="Play 4K Master Video">▶</span>
+              <span class="spotlight-play-text font-mono">WATCH 4K MASTER FILM</span>
+            </div>
+            <span class="spotlight-badge font-mono">FLAGSHIP SPOTLIGHT · 4K CINEMA</span>
+          </div>
+          <div class="spotlight-meta-panel">
+            <div class="spotlight-meta-main">
+              <span class="spotlight-tag font-mono">// 01 · FOUNDER PR & EDITORIAL FILM</span>
+              <h3 class="spotlight-title">Founder Narrative & Vision</h3>
+              <p class="spotlight-desc">Cinematic executive profile engineered for category authority, investor trust, and nationwide digital press syndication.</p>
+            </div>
+            <div class="spotlight-meta-side">
+              <div class="spotlight-specs font-mono">
+                <span class="spec-item"><strong>FORMAT:</strong> 4K ProRes Master</span>
+                <span class="spec-item"><strong>PIPELINE:</strong> Script, Direction & Post</span>
+                <span class="spec-item"><strong>PLACEMENT:</strong> Omnichannel Executive Feed</span>
+              </div>
+              <button type="button" class="btn btn-primary spotlight-cta">
+                Watch Film <span class="arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Controls (Architectural Minimalist Tab Rail) -->
+        <div class="portfolio-filter-rail reveal-text delay-2" role="tablist" aria-label="Filter portfolio categories">
+          <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">
+            <span class="tab-label">ALL WORK</span>
+            <span class="tab-count font-mono">24</span>
           </button>
-          <button type="button" class="portfolio-filter-btn" data-filter="video" role="tab" aria-selected="false">
-            Video Production <span class="filter-count">8</span>
+          <button type="button" class="filter-tab" data-filter="video" role="tab" aria-selected="false">
+            <span class="tab-label">CINEMATIC VIDEO</span>
+            <span class="tab-count font-mono">08</span>
           </button>
-          <button type="button" class="portfolio-filter-btn" data-filter="thumbnail" role="tab" aria-selected="false">
-            Thumbnails <span class="filter-count">12</span>
+          <button type="button" class="filter-tab" data-filter="thumbnail" role="tab" aria-selected="false">
+            <span class="tab-label">YOUTUBE PACKAGING</span>
+            <span class="tab-count font-mono">12</span>
           </button>
-          <button type="button" class="portfolio-filter-btn" data-filter="carousel" role="tab" aria-selected="false">
-            Podcast Carousels <span class="filter-count">1</span>
+          <button type="button" class="filter-tab" data-filter="carousel" role="tab" aria-selected="false">
+            <span class="tab-label">EDITORIAL CAROUSEL</span>
+            <span class="tab-count font-mono">01</span>
           </button>
-          <button type="button" class="portfolio-filter-btn" data-filter="reel" role="tab" aria-selected="false">
-            Reel Covers <span class="filter-count">3</span>
+          <button type="button" class="filter-tab" data-filter="reel" role="tab" aria-selected="false">
+            <span class="tab-label">VERTICAL REELS</span>
+            <span class="tab-count font-mono">03</span>
           </button>
         </div>
 
-        <!-- Portfolio Media Grid (Dynamically rendered & interactive) -->
+        <!-- Portfolio Media Grid (Minimalist Item Cards) -->
         <div class="portfolio-grid reveal-text delay-2" id="portfolioGrid" aria-live="polite">
-          <!-- Populated by script.js -->
+          <!-- Populated dynamically by script.js -->
         </div>
 
         <!-- Drive Archive Link Banner -->
         <div class="portfolio-archive-banner reveal-text delay-2">
           <div class="archive-banner-content">
             <div class="archive-banner-text">
-              <span class="archive-badge">COMPLETE ARCHIVE</span>
+              <span class="archive-badge font-mono">// COMPLETE PRODUCTION ARCHIVE</span>
               <h3 class="archive-title">Looking for raw 4K masters, source project files, or unlisted cuts?</h3>
-              <p class="archive-desc">Access our full cloud media library directly on Google Drive with verified client permissions.</p>
+              <p class="archive-desc">Access our complete verified cloud media library directly on Google Drive with client preview access.</p>
             </div>
             <a href="https://drive.google.com/drive/folders/1WvvBt9dLy7N7xEeOnR87U6af-fR7c1C6?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary archive-btn">
               Browse Google Drive Archive <span class="arrow">↗</span>
@@ -1127,7 +1162,7 @@
 
   <!-- ========================================================================
        MODAL: PORTFOLIO INTERACTIVE LIGHTBOX
-       Video Player, Multi-Slide Carousel Viewer & High-Resolution Image Preview
+       Theater Video Player, Multi-Slide Carousel Deck & High-Resolution Preview
        ======================================================================== -->
   <div class="thorvon-modal-backdrop portfolio-lightbox-backdrop" id="portfolioLightboxModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="portfolioLightboxTitle">
     <div class="thorvon-modal-container portfolio-lightbox-container">
@@ -1135,15 +1170,21 @@
       <!-- Lightbox Header -->
       <div class="modal-header portfolio-lightbox-header">
         <div class="portfolio-lightbox-meta">
-          <span class="portfolio-modal-badge" id="portfolioLightboxBadge">VIDEO · 4K</span>
+          <div class="portfolio-lightbox-eyebrow font-mono">
+            <span class="portfolio-modal-badge" id="portfolioLightboxBadge">VIDEO · 4K</span>
+            <span class="portfolio-modal-counter" id="portfolioLightboxCounter">// PROJECT 01 OF 24</span>
+          </div>
           <h2 class="modal-title" id="portfolioLightboxTitle">Asset Title</h2>
-          <span class="portfolio-lightbox-subtitle" id="portfolioLightboxSubtitle">Asset Subtitle</span>
+          <span class="portfolio-lightbox-subtitle font-mono" id="portfolioLightboxSubtitle">Asset Subtitle</span>
         </div>
         <div class="portfolio-lightbox-header-actions">
-          <a href="#" target="_blank" rel="noopener noreferrer" class="lightbox-drive-link" id="portfolioLightboxDriveLink" title="Open original in Google Drive">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="lightbox-drive-link font-mono" id="portfolioLightboxDriveLink" title="Open original in Google Drive">
             Drive ↗
           </a>
-          <button class="modal-close-btn" data-action="close-portfolio-lightbox" aria-label="Close Lightbox">✕</button>
+          <button class="modal-close-btn" data-action="close-portfolio-lightbox" aria-label="Close Lightbox (Esc)">
+            <span class="close-icon">✕</span>
+            <span class="close-hint font-mono">ESC</span>
+          </button>
         </div>
       </div>
 
@@ -1171,17 +1212,17 @@
           </div>
           <!-- Slide Navigation Controls -->
           <div class="carousel-nav-controls">
-            <button type="button" class="carousel-nav-btn prev-btn" id="carouselPrevBtn" aria-label="Previous Slide">← Prev Slide</button>
+            <button type="button" class="carousel-nav-btn prev-btn font-mono" id="carouselPrevBtn" aria-label="Previous Slide">← PREV SLIDE</button>
             <div class="carousel-indicators" id="carouselIndicators"></div>
-            <span class="carousel-counter" id="carouselCounter">Slide 1 of 6</span>
-            <button type="button" class="carousel-nav-btn next-btn" id="carouselNextBtn" aria-label="Next Slide">Next Slide →</button>
+            <span class="carousel-counter font-mono" id="carouselCounter">SLIDE 01 / 06</span>
+            <button type="button" class="carousel-nav-btn next-btn font-mono" id="carouselNextBtn" aria-label="Next Slide">NEXT SLIDE →</button>
           </div>
         </div>
 
-        <!-- Gallery Next / Previous Controls (for browsing adjacent items) -->
+        <!-- Gallery Next / Previous Controls -->
         <div class="lightbox-global-nav">
-          <button type="button" class="global-nav-arrow global-prev" id="globalPrevBtn" aria-label="Previous Item">‹</button>
-          <button type="button" class="global-nav-arrow global-next" id="globalNextBtn" aria-label="Next Item">›</button>
+          <button type="button" class="global-nav-arrow global-prev" id="globalPrevBtn" aria-label="Previous Project (←)">‹</button>
+          <button type="button" class="global-nav-arrow global-next" id="globalNextBtn" aria-label="Next Project (→)">›</button>
         </div>
 
       </div>
@@ -1189,9 +1230,12 @@
       <!-- Lightbox Footer -->
       <div class="portfolio-lightbox-footer">
         <p class="portfolio-lightbox-caption" id="portfolioLightboxCaption"></p>
-        <button type="button" class="btn btn-primary btn-inquire-portfolio" data-action="open-plan">
-          Commission Similar Work <span class="arrow">→</span>
-        </button>
+        <div class="portfolio-lightbox-footer-actions">
+          <span class="portfolio-lightbox-keys-hint font-mono">NAVIGATE: [← / →] · ESC TO CLOSE</span>
+          <button type="button" class="btn btn-primary btn-inquire-portfolio" data-action="open-plan">
+            Build Plan For Similar Deliverables <span class="arrow">→</span>
+          </button>
+        </div>
       </div>
 
     </div>
