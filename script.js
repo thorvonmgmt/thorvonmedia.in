@@ -7,8 +7,12 @@
 // 1. Contact Links Configuration
 // ==========================================================================
 const ContactConfig = {
+  PHONE: '+916000156191',
+  PHONE_DISPLAY: '+91 60001 56191',
+  PHONE_LINK: 'tel:+916000156191',
   EMAIL: 'thorvonmedia@gmail.com',
-  EMAIL_LINK: 'mailto:thorvonmedia@gmail.com'
+  EMAIL_LINK: 'mailto:thorvonmedia@gmail.com',
+  LINKEDIN_LINK: 'https://www.linkedin.com/in/drishtanta-baruah/'
 };
 
 // ==========================================================================
@@ -532,7 +536,9 @@ function buildFinalPlanScreen() {
 // ==========================================================================
 function initializeContactLinks() {
   const contactMap = {
-    email: ContactConfig.EMAIL_LINK
+    call: ContactConfig.PHONE_LINK,
+    email: ContactConfig.EMAIL_LINK,
+    linkedin: ContactConfig.LINKEDIN_LINK
   };
 
   const contactElements = document.querySelectorAll('[data-contact]');
@@ -560,10 +566,18 @@ function initializeSmoothScroll() {
 
       if (targetId === '#team') {
         e.preventDefault();
-        openTeamModal();
         closeMobileMenu();
+        openTeamModal();
         return;
       }
+
+      if (targetId === '#careers') {
+        e.preventDefault();
+        closeMobileMenu();
+        openCareersPortalModal();
+        return;
+      }
+
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
@@ -1059,6 +1073,8 @@ function closeJobModal() {
 function openCareersPortalModal() {
   const portalModal = document.getElementById('careersPortalModal');
   if (!portalModal) return;
+  closePlatformActionModal();
+  closeTeamModal();
   portalModal.classList.add('is-open');
   portalModal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
@@ -1069,11 +1085,13 @@ function closeCareersPortalModal() {
   if (!portalModal) return;
   portalModal.classList.remove('is-open');
   portalModal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
+  if (!document.querySelector('.thorvon-modal-backdrop.is-open')) {
+    document.body.classList.remove('modal-open');
+  }
 }
 
 function initializeCareers() {
-  // Portal open triggers (e.g. footer link)
+  // Portal open triggers (nav, mobile menu, footer, team modal)
   document.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1091,9 +1109,9 @@ function initializeCareers() {
   const portalModal = document.getElementById('careersPortalModal');
   if (portalModal) {
     portalModal.addEventListener('click', (e) => {
-      if (e.target === portalModal) closePlatformActionModal();
-      closeTeamModal();
-      closeCareersPortalModal();
+      if (e.target === portalModal) {
+        closeCareersPortalModal();
+      }
     });
   }
 
@@ -1118,7 +1136,9 @@ function initializeCareers() {
   const jobModal = document.getElementById('jobModal');
   if (jobModal) {
     jobModal.addEventListener('click', (e) => {
-      if (e.target === jobModal) closeJobModal();
+      if (e.target === jobModal) {
+        closeJobModal();
+      }
     });
   }
 
@@ -1132,9 +1152,7 @@ function initializeCareers() {
       }
       const portalModal = document.getElementById('careersPortalModal');
       if (portalModal && portalModal.classList.contains('is-open')) {
-        closePlatformActionModal();
-      closeTeamModal();
-      closeCareersPortalModal();
+        closeCareersPortalModal();
       }
     }
   });
@@ -1212,14 +1230,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeScrollEffects();
 });
 
-
-
 // ==========================================================================
 // EMBEDDED TEAM MODAL CONTROLLER
 // ==========================================================================
 function openTeamModal() {
   const teamModal = document.getElementById('teamModal');
   if (!teamModal) return;
+  closePlatformActionModal();
+  closeCareersPortalModal();
   teamModal.classList.add('is-open');
   teamModal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
@@ -1255,15 +1273,15 @@ function initializeTeamModal() {
 
   // Backdrop click outside
   teamModal.addEventListener('click', (e) => {
-    if (e.target === teamModal) closePlatformActionModal();
+    if (e.target === teamModal) {
       closeTeamModal();
+    }
   });
 
   // Open careers button inside team modal
   teamModal.querySelectorAll('[data-action="open-careers-portal"]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      closePlatformActionModal();
       closeTeamModal();
       openCareersPortalModal();
     });
@@ -1703,65 +1721,73 @@ function renderPlatformPackages(platformKey) {
     <!-- Plan 1: Starter -->
     <div class="platform-plan-card" data-plan="${p.starter.title}" data-price="${p.starter.price} / month">
       <div class="plan-card-header">
-        <span class="plan-card-kicker">${p.starter.kicker}</span>
+        <div class="plan-card-top-row">
+          <span class="plan-card-kicker">01 · ${p.starter.kicker}</span>
+        </div>
         <h3 class="plan-card-title">${p.starter.title}</h3>
-        <div class="plan-card-price">${p.starter.price} <span class="plan-card-freq">${p.starter.freq}</span></div>
+        <div class="plan-card-price">${p.starter.price} <span class="plan-card-freq">/ mo</span></div>
       </div>
       <p class="plan-card-desc">${p.starter.desc}</p>
       <ul class="plan-services-list">
         ${p.starter.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
       </ul>
-      <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Starter — ${p.starter.title}" data-plan-price="${p.starter.price} / month">
-        Opt In to Plan <span class="arrow">→</span>
+      <button type="button" class="btn plan-opt-btn plan-btn-secondary" data-action="opt-in-plan" data-plan-name="Starter — ${p.starter.title}" data-plan-price="${p.starter.price} / month">
+        Select Starter <span class="arrow">→</span>
       </button>
     </div>
 
     <!-- Plan 2: Growth & PR (Featured Most Popular) -->
     <div class="platform-plan-card featured" data-plan="${p.growth.title}" data-price="${p.growth.price} / month">
-      <div class="plan-featured-tag">MOST POPULAR</div>
       <div class="plan-card-header">
-        <span class="plan-card-kicker">${p.growth.kicker}</span>
+        <div class="plan-card-top-row">
+          <span class="plan-card-kicker">02 · ${p.growth.kicker}</span>
+          <span class="plan-featured-tag">MOST POPULAR</span>
+        </div>
         <h3 class="plan-card-title">${p.growth.title}</h3>
-        <div class="plan-card-price">${p.growth.price} <span class="plan-card-freq">${p.growth.freq}</span></div>
+        <div class="plan-card-price">${p.growth.price} <span class="plan-card-freq">/ mo</span></div>
       </div>
       <p class="plan-card-desc">${p.growth.desc}</p>
       <ul class="plan-services-list">
         ${p.growth.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
       </ul>
       <button type="button" class="btn btn-primary plan-opt-btn" data-action="opt-in-plan" data-plan-name="Growth & PR — ${p.growth.title}" data-plan-price="${p.growth.price} / month">
-        Opt In to Plan <span class="arrow">→</span>
+        Select Growth <span class="arrow">→</span>
       </button>
     </div>
 
     <!-- Plan 3: Enterprise -->
     <div class="platform-plan-card" data-plan="${p.enterprise.title}" data-price="${p.enterprise.price} / month">
       <div class="plan-card-header">
-        <span class="plan-card-kicker">${p.enterprise.kicker}</span>
+        <div class="plan-card-top-row">
+          <span class="plan-card-kicker">03 · ${p.enterprise.kicker}</span>
+        </div>
         <h3 class="plan-card-title">${p.enterprise.title}</h3>
-        <div class="plan-card-price">${p.enterprise.price} <span class="plan-card-freq">${p.enterprise.freq}</span></div>
+        <div class="plan-card-price">${p.enterprise.price} <span class="plan-card-freq">/ mo</span></div>
       </div>
       <p class="plan-card-desc">${p.enterprise.desc}</p>
       <ul class="plan-services-list">
         ${p.enterprise.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
       </ul>
-      <button type="button" class="btn btn-outline plan-opt-btn" data-action="opt-in-plan" data-plan-name="Enterprise — ${p.enterprise.title}" data-plan-price="${p.enterprise.price} / month">
-        Opt In to Plan <span class="arrow">→</span>
+      <button type="button" class="btn plan-opt-btn plan-btn-secondary" data-action="opt-in-plan" data-plan-name="Enterprise — ${p.enterprise.title}" data-plan-price="${p.enterprise.price} / month">
+        Select Enterprise <span class="arrow">→</span>
       </button>
     </div>
 
     <!-- Plan 4: Custom Plan -->
     <div class="platform-plan-card custom-plan-card">
       <div class="plan-card-header">
-        <span class="plan-card-kicker">${p.custom.kicker}</span>
+        <div class="plan-card-top-row">
+          <span class="plan-card-kicker">04 · ${p.custom.kicker}</span>
+        </div>
         <h3 class="plan-card-title">${p.custom.title}</h3>
-        <div class="plan-card-price">Tailored <span class="plan-card-freq">Pricing</span></div>
+        <div class="plan-card-price">Custom <span class="plan-card-freq">scope</span></div>
       </div>
       <p class="plan-card-desc">${p.custom.desc}</p>
       <ul class="plan-services-list">
         ${p.custom.deliverables.map(d => `<li><span class="check-icon">✓</span> <span>${d}</span></li>`).join('')}
       </ul>
-      <button type="button" class="btn btn-primary plan-opt-btn" data-action="open-custom-plan">
-        Build Custom Plan <span class="arrow">→</span>
+      <button type="button" class="btn plan-opt-btn plan-btn-secondary" data-action="open-custom-plan">
+        Configure Scope <span class="arrow">→</span>
       </button>
     </div>
   `;
@@ -1898,7 +1924,7 @@ function recalculateCustomPlan(platformKey) {
   const totalEl = document.getElementById('calcTotalAmountDisplay');
   const gridEl = document.getElementById('customCalcServicesGrid');
 
-  const activePills = [];
+  const activeRows = [];
 
   config.calculatorServices.forEach((s) => {
     const qty = activeCalculatorQuantities[s.id] || 0;
@@ -1922,29 +1948,31 @@ function recalculateCustomPlan(platformKey) {
     }
 
     if (qty > 0) {
-      activePills.push(`
-        <span class="calc-deliverable-pill">
-          <span class="pill-qty">${qty}×</span> ${s.name}
-        </span>
+      activeRows.push(`
+        <div class="calc-summary-line-item">
+          <span class="calc-line-name"><strong class="calc-line-qty">${qty}×</strong> ${s.name}</span>
+          <span class="calc-line-price">$${subtotal.toLocaleString()}</span>
+        </div>
       `);
     }
   });
 
   if (totalEl) {
-    totalEl.innerHTML = `$${total.toLocaleString()} <span class="calc-total-freq">/ month</span>`;
+    totalEl.innerHTML = `$${total.toLocaleString()} <span class="calc-total-freq">/ mo</span>`;
   }
 
   if (pillsEl) {
-    if (activePills.length > 0) {
-      pillsEl.innerHTML = activePills.join('');
+    if (activeRows.length > 0) {
+      pillsEl.innerHTML = activeRows.join('');
     } else {
-      pillsEl.innerHTML = `<span class="calc-deliverable-pill-empty">No deliverables selected yet (adjust quantities above)</span>`;
+      pillsEl.innerHTML = `<p class="summary-empty-msg">No deliverables selected yet.</p>`;
     }
   }
 }
 
 function showPlanOptinPanel(planName, planPrice, prefillNotes) {
   const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsBar = document.querySelector('.platform-tabs-bar');
   const tabsContainer = document.getElementById('platformActionTabs');
   const contentPlans = document.getElementById('tabContentPlans');
   const contentCustom = document.getElementById('tabContentCustom');
@@ -1965,6 +1993,7 @@ function showPlanOptinPanel(planName, planPrice, prefillNotes) {
   if (notesField && prefillNotes) notesField.value = prefillNotes;
 
   // Hide tab switcher and tabs
+  if (tabsBar) tabsBar.style.display = 'none';
   if (tabsContainer) tabsContainer.style.display = 'none';
   if (contentPlans) contentPlans.style.display = 'none';
   if (contentCustom) contentCustom.style.display = 'none';
@@ -1978,9 +2007,11 @@ function showPlanOptinPanel(planName, planPrice, prefillNotes) {
 
 function hidePlanOptinPanel() {
   const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsBar = document.querySelector('.platform-tabs-bar');
   const tabsContainer = document.getElementById('platformActionTabs');
   if (confirmPanel) confirmPanel.style.display = 'none';
-  if (tabsContainer) tabsContainer.style.display = 'flex';
+  if (tabsBar) tabsBar.style.display = 'flex';
+  if (tabsContainer) tabsContainer.style.display = 'inline-flex';
 
   // Restore active tab
   const activeBtn = document.querySelector('.platform-tab-btn.active');
@@ -1991,6 +2022,9 @@ function hidePlanOptinPanel() {
 function openPlatformActionModal(platformName, iconHtml) {
   const modal = document.getElementById('platformActionModal');
   if (!modal) return;
+
+  closeTeamModal();
+  closeCareersPortalModal();
 
   currentActivePlatform = platformName;
   const config = PlatformPackagesConfig[platformName] || PlatformPackagesConfig.YouTube;
@@ -2018,12 +2052,12 @@ function openPlatformActionModal(platformName, iconHtml) {
   // Update intro texts
   const tabIntro = document.getElementById('platformTabIntro');
   if (tabIntro) {
-    tabIntro.innerHTML = `Choose a structured growth plan engineered for <span class="platform-name-highlight">${config.name}</span>, or build a custom plan tailored to your exact creative requirements.`;
+    tabIntro.innerHTML = `Structured monthly packages engineered for <span class="platform-name-highlight">${config.name}</span>.`;
   }
 
   const calcDesc = document.getElementById('calculatorPlatformDesc');
   if (calcDesc) {
-    calcDesc.textContent = `Configure your exact monthly deliverables for ${config.name}. Quantities automatically update your monthly total in real time.`;
+    calcDesc.textContent = `Adjust monthly quantities for ${config.name}. Pricing updates automatically.`;
   }
 
   const auditDesc = modal.querySelector('.audit-desc');
@@ -2070,11 +2104,13 @@ function switchPlatformTab(tabName) {
   const contentCustom = document.getElementById('tabContentCustom');
   const contentAudit = document.getElementById('tabContentAudit');
   const confirmPanel = document.getElementById('planOptinConfirmPanel');
+  const tabsBar = document.querySelector('.platform-tabs-bar');
   const tabsContainer = document.getElementById('platformActionTabs');
 
   // Hide confirm panel if switching tabs
   if (confirmPanel) confirmPanel.style.display = 'none';
-  if (tabsContainer) tabsContainer.style.display = 'flex';
+  if (tabsBar) tabsBar.style.display = 'flex';
+  if (tabsContainer) tabsContainer.style.display = 'inline-flex';
 
   // Deactivate all
   [tabBtnPlans, tabBtnCustom, tabBtnAudit].forEach((btn) => {
