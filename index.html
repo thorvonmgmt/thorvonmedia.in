@@ -37,6 +37,7 @@
       <nav class="site-nav" aria-label="Primary Navigation">
         <ul class="nav-links">
           <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#portfolio" class="nav-link">Work</a></li>
           <li><a href="#plan-tool" class="nav-link">Plan</a></li>
           <li><a href="#team" class="nav-link" data-action="open-team">Team</a></li>
           <li><a href="#careers" class="nav-link" data-action="open-careers-portal">Careers</a></li>
@@ -59,6 +60,7 @@
       <div class="mobile-drawer-inner">
         <ul class="mobile-nav-links">
           <li><a href="#services" class="mobile-nav-link">Services</a></li>
+          <li><a href="#portfolio" class="mobile-nav-link">Work</a></li>
           <li><a href="#plan-tool" class="mobile-nav-link">Plan</a></li>
           <li><a href="#team" class="mobile-nav-link" data-action="open-team">Team</a></li>
           <li><a href="#careers" class="mobile-nav-link" data-action="open-careers-portal">Careers</a></li>
@@ -220,6 +222,68 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PORTFOLIO / SELECTED WORK
+         Curated Media Showcase with Live Video Player & High-CTR Graphics Lightbox
+         ======================================================================== -->
+    <section class="portfolio-section" id="portfolio" aria-label="Selected Work & Portfolio">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="portfolio-header">
+          <div class="portfolio-label-group">
+            <span class="portfolio-eyebrow">CURATED PORTFOLIO</span>
+            <h2 class="portfolio-title kinetic-heading" aria-label="Selected Work.">
+              <span class="word-mask"><span class="reveal-word" style="--w-idx: 0">Selected</span></span>
+              <span class="word-mask"><span class="reveal-word" style="--w-idx: 1">Work.</span></span>
+            </h2>
+          </div>
+          <p class="portfolio-subtitle reveal-text delay-1">
+            An editorial showcase of cinematic brand films, retention-engineered health series, high-CTR YouTube packaging, and thought leadership carousels.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="portfolio-filter-bar reveal-text delay-1" role="tablist" aria-label="Filter portfolio categories">
+          <button type="button" class="portfolio-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+            All Work <span class="filter-count">24</span>
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-filter="video" role="tab" aria-selected="false">
+            Video Production <span class="filter-count">8</span>
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-filter="thumbnail" role="tab" aria-selected="false">
+            Thumbnails <span class="filter-count">12</span>
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-filter="carousel" role="tab" aria-selected="false">
+            Podcast Carousels <span class="filter-count">1</span>
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-filter="reel" role="tab" aria-selected="false">
+            Reel Covers <span class="filter-count">3</span>
+          </button>
+        </div>
+
+        <!-- Portfolio Media Grid (Dynamically rendered & interactive) -->
+        <div class="portfolio-grid reveal-text delay-2" id="portfolioGrid" aria-live="polite">
+          <!-- Populated by script.js -->
+        </div>
+
+        <!-- Drive Archive Link Banner -->
+        <div class="portfolio-archive-banner reveal-text delay-2">
+          <div class="archive-banner-content">
+            <div class="archive-banner-text">
+              <span class="archive-badge">COMPLETE ARCHIVE</span>
+              <h3 class="archive-title">Looking for raw 4K masters, source project files, or unlisted cuts?</h3>
+              <p class="archive-desc">Access our full cloud media library directly on Google Drive with verified client permissions.</p>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1WvvBt9dLy7N7xEeOnR87U6af-fR7c1C6?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary archive-btn">
+              Browse Google Drive Archive <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1056,6 +1120,78 @@
           </div>
         </div>
 
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: PORTFOLIO INTERACTIVE LIGHTBOX
+       Video Player, Multi-Slide Carousel Viewer & High-Resolution Image Preview
+       ======================================================================== -->
+  <div class="thorvon-modal-backdrop portfolio-lightbox-backdrop" id="portfolioLightboxModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="portfolioLightboxTitle">
+    <div class="thorvon-modal-container portfolio-lightbox-container">
+      
+      <!-- Lightbox Header -->
+      <div class="modal-header portfolio-lightbox-header">
+        <div class="portfolio-lightbox-meta">
+          <span class="portfolio-modal-badge" id="portfolioLightboxBadge">VIDEO · 4K</span>
+          <h2 class="modal-title" id="portfolioLightboxTitle">Asset Title</h2>
+          <span class="portfolio-lightbox-subtitle" id="portfolioLightboxSubtitle">Asset Subtitle</span>
+        </div>
+        <div class="portfolio-lightbox-header-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="lightbox-drive-link" id="portfolioLightboxDriveLink" title="Open original in Google Drive">
+            Drive ↗
+          </a>
+          <button class="modal-close-btn" data-action="close-portfolio-lightbox" aria-label="Close Lightbox">✕</button>
+        </div>
+      </div>
+
+      <!-- Lightbox Content Container -->
+      <div class="portfolio-lightbox-body">
+        
+        <!-- Video View Wrapper -->
+        <div class="lightbox-media-wrapper lightbox-video-view" id="lightboxVideoView" style="display: none;">
+          <div class="lightbox-iframe-container">
+            <iframe id="lightboxVideoIframe" src="" title="Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Single Image View Wrapper -->
+        <div class="lightbox-media-wrapper lightbox-image-view" id="lightboxImageView" style="display: none;">
+          <div class="lightbox-image-stage">
+            <img id="lightboxMainImage" src="" alt="Portfolio Preview" class="lightbox-full-img">
+          </div>
+        </div>
+
+        <!-- Carousel Multi-Slide View Wrapper -->
+        <div class="lightbox-media-wrapper lightbox-carousel-view" id="lightboxCarouselView" style="display: none;">
+          <div class="lightbox-carousel-stage">
+            <img id="lightboxCarouselImage" src="" alt="Carousel Slide" class="lightbox-carousel-img">
+          </div>
+          <!-- Slide Navigation Controls -->
+          <div class="carousel-nav-controls">
+            <button type="button" class="carousel-nav-btn prev-btn" id="carouselPrevBtn" aria-label="Previous Slide">← Prev Slide</button>
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+            <span class="carousel-counter" id="carouselCounter">Slide 1 of 6</span>
+            <button type="button" class="carousel-nav-btn next-btn" id="carouselNextBtn" aria-label="Next Slide">Next Slide →</button>
+          </div>
+        </div>
+
+        <!-- Gallery Next / Previous Controls (for browsing adjacent items) -->
+        <div class="lightbox-global-nav">
+          <button type="button" class="global-nav-arrow global-prev" id="globalPrevBtn" aria-label="Previous Item">‹</button>
+          <button type="button" class="global-nav-arrow global-next" id="globalNextBtn" aria-label="Next Item">›</button>
+        </div>
+
+      </div>
+
+      <!-- Lightbox Footer -->
+      <div class="portfolio-lightbox-footer">
+        <p class="portfolio-lightbox-caption" id="portfolioLightboxCaption"></p>
+        <button type="button" class="btn btn-primary btn-inquire-portfolio" data-action="open-plan">
+          Commission Similar Work <span class="arrow">→</span>
+        </button>
       </div>
 
     </div>
