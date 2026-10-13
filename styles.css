@@ -62,7 +62,8 @@ body {
   min-height: 100vh;
 }
 
-body.modal-open {
+body.modal-open,
+body.drawer-open {
   overflow: hidden;
 }
 
@@ -2668,166 +2669,7 @@ ul {
   transition-delay: 0.3s;
 }
 
-/* --------------------------------------------------------------------------
-   Responsive Breakpoints
-   -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .careers-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .service-item {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .service-body {
-    padding-left: 0;
-  }
-
-  .configurator-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .configurator-summary-panel {
-    position: static;
-    margin-top: 2rem;
-  }
-
-  .team-core-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --header-height: 70px;
-  }
-
-  .site-nav {
-    display: none;
-  }
-
-  .mobile-toggle {
-    display: flex;
-  }
-
-  /* Mobile Drawer Overlay */
-  .mobile-drawer {
-    display: block;
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-    background-color: #000000;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
-    z-index: 999;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .mobile-drawer.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .mobile-drawer-inner {
-    padding: 3rem var(--container-padding);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-
-  .mobile-nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .mobile-nav-link {
-    font-size: 2.25rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--color-text-primary);
-  }
-
-  .mobile-cta-wrap {
-    padding-bottom: 2rem;
-  }
-
-  .mobile-cta {
-    width: 100%;
-    padding: 1.15rem;
-    font-size: 1.05rem;
-  }
-
-  .service-body {
-    padding-left: 0;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .score-breakdown-row {
-    grid-template-columns: 90px 1fr 40px;
-    gap: 1rem;
-  }
-
-  .careers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hiring-fallback-box {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .fallback-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .form-row-2col {
-    grid-template-columns: 1fr;
-  }
-
-  .founder-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .contact-layout-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .platform-curved-dock {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.65rem;
-    padding: 0.65rem;
-    border-radius: 18px;
-  }
-
-  .platform-curved-dock .platform-box:last-child {
-    grid-column: span 2;
-  }
-}
+/* (Responsive breakpoints consolidated at the end of the stylesheet) */
 
 /* --------------------------------------------------------------------------
    Accessibility: Reduced Motion
@@ -3629,25 +3471,828 @@ ul {
   font-size: 0.9rem;
 }
 
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (Tablet & Mobile UI/UX)
+   Consolidated at the end of the stylesheet so desktop (>1024px) remains untouched
+   ========================================================================== */
+
 @media (max-width: 1024px) {
+  .careers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .platform-plans-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
-  .platform-plans-grid {
+@media (max-width: 900px) {
+  .service-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-body {
+    padding-left: 0;
+  }
+
+  .configurator-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .configurator-summary-panel {
+    position: static;
+    margin-top: 0.5rem;
+  }
+
+  .team-core-cards {
     grid-template-columns: 1fr;
   }
-  .calc-service-item {
+
+  .platform-curved-dock {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    padding: 0.65rem;
+    border-radius: 18px;
+  }
+
+  .platform-curved-dock .platform-box:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+    --container-padding: 1.25rem;
+  }
+
+  /* --- Header & Mobile Navigation Drawer --- */
+  .site-nav {
+    display: none;
+  }
+
+  .brand-logo-img {
+    height: 24px;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    margin-right: -0.35rem;
+  }
+
+  .mobile-drawer {
+    display: block;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
+    background-color: rgba(9, 10, 13, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-premium), visibility 0.3s var(--ease-premium);
+    z-index: 999;
+    border-top: 1px solid var(--color-border);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-drawer.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-drawer-inner {
+    padding: 1.25rem var(--container-padding) calc(2rem + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    gap: 2rem;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
+  }
+
+  .mobile-nav-link::after {
+    content: '→';
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    transition: transform 0.2s var(--ease-premium), color 0.2s var(--ease-premium);
+  }
+
+  .mobile-nav-link:active::after {
+    transform: translateX(4px);
+    color: #ffffff;
+  }
+
+  .mobile-cta-wrap {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .mobile-cta {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-height: 52px;
+  }
+
+  /* --- Hero Section --- */
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 2.75rem);
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+    line-height: 0.94;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-meta {
+    padding-top: 1.5rem;
+  }
+
+  .hero-statement {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.5rem;
+    font-size: 0.98rem;
+  }
+
+  /* --- Omnichannel Platforms Section --- */
+  .platform-ticker-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .platform-section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .section-heading {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
+
+  .platform-section-sub {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+  }
+
+  .platform-curved-dock {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding: 0.6rem;
+    border-radius: 18px;
+  }
+
+  .platform-curved-dock .platform-box:last-child {
+    grid-column: span 1;
+  }
+
+  .platform-box {
+    padding: 1rem 1.15rem;
+    border-radius: 13px;
+    min-height: 54px;
+  }
+
+  .platform-box:hover {
+    transform: none;
+  }
+
+  .platform-arrow {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* --- Services Section --- */
+  .services-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .section-label-wrap {
+    margin-bottom: 2rem;
+  }
+
+  .service-item {
+    border-radius: 0 !important;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+    gap: 0.75rem;
+  }
+
+  .service-item:hover {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+  }
+
+  .service-item:hover .service-num,
+  .service-item:hover .service-title {
+    transform: none;
+  }
+
+  .service-header {
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .service-num {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .service-title {
+    font-size: 1.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .service-explore {
+    margin-top: 0.75rem;
+    color: #ffffff;
+    font-size: 0.88rem;
+  }
+
+  /* --- Tool Showcase Card --- */
+  .tool-section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .tool-card {
+    padding: 1.75rem 1.35rem;
+    border-radius: 18px !important;
+  }
+
+  .tool-card:hover {
+    transform: none;
+  }
+
+  .tool-title {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .tool-desc {
+    font-size: 0.98rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-action-wrap {
+    width: 100%;
+  }
+
+  .tool-action-wrap .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.5rem;
+  }
+
+  /* --- Contact Section --- */
+  .contact-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .contact-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-title {
+    font-size: clamp(1.75rem, 7.6vw, 2.5rem);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+
+  .contact-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-direct-channels {
+    gap: 0.65rem;
+  }
+
+  .contact-direct-card {
+    padding: 1rem 1.15rem;
+    border-radius: 14px;
+  }
+
+  .contact-direct-value {
+    font-size: 0.96rem;
+    word-break: break-word;
+  }
+
+  .contact-form-panel {
+    padding: 1.35rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .pro-contact-form {
+    gap: 1rem;
+  }
+
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Prevent iOS Safari zoom on input focus */
+  .form-input,
+  .thorvon-input,
+  .thorvon-textarea,
+  .form-select {
+    font-size: 16px;
+    padding: 0.8rem 0.95rem;
+  }
+
+  .service-pill-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .service-pill span {
+    display: block;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .form-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.5rem;
+  }
+
+  /* --- Footer --- */
+  .site-footer {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-inner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.75rem;
   }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem 1.5rem;
+    width: 100%;
+  }
+
+  /* --- Modals Architecture (Unified Mobile Sheet Experience) --- */
+  .thorvon-modal-backdrop {
+    padding: 0.65rem;
+    align-items: flex-start;
+  }
+
+  .thorvon-modal-container,
+  .platform-action-modal-container,
+  .team-modal-container,
+  .careers-portal-modal-container,
+  .job-modal-container {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 1.3rem);
+    max-height: calc(100dvh - 1.3rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1.25rem 1.1rem 1.5rem;
+    border-radius: 18px !important;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .modal-header {
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .modal-title {
+    font-size: clamp(1.25rem, 5.2vw, 1.55rem);
+    line-height: 1.2;
+  }
+
+  .modal-close-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  /* --- Build Your Plan Modal (#planModal) --- */
+  .step-headline {
+    font-size: 1.2rem;
+  }
+
+  .step-subheading {
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .category-cards-grid {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .selectable-card {
+    padding: 1.15rem 1.1rem;
+    gap: 1rem;
+  }
+
+  .selectable-card .card-title {
+    font-size: 1.15rem;
+  }
+
+  .selectable-card .card-desc {
+    font-size: 0.88rem;
+  }
+
+  .requirements-container {
+    gap: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .requirement-row {
+    padding: 0.85rem 0.5rem;
+    gap: 0.65rem;
+  }
+
+  .requirement-left {
+    gap: 0.75rem;
+  }
+
+  .requirement-name {
+    font-size: 0.92rem;
+  }
+
+  .step-nav-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  #btnStep1Continue,
+  .final-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .step-nav-actions.split {
+    gap: 0.75rem;
+  }
+
+  .step-nav-actions.split .btn-primary {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .configurator-summary-panel {
+    padding: 1.15rem;
+    margin-top: 0.25rem;
+  }
+
+  .summary-items-list {
+    min-height: auto;
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+  }
+
+  .final-plan-review {
+    padding: 1.25rem;
+    gap: 1.25rem;
+    border-radius: 14px;
+  }
+
+  /* --- Platform Action Modal (#platformActionModal) --- */
+  .platform-tabs-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .platform-action-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 0.2rem;
+    padding: 0.25rem;
+  }
+
+  .platform-tab-btn {
+    padding: 0.55rem 0.25rem;
+    font-size: 0.78rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .platform-tab-intro {
+    font-size: 0.85rem;
+  }
+
+  .platform-plans-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .platform-plan-card {
+    padding: 1.2rem 1.1rem;
+  }
+
+  .plan-card-header {
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .plan-card-price {
+    font-size: 1.45rem;
+  }
+
+  .plan-services-list {
+    margin-bottom: 1.15rem;
+    gap: 0.45rem;
+  }
+
+  /* --- Platform Custom Calculator --- */
+  .calc-service-item {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.95rem 1rem;
+    gap: 0.75rem;
+  }
+
   .calc-stepper-wrap {
     width: 100%;
     justify-content: space-between;
     padding-top: 0.65rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
+
+  .btn-stepper {
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
+  }
+
+  .stepper-input {
+    width: 44px;
+    font-size: 0.95rem;
+  }
+
+  .calc-total-amount {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* --- Platform Opt-In Confirm Panel --- */
+  .plan-optin-confirm-panel {
+    padding: 1.15rem 1rem;
+  }
+
+  .confirm-panel-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .confirm-panel-header .btn-text {
+    padding: 0.25rem 0;
+    font-size: 0.85rem;
+  }
+
+  .confirm-panel-title {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  #btnSubmitPlanOptin,
+  #btnSubmitAudit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* --- Team Modal (#teamModal) --- */
+  .team-modal-intro {
+    font-size: 0.92rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .team-modal-grid {
+    gap: 1rem;
+  }
+
+  .modal-founder-card {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .founder-card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .founder-profile-group {
+    gap: 0.9rem;
+    align-items: center;
+  }
+
+  .founder-avatar-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .founder-badge {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.08em !important;
+    padding: 0.25rem 0.6rem !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+  }
+
+  .founder-name {
+    font-size: 1.35rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .team-linkedin-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+  }
+
+  .founder-bio {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .team-modal-careers-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.15rem;
+  }
+
+  .team-careers-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* --- Careers Portal & Job Modal (#careersPortalModal, #jobModal) --- */
+  .careers-portal-statement {
+    font-size: 0.92rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .careers-grid,
+  .careers-portal-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .job-card {
+    min-height: auto;
+    padding: 1.2rem 1.1rem;
+    gap: 0.9rem;
+  }
+
+  .job-card-top {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .job-title {
+    font-size: 1.2rem;
+  }
+
+  .job-desc {
+    font-size: 0.88rem;
+  }
+
+  .job-modal-body {
+    gap: 1.25rem;
+  }
+
+  .job-modal-tagline {
+    font-size: 1rem;
+  }
+
+  .job-modal-desc {
+    font-size: 0.9rem;
+  }
+
+  .job-modal-block {
+    padding-top: 1.15rem;
+    gap: 0.65rem;
+  }
+
+  .job-block-list li {
+    font-size: 0.88rem;
+  }
+
+  .hiring-fallback-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .fallback-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .btn-copy-email {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem;
+    border-radius: 8px;
+  }
+
+  .score-breakdown-row {
+    grid-template-columns: 90px 1fr 40px;
+    gap: 1rem;
+  }
 }
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.65rem, 14.5vw, 3.6rem);
+  }
+
+  .contact-title {
+    font-size: clamp(1.6rem, 7.4vw, 2.15rem);
+  }
+
+  .platform-tab-btn {
+    font-size: 0.74rem;
+    padding: 0.5rem 0.15rem;
+  }
+}
+
 
