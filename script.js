@@ -236,7 +236,7 @@ function initializePlanConfigurator() {
       }),
       customRequirement: AppState.plan.customRequirement,
       estimatedInvestment: calculateInvestmentSummary().displayValue,
-      brandPresenceScore: AppState.score.overallScore > 0 ? AppState.score.overallScore : null,
+      brandPresenceScore: AppState.score?.overallScore > 0 ? AppState.score.overallScore : null,
       submittedAt: new Date().toISOString()
     };
 
@@ -254,7 +254,7 @@ function initializePlanConfigurator() {
       btnSubmitPlan.disabled = false;
       btnSubmitPlan.textContent = 'Tap to Retry →';
       if (feedback) {
-        feedback.textContent = 'Direct delivery encountered an issue. Tap "Chat on WhatsApp →" below to send your plan instantly.';
+        feedback.textContent = 'Direct delivery encountered an issue. Please email us directly at thorvonmedia@gmail.com.';
         feedback.style.display = 'block';
         feedback.style.color = '#ff9f0a';
       }
@@ -265,6 +265,8 @@ function initializePlanConfigurator() {
 function openPlanModal(preselectedCategory = null) {
   const planModal = document.getElementById('planModal');
   if (!planModal) return;
+
+  closeMobileMenu();
 
   if (preselectedCategory) {
     AppState.plan.selectedCategories.clear();
@@ -308,6 +310,11 @@ function goToPlanStep(stepNum) {
 
   const targetStep = document.getElementById(`planStep${stepNum}`);
   if (targetStep) targetStep.classList.add('active');
+
+  const planModal = document.getElementById('planModal');
+  const modalContainer = planModal?.querySelector('.thorvon-modal-container');
+  if (modalContainer) modalContainer.scrollTop = 0;
+  if (planModal) planModal.scrollTop = 0;
 
   updateLiveSummary();
 }
@@ -630,7 +637,7 @@ function openMobileMenu() {
   mobileToggleBtn.setAttribute('aria-expanded', 'true');
   mobileDrawerEl.classList.add('is-open');
   mobileDrawerEl.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('drawer-open');
 }
 
 function closeMobileMenu() {
@@ -638,7 +645,7 @@ function closeMobileMenu() {
   mobileToggleBtn.setAttribute('aria-expanded', 'false');
   mobileDrawerEl.classList.remove('is-open');
   mobileDrawerEl.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  document.body.classList.remove('drawer-open');
 }
 
 /**
@@ -2001,7 +2008,8 @@ function showPlanOptinPanel(planName, planPrice, prefillNotes) {
 
   if (confirmPanel) {
     confirmPanel.style.display = 'block';
-    confirmPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const modalContainer = document.querySelector('.platform-action-modal-container');
+    if (modalContainer) modalContainer.scrollTop = 0;
   }
 }
 
@@ -2010,8 +2018,8 @@ function hidePlanOptinPanel() {
   const tabsBar = document.querySelector('.platform-tabs-bar');
   const tabsContainer = document.getElementById('platformActionTabs');
   if (confirmPanel) confirmPanel.style.display = 'none';
-  if (tabsBar) tabsBar.style.display = 'flex';
-  if (tabsContainer) tabsContainer.style.display = 'inline-flex';
+  if (tabsBar) tabsBar.style.display = '';
+  if (tabsContainer) tabsContainer.style.display = '';
 
   // Restore active tab
   const activeBtn = document.querySelector('.platform-tab-btn.active');
@@ -2023,6 +2031,7 @@ function openPlatformActionModal(platformName, iconHtml) {
   const modal = document.getElementById('platformActionModal');
   if (!modal) return;
 
+  closeMobileMenu();
   closeTeamModal();
   closeCareersPortalModal();
 
@@ -2109,8 +2118,8 @@ function switchPlatformTab(tabName) {
 
   // Hide confirm panel if switching tabs
   if (confirmPanel) confirmPanel.style.display = 'none';
-  if (tabsBar) tabsBar.style.display = 'flex';
-  if (tabsContainer) tabsContainer.style.display = 'inline-flex';
+  if (tabsBar) tabsBar.style.display = '';
+  if (tabsContainer) tabsContainer.style.display = '';
 
   // Deactivate all
   [tabBtnPlans, tabBtnCustom, tabBtnAudit].forEach((btn) => {
@@ -2147,6 +2156,9 @@ function switchPlatformTab(tabName) {
       contentPlans.style.display = 'block';
     }
   }
+
+  const modalContainer = document.querySelector('.platform-action-modal-container');
+  if (modalContainer) modalContainer.scrollTop = 0;
 }
 
 function initializePlatformActionModal() {
