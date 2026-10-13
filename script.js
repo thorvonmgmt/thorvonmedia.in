@@ -127,6 +127,7 @@ const AppState = {
     step: 1,
     selectedCategories: new Set(),
     selectedRequirements: new Set(),
+    selectedPlatforms: new Set(['YouTube', 'LinkedIn']),
     customRequirement: '',
     userDetails: {
       name: '',
@@ -191,6 +192,26 @@ function initializePlanConfigurator() {
     }
   });
 
+  // Step 2: Target Platform Selection
+  const platformChipBtns = planModal.querySelectorAll('.platform-chip-btn[data-platform]');
+  platformChipBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const p = btn.getAttribute('data-platform');
+      if (AppState.plan.selectedPlatforms.has(p)) {
+        if (AppState.plan.selectedPlatforms.size > 1) {
+          AppState.plan.selectedPlatforms.delete(p);
+          btn.classList.remove('active');
+          btn.setAttribute('aria-checked', 'false');
+        }
+      } else {
+        AppState.plan.selectedPlatforms.add(p);
+        btn.classList.add('active');
+        btn.setAttribute('aria-checked', 'true');
+      }
+      updateLiveSummary();
+    });
+  });
+
   // Step 2: Back & Continue
   const btnStep2Back = document.getElementById('btnStep2Back');
   const btnStep2Continue = document.getElementById('btnStep2Continue');
@@ -230,6 +251,7 @@ function initializePlanConfigurator() {
       company: AppState.plan.userDetails.company,
       notes: AppState.plan.userDetails.notes,
       selectedCategories: Array.from(AppState.plan.selectedCategories),
+      selectedPlatforms: Array.from(AppState.plan.selectedPlatforms),
       selectedServices: Array.from(AppState.plan.selectedRequirements).map((id) => {
         const item = PricingConfig.find((p) => p.id === id);
         return item ? item.label : id;
@@ -431,7 +453,21 @@ function calculateInvestmentSummary() {
 function updateLiveSummary() {
   const summaryList = document.getElementById('summaryItemsList');
   const summaryAmount = document.getElementById('summaryInvestmentAmount');
+  const summaryPlatformsWrap = document.getElementById('summaryPlatformsWrap');
+  const summaryPlatformsChips = document.getElementById('summaryPlatformsChips');
   if (!summaryList || !summaryAmount) return;
+
+  // Render Target Platforms in Summary
+  if (summaryPlatformsWrap && summaryPlatformsChips) {
+    if (AppState.plan.selectedPlatforms && AppState.plan.selectedPlatforms.size > 0) {
+      summaryPlatformsWrap.style.display = 'block';
+      summaryPlatformsChips.innerHTML = Array.from(AppState.plan.selectedPlatforms)
+        .map((p) => `<span class="summary-platform-pill">${p}</span>`)
+        .join('');
+    } else {
+      summaryPlatformsWrap.style.display = 'none';
+    }
+  }
 
   if (AppState.plan.selectedCategories.size === 0) {
     summaryList.innerHTML = '<p class="summary-empty-msg">No services selected yet.</p>';
@@ -483,9 +519,23 @@ function updateLiveSummary() {
  */
 function buildFinalPlanScreen() {
   const finalReviewServices = document.getElementById('finalReviewServices');
+  const finalPlatformsWrap = document.getElementById('finalPlatformsWrap');
+  const finalReviewPlatforms = document.getElementById('finalReviewPlatforms');
   const finalCustomReqWrap = document.getElementById('finalCustomReqWrap');
   const finalCustomReqText = document.getElementById('finalCustomReqText');
   const finalInvestmentValue = document.getElementById('finalInvestmentValue');
+
+  // Render Target Platforms in Step 4 Review
+  if (finalPlatformsWrap && finalReviewPlatforms) {
+    if (AppState.plan.selectedPlatforms && AppState.plan.selectedPlatforms.size > 0) {
+      finalPlatformsWrap.style.display = 'block';
+      finalReviewPlatforms.innerHTML = Array.from(AppState.plan.selectedPlatforms)
+        .map((p) => `<span class="review-platform-pill">${p}</span>`)
+        .join('');
+    } else {
+      finalPlatformsWrap.style.display = 'none';
+    }
+  }
 
   if (!finalReviewServices) return;
   finalReviewServices.innerHTML = '';
@@ -809,12 +859,16 @@ function initializeContactForm() {
       statusMsg.className = 'form-status-msg';
     }
 
+    const checkedPlatforms = Array.from(document.querySelectorAll('input[name="contactPlatforms"]:checked')).map((cb) => cb.value);
+    const platformsText = checkedPlatforms.length > 0 ? checkedPlatforms.join(', ') : 'Omnichannel';
+
     const payload = {
       name: fullName,
       contact: workEmail,
       company: company || 'Not specified',
       selectedServices: [serviceChoice],
-      customRequirement: `Retainer Scope: ${budget}`,
+      targetPlatforms: platformsText,
+      customRequirement: `Retainer Scope: ${budget} | Platforms: ${platformsText}`,
       notes: message || 'None provided',
       estimatedInvestment: budget,
       submittedAt: new Date().toLocaleString()
@@ -837,6 +891,7 @@ function initializeContactForm() {
           `Email: ${workEmail}\n` +
           `Company: ${company}\n` +
           `Service: ${serviceChoice}\n` +
+          `Target Platforms: ${platformsText}\n` +
           `Budget: ${budget}\n\n` +
           `Project Scope:\n${message}\n`
         );
@@ -877,16 +932,16 @@ const CareerPositions = {
     openings: 'URGENT HIRING',
     type: 'REMOTE · FULL-TIME / PART-TIME',
     tagline: 'High-retention video cutting, pacing, kinetic typography, and viral clip extraction.',
-    desc: 'We are seeking a fast, creative Clipper who lives and breathes modern short-form video algorithms. You will extract high-impact viral moments from podcasts, long-form interviews, and raw founder footage, formatting them into retention-optimized reels, Shorts, and X clips.',
+    desc: 'We are seeking a fast, creative Clipper who lives and breathes modern short-form video algorithms. You will extract high-impact viral moments from podcasts, long-form interviews, and raw founder footage, formatting them into retention-optimized reels, YouTube Shorts, and viral video clips.',
     responsibilities: [
       'Extract high-retention 30–60s clips from long-form podcasts, streams, and founder recordings.',
       'Craft captivating first 3-second hooks with dynamic pacing, motion graphics, and sound design.',
       'Add clean kinetic captions, B-roll overlays, visual zooms, and seamless jump cuts.',
-      'Format and export tailored aspect ratios optimized natively for X, YouTube Shorts, and Instagram Reels.',
+      'Format and export tailored aspect ratios optimized natively for YouTube Shorts and Instagram Reels.',
       'Collaborate with our creative director to maintain premier visual standards across all client deliverables.'
     ],
     requirements: [
-      'Proven portfolio or links to viral short-form clips you have edited (Reels, TikTok, Shorts, X)',
+      'Proven portfolio or links to viral short-form clips you have edited (Instagram Reels, YouTube Shorts, or TikTok)',
       'Proficiency in Adobe Premiere Pro, After Effects, DaVinci Resolve, or CapCut Pro',
       'Sharp understanding of viral retention curves, pacing, sound effects, and hook psychology',
       'Ability to turn around fast, reliable iterations in a high-growth remote agency workflow'
@@ -898,17 +953,17 @@ const CareerPositions = {
     openings: 'URGENT HIRING',
     type: 'REMOTE · FULL-TIME',
     tagline: 'Omnichannel feed ownership, native distribution, and high-converting audience growth.',
-    desc: 'We are looking for an analytical and culturally plugged-in Social Media Manager to take full ownership of publishing, feed optimization, and audience engagement across Reddit, X, LinkedIn, YouTube, and Instagram for our founder and brand clients.',
+    desc: 'We are looking for an analytical and culturally plugged-in Social Media Manager to take full ownership of publishing, feed optimization, and audience engagement across Reddit, LinkedIn, YouTube, and Instagram for our founder and brand clients.',
     responsibilities: [
-      'Manage and deploy native publishing schedules across Reddit, X, LinkedIn, YouTube, and Instagram.',
-      'Write platform-native captions, threads, and post descriptions tailored to each platform’s unique tone.',
+      'Manage and deploy native publishing schedules across Reddit, LinkedIn, YouTube, and Instagram.',
+      'Write platform-native captions, carousels, and post descriptions tailored to each platform’s unique tone.',
       'Engage in comment sections, founder communities, subreddits, and target industry discussions to drive authority.',
       'Monitor audience retention, impression analytics, and generate actionable weekly performance reports.',
       'Partner with writers and editors to continuously optimize hooks and content formats based on live data.'
     ],
     requirements: [
       'Minimum 1.5+ years of experience managing active social feeds for founders, creators, or B2B/consumer brands',
-      'Deep fluency in native mechanics and etiquette across Reddit, X, LinkedIn, and Instagram',
+      'Deep fluency in native mechanics and etiquette across Reddit, LinkedIn, YouTube, and Instagram',
       'Excellent written English with a sharp voice suited for executive and founder communication',
       'Organized, proactive, and proficient with scheduling suites and native analytics tools'
     ],
@@ -928,7 +983,7 @@ const CareerPositions = {
       'Maintain an authentic, confident, and persuasive on-camera persona.'
     ],
     requirements: [
-      'Demonstrated portfolio or links showcasing strong on-camera performance (YouTube, Reels, TikTok, or X)',
+      'Demonstrated portfolio or links showcasing strong on-camera performance (YouTube, Instagram Reels, or TikTok)',
       'Natural charisma, articulate delivery, and strong scriptwriting / storytelling capability',
       'Clean recording setup (clean audio mic, high-resolution camera/phone, good lighting)',
       'Passionate about internet culture, creator trends, and media psychology'
@@ -1558,82 +1613,6 @@ const PlatformPackagesConfig = {
       { id: 'ig_statics', name: 'Single Static Graphic / Brand Asset', unitPrice: 35, unitLabel: '/ post', defaultQty: 2, minQty: 0, maxQty: 20, desc: 'Branded quotes, announcements & minimal promotional graphics' },
       { id: 'ig_feed', name: 'Visual Feed Curation & Aesthetic Layout', unitPrice: 110, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Cohesive color palette, cover templates & highlight icons' },
       { id: 'ig_mgmt', name: 'Turnkey Account Scheduling & Management', unitPrice: 120, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Native publishing, hashtag tracking & comment moderation' }
-    ]
-  },
-
-  X: {
-    name: 'X',
-    title: 'X — Writing & Real-Time Distribution',
-    subtitle: 'Punchy text posts, viral breakdown threads, real-time commentary, and rapid audience growth.',
-    auditDesc: "Our content strategists will evaluate your X profile. You'll receive a detailed assessment of your tweet hooks, thread retention, reply effectiveness, and conversion architecture.",
-    plans: {
-      starter: {
-        kicker: 'STARTER',
-        title: 'Consistent Voice',
-        price: '$450',
-        freq: '/ mo',
-        desc: 'Maintain a consistent, authoritative daily presence with high-signal posts and structured threads.',
-        deliverables: [
-          '24 Concise, high-signal text posts per month',
-          '2 In-depth breakdown threads with hook tweets & takeaways',
-          'Professional profile bio & banner copywriting optimization',
-          'Native scheduling calendar timed for peak follower activity',
-          'Basic impression, retweet & profile visit tracking',
-          'Monthly audience insights & growth recap'
-        ]
-      },
-      growth: {
-        kicker: 'GROWTH & PR',
-        title: 'Audience Expansion',
-        price: '$890',
-        freq: '/ mo',
-        featured: true,
-        desc: 'Expand your reach rapidly across Tech, Founder, and Creator Twitter with viral threads and real-time commentary.',
-        deliverables: [
-          '55 Curated text posts, quotes & insights per month (daily cadence)',
-          '6 Viral breakdown threads dissecting case studies, frameworks & trends',
-          'Real-time commentary & timely newsjacking on trending topics',
-          'Content repurposing (translating founder blogs/podcasts into X formats)',
-          'Reply strategy playbook to engage top industry accounts',
-          'Bi-weekly performance audits & hook conversion testing'
-        ]
-      },
-      enterprise: {
-        kicker: 'ENTERPRISE',
-        title: 'Category Authority',
-        price: '$1,450',
-        freq: '/ mo',
-        desc: 'Establish market leadership on X with high-frequency publishing, flagship threads, and strategic positioning.',
-        deliverables: [
-          '100+ Strategic text posts & quote commentary (3–4 daily drops)',
-          '12 Long-form breakdown threads and published X Articles',
-          'High-profile account reply positioning & network engagement',
-          'End-to-end media repurposing from all client video/audio assets',
-          'Dedicated growth sprint architecture & follower acquisition campaigns',
-          'Full account management, schedule execution & weekly analytics reviews'
-        ]
-      },
-      custom: {
-        kicker: 'CUSTOM',
-        title: 'Custom X Plan',
-        price: 'Tailored',
-        freq: 'Pricing',
-        desc: 'Select your exact monthly volume of text posts, threads, writing support, and account management.',
-        deliverables: [
-          'Choose monthly post volume & thread production',
-          'Add real-time commentary sprints & long-form X articles',
-          'Include profile branding makeover & reply strategy',
-          'Real-time investment calculation in $ to suit your needs'
-        ]
-      }
-    },
-    calculatorServices: [
-      { id: 'x_posts', name: 'Concise High-Signal Text Posts', unitPrice: 12, unitLabel: '/ post', defaultQty: 25, minQty: 0, maxQty: 150, desc: 'Punchy observations, quotes, frameworks & contrarian takes' },
-      { id: 'x_threads', name: 'In-Depth Viral Threads (6–10 tweets)', unitPrice: 65, unitLabel: '/ thread', defaultQty: 3, minQty: 0, maxQty: 20, desc: 'Compelling hook tweet, storytelling body & actionable conclusion' },
-      { id: 'x_articles', name: 'Long-form X Article / Editorial Essay', unitPrice: 95, unitLabel: '/ article', defaultQty: 1, minQty: 0, maxQty: 10, desc: 'Long-form published essay formatted natively on X Premium' },
-      { id: 'x_commentary', name: 'Real-Time Industry Commentary Sprints', unitPrice: 120, unitLabel: '/ month', defaultQty: 1, minQty: 0, maxQty: 1, desc: 'Curated timely takes on breaking news & trending industry topics' },
-      { id: 'x_profile', name: 'Profile Bio, Banner & Pinned Makeover', unitPrice: 90, unitLabel: '/ one-time', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'High-converting bio copy, banner layout & pinned tweet hook' },
-      { id: 'x_mgmt', name: 'Turnkey Schedule Execution & Analytics', unitPrice: 100, unitLabel: '/ month', defaultQty: 0, minQty: 0, maxQty: 1, desc: 'Peak-time scheduling, link tracking & monthly follower growth analysis' }
     ]
   },
 
@@ -2592,12 +2571,13 @@ const PortfolioItems = [
 
 // Active state tracking
 let activePortfolioFilter = 'all';
+let activePortfolioView = 'grid';
 let currentFilteredList = [...PortfolioItems];
 let activeLightboxIndex = 0;
 let currentCarouselSlide = 0;
 
 /**
- * Initialize Portfolio Grid & Lightbox
+ * Initialize Portfolio Grid, Swiss Index Table & Lightbox
  */
 function initPortfolioSystem() {
   const grid = document.getElementById('portfolioGrid');
@@ -2607,6 +2587,44 @@ function initPortfolioSystem() {
   initPortfolioFilters();
   initPortfolioSpotlight();
   initPortfolioLightboxHandlers();
+  initPortfolioViewToggle();
+}
+
+/**
+ * Initialize Portfolio Layout View Toggle (Grid vs Swiss Index Table)
+ */
+function initPortfolioViewToggle() {
+  const toggleBtns = document.querySelectorAll('.portfolio-view-toggle .view-toggle-btn');
+  const grid = document.getElementById('portfolioGrid');
+  const table = document.getElementById('portfolioIndexTable');
+
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-view');
+      if (mode === activePortfolioView) return;
+      activePortfolioView = mode;
+
+      toggleBtns.forEach((b) => {
+        const isMatch = b.getAttribute('data-view') === mode;
+        b.classList.toggle('active', isMatch);
+        b.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+      });
+
+      if (mode === 'index') {
+        if (grid) grid.style.display = 'none';
+        if (table) {
+          table.style.display = 'block';
+          renderPortfolioIndexTable(activePortfolioFilter);
+        }
+      } else {
+        if (table) table.style.display = 'none';
+        if (grid) {
+          grid.style.display = 'grid';
+          renderPortfolioCards(activePortfolioFilter);
+        }
+      }
+    });
+  });
 }
 
 /**
@@ -2697,6 +2715,72 @@ function renderPortfolioCards(filter) {
 }
 
 /**
+ * Render Swiss Index Table matching filter in Editorial Typography Format
+ */
+function renderPortfolioIndexTable(filter) {
+  const table = document.getElementById('portfolioIndexTable');
+  if (!table) return;
+
+  activePortfolioFilter = filter;
+  currentFilteredList = filter === 'all'
+    ? [...PortfolioItems]
+    : PortfolioItems.filter((item) => item.category === filter);
+
+  table.innerHTML = `
+    <div class="index-table-header font-mono">
+      <span class="index-th th-num">// IDX</span>
+      <span class="index-th th-title">PROJECT / NARRATIVE</span>
+      <span class="index-th th-disc">DISCIPLINE</span>
+      <span class="index-th th-format">DELIVERABLE FORMAT</span>
+      <span class="index-th th-status">STATUS</span>
+      <span class="index-th th-action" style="text-align: right;">ACTION</span>
+    </div>
+    <div class="index-table-body">
+      ${currentFilteredList.map((item, index) => {
+        const isVideo = item.type === 'video';
+        const isCarousel = item.type === 'carousel';
+        const actionLabel = isVideo ? 'Play 4K' : isCarousel ? 'Inspect 6S' : 'View';
+        const actionIcon = isVideo ? '▶' : '↗';
+
+        return `
+          <div class="index-table-row" data-index="${index}" role="button" tabindex="0" aria-label="Open ${item.title}">
+            <div class="index-col-num font-mono">${String(index + 1).padStart(2, '0')}</div>
+            <div class="index-col-title">
+              <span class="index-title-text">${item.title}</span>
+              <span class="index-pill-badge font-mono">${item.formatBadge}</span>
+            </div>
+            <div class="index-col-discipline">${item.discipline}</div>
+            <div class="index-col-deliverable">${item.deliverable}</div>
+            <div class="index-col-year font-mono">2024 · LIVE</div>
+            <div class="index-col-action">
+              <span class="index-action-pill font-mono">
+                <span>${actionLabel}</span>
+                <span class="action-icon">${actionIcon}</span>
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  // Attach click listeners to rows
+  table.querySelectorAll('.index-table-row').forEach((row) => {
+    row.addEventListener('click', () => {
+      const idx = parseInt(row.getAttribute('data-index'), 10);
+      openPortfolioLightbox(idx);
+    });
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const idx = parseInt(row.getAttribute('data-index'), 10);
+        openPortfolioLightbox(idx);
+      }
+    });
+  });
+}
+
+/**
  * Filter Tabs click handling
  */
 function initPortfolioFilters() {
@@ -2711,7 +2795,11 @@ function initPortfolioFilters() {
       tab.setAttribute('aria-selected', 'true');
 
       const filter = tab.getAttribute('data-filter') || 'all';
-      renderPortfolioCards(filter);
+      if (activePortfolioView === 'index') {
+        renderPortfolioIndexTable(filter);
+      } else {
+        renderPortfolioCards(filter);
+      }
     });
   });
 }

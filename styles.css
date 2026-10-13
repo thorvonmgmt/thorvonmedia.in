@@ -2720,7 +2720,7 @@ ul {
 
 .platform-curved-dock {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.75rem;
   padding: 0.75rem;
   background-color: #0d0f13;
@@ -3515,10 +3515,6 @@ ul {
     gap: 0.65rem;
     padding: 0.65rem;
     border-radius: 18px;
-  }
-
-  .platform-curved-dock .platform-box:last-child {
-    grid-column: span 2;
   }
 }
 
@@ -4511,21 +4507,78 @@ ul {
   font-size: 0.86rem;
 }
 
-/* --- Architectural Minimalist Filter Rail --- */
-.portfolio-filter-rail {
+/* --- Architectural Minimalist Filter Rail & View Switcher --- */
+.portfolio-controls-bar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 3.25rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 0.85rem;
 }
 
+.portfolio-filter-rail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  flex: 1;
+}
+
 .portfolio-filter-rail::-webkit-scrollbar {
   display: none;
+}
+
+/* Minimalist View Switcher (Grid vs Swiss Index) */
+.portfolio-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.2rem;
+  flex-shrink: 0;
+}
+
+.view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  border: none;
+  color: #8e9aa8;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.view-toggle-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.view-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.view-toggle-icon {
+  font-size: 0.92rem;
+  line-height: 1;
 }
 
 .filter-tab {
@@ -4755,6 +4808,282 @@ ul {
 .portfolio-item:hover .meta-arrow {
   color: #ffffff;
   transform: translate(2px, -2px);
+}
+
+/* --- Portfolio Index Table (Swiss Directory Format) --- */
+.portfolio-index-table {
+  width: 100%;
+  margin-bottom: 4.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.index-table-header {
+  display: grid;
+  grid-template-columns: 80px 2.4fr 1.6fr 1.6fr 110px 100px;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.index-table-row {
+  display: grid;
+  grid-template-columns: 80px 2.4fr 1.6fr 1.6fr 110px 100px;
+  gap: 1.5rem;
+  padding: 1.15rem 1.25rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-premium);
+  position: relative;
+  outline: none;
+}
+
+.index-table-row:hover,
+.index-table-row:focus-visible {
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+.index-col-num {
+  font-size: 0.82rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.index-col-title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.index-title-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.index-table-row:hover .index-title-text {
+  color: #60a5fa;
+}
+
+.index-pill-badge {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.index-col-discipline,
+.index-col-deliverable {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.index-col-year {
+  font-size: 0.74rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.index-col-action {
+  text-align: right;
+}
+
+.index-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.index-table-row:hover .index-action-pill {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+  transform: translateX(2px);
+}
+
+/* --- Plan Configurator: Target Platform Selector & Pills --- */
+.plan-platforms-block {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plan-platforms-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.plan-platforms-hint {
+  font-size: 0.74rem;
+  color: #64748b;
+  letter-spacing: 0.04em;
+}
+
+.plan-platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.platform-chip-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-premium);
+  user-select: none;
+}
+
+.platform-chip-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.platform-chip-btn.active {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #ffffff;
+}
+
+.platform-chip-btn .chip-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.platform-chip-btn.active .chip-icon {
+  color: #60a5fa;
+}
+
+.platform-chip-btn .chip-label {
+  flex: 1;
+  text-align: left;
+  margin-left: 0.35rem;
+}
+
+.platform-chip-btn .chip-check {
+  font-size: 0.82rem;
+  font-weight: bold;
+  color: #60a5fa;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.2s ease;
+}
+
+.platform-chip-btn.active .chip-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Summary Platforms List in Live Sidebar */
+.summary-platforms-section {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.summary-platforms-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.summary-platforms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.summary-platform-pill,
+.review-platform-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  display: inline-block;
+}
+
+.review-platforms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+/* Contact Platform Pills */
+.contact-platform-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+}
+
+.contact-platform-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.contact-platform-pill input[type="checkbox"] {
+  accent-color: #3b82f6;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.contact-platform-pill:has(input:checked) {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #ffffff;
 }
 
 /* Archive Cloud Banner */
@@ -5183,9 +5512,42 @@ ul {
     justify-content: center;
   }
 
-  .portfolio-filter-rail {
+  .portfolio-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
     margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .portfolio-filter-rail {
+    margin-bottom: 0;
+    padding-bottom: 0.25rem;
+  }
+
+  .portfolio-view-toggle {
+    align-self: flex-start;
+  }
+
+  .index-table-header {
+    display: none;
+  }
+
+  .index-table-row {
+    grid-template-columns: 36px 1fr auto;
+    gap: 0.75rem;
+    padding: 0.95rem 0.5rem;
+  }
+
+  .index-col-discipline,
+  .index-col-deliverable,
+  .index-col-year {
+    display: none;
+  }
+
+  .plan-platforms-grid,
+  .contact-platform-pills {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .filter-tab {
