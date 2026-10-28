@@ -12,7 +12,8 @@ const ContactConfig = {
   PHONE_LINK: 'tel:+916000156191',
   EMAIL: 'thorvonmedia@gmail.com',
   EMAIL_LINK: 'mailto:thorvonmedia@gmail.com',
-  LINKEDIN_LINK: 'https://www.linkedin.com/in/drishtanta-baruah/'
+  LINKEDIN_LINK: 'https://www.linkedin.com/in/drishtanta-baruah/',
+  TALENT_URL: 'https://talent.thorvonmedia.in'
 };
 
 // ==========================================================================
