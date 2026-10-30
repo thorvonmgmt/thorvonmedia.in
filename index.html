@@ -3,67 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thorvon Media &mdash; The Distribution House for Creators &amp; Brands</title>
-  <meta name="description" content="Thorvon is a premium short-form distribution house. We build dedicated distribution channels around your content, so every story reaches further, on every platform that matters.">
-  <meta name="keywords" content="Thorvon Media, short-form distribution, dedicated channels, content distribution, YouTube Shorts, Instagram Reels, creator reach, brand distribution">
-  <meta name="author" content="Thorvon Media">
+  <title>Thorvon Media &mdash; The distribution house for creators and brands.</title>
+  <meta name="description" content="We build channels around your content so it reaches more people.">
   <meta name="theme-color" content="#000000">
 
-  <!-- Open Graph / Social Sharing -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Thorvon Media &mdash; The Distribution House for Creators &amp; Brands">
-  <meta property="og:description" content="Thorvon builds dedicated distribution channels around your content, so every story reaches further, on every platform that matters.">
-  <meta property="og:image" content="assets/logo-white.png">
+  <meta property="og:title" content="Thorvon Media">
+  <meta property="og:description" content="The distribution house for creators and brands. We build channels around your content so it reaches more people.">
   <meta property="og:url" content="https://thorvonmedia.in">
+  <meta property="og:image" content="assets/logo-white.png">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thorvon Media &mdash; The Distribution House for Creators &amp; Brands">
-  <meta name="twitter:description" content="Thorvon builds dedicated distribution channels around your content, so every story reaches further, on every platform that matters.">
-
-  <!-- Pure Inter Typography -->
+  <!-- Typography: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon Icons -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="shortcut icon" href="favicon.ico">
 
-  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 <body>
 
-  <!-- Ambient Light Effect -->
-  <div class="ambient-glow" aria-hidden="true"></div>
-
-  <!-- Site Header -->
+  <!-- Minimal Header -->
   <header class="site-header" id="header">
     <div class="container header-container">
-      <a href="#hero" class="brand-link" aria-label="Thorvon Media Home">
+      <a href="#hero" class="brand-link" aria-label="Thorvon Media">
         <img src="assets/logo-white.png" alt="Thorvon Media" class="brand-logo" onerror="this.style.display='none'; document.getElementById('brand-text').style.display='inline-block';">
-        <span id="brand-text" class="brand-text-fallback">THORVON</span>
-        <span class="brand-badge">DISTRIBUTION</span>
+        <span id="brand-text" class="brand-text-fallback">Thorvon Media</span>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="desktop-nav" aria-label="Main Navigation">
         <ul class="nav-menu">
-          <li><a href="#hero" class="nav-item">Home</a></li>
-          <li><a href="#what-we-do" class="nav-item">What We Do</a></li>
-          <li><a href="#how-it-works" class="nav-item">How It Works</a></li>
-          <li><a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="nav-item nav-item-talent">Talent <span class="nav-ext-arrow">&nearr;</span></a></li>
+          <li><a href="#work" class="nav-item">Work</a></li>
+          <li><a href="#how" class="nav-item">How</a></li>
+          <li><a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="nav-item nav-talent">Talent &nearr;</a></li>
           <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
-        <button type="button" class="btn btn-accent nav-cta" data-action="open-booking">
-          Book a Call
+        <button type="button" class="btn btn-accent nav-cta" data-action="open-modal">
+          Let's talk
         </button>
       </nav>
 
-      <!-- Mobile Hamburger Button -->
-      <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <!-- Mobile Toggle -->
+      <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
       </button>
@@ -71,583 +59,206 @@
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-      <div class="mobile-drawer-content">
+      <div class="mobile-drawer-inner">
         <ul class="mobile-menu">
-          <li><a href="#hero" class="mobile-nav-item">Home</a></li>
-          <li><a href="#what-we-do" class="mobile-nav-item">What We Do</a></li>
-          <li><a href="#how-it-works" class="mobile-nav-item">How It Works</a></li>
-          <li><a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="mobile-nav-item mobile-talent-link">Talent <span class="nav-ext-arrow">&nearr;</span></a></li>
-          <li><a href="#contact" class="mobile-nav-item">Contact</a></li>
+          <li><a href="#work" class="mobile-link">Work</a></li>
+          <li><a href="#how" class="mobile-link">How</a></li>
+          <li><a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="mobile-link mobile-talent">Talent &nearr;</a></li>
+          <li><a href="#contact" class="mobile-link">Contact</a></li>
         </ul>
-        <div class="mobile-drawer-footer">
-          <button type="button" class="btn btn-accent btn-block" data-action="open-booking">
-            Book a Call
+        <div class="mobile-drawer-bottom">
+          <button type="button" class="btn btn-accent btn-block" data-action="open-modal">
+            Let's talk
           </button>
-          <a href="mailto:zonack@thorvonmedia.in" class="mobile-email-link">zonack@thorvonmedia.in</a>
+          <a href="mailto:zonack@thorvonmedia.in" class="mobile-email">zonack@thorvonmedia.in</a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- SECTION 1: HERO -->
+    <!-- HERO -->
     <section class="section section-hero" id="hero">
-      <div class="container hero-container">
-        <div class="hero-badge reveal">
-          <span class="pulse-dot"></span>
-          <span>Bespoke Short-Form Distribution</span>
-        </div>
-
-        <h1 class="hero-title reveal">
+      <div class="container">
+        <h1 class="hero-headline">
           The distribution house for creators and brands.
         </h1>
-
-        <p class="hero-subline reveal">
-          Thorvon builds dedicated distribution channels around your content, so every story reaches further, on every platform that matters.
+        <p class="hero-subline">
+          We build channels around your content so it reaches more people.
         </p>
-
-        <div class="hero-actions reveal">
-          <button type="button" class="btn btn-accent hero-cta" data-action="open-booking">
-            Book a Call
+        <div class="hero-action">
+          <button type="button" class="btn btn-accent hero-btn" data-action="open-modal">
+            Let's talk
           </button>
-          <a href="#how-it-works" class="btn btn-outline hero-secondary">
-            See How It Works <span class="arrow-down">&darr;</span>
-          </a>
-        </div>
-
-        <!-- Visual Architecture Minimalist Strip -->
-        <div class="distribution-flow reveal" aria-hidden="true">
-          <div class="flow-step">
-            <span class="flow-label">Source Asset</span>
-            <span class="flow-value">Podcasts &amp; Long-Form</span>
-          </div>
-          <div class="flow-connector">
-            <span class="connector-line"></span>
-            <span class="connector-icon">&rarr;</span>
-          </div>
-          <div class="flow-step active-flow">
-            <span class="flow-label">Thorvon Engine</span>
-            <span class="flow-value">Dedicated Channels</span>
-          </div>
-          <div class="flow-connector">
-            <span class="connector-line"></span>
-            <span class="connector-icon">&rarr;</span>
-          </div>
-          <div class="flow-step">
-            <span class="flow-label">Compound Reach</span>
-            <span class="flow-value">Reels, Shorts, Feeds</span>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: THE SHIFT -->
-    <section class="section section-shift" id="the-shift">
+    <!-- WHAT WE DO -->
+    <section class="section section-work" id="work">
       <div class="container">
-        <div class="shift-card reveal">
-          <div class="section-tag">THE SHIFT</div>
-          <h2 class="shift-headline">
-            Posting once is no longer enough.<br>
-            <span class="shift-accent">Great content deserves distribution, not just editing.</span>
-          </h2>
-          <p class="shift-paragraph">
-            When an episode, keynote, or conversation lives solely on a primary feed, the vast majority of its addressable audience never discovers it. Great ideas die in single uploads. Thorvon builds dedicated distribution channels that take your existing work and syndicate it daily across short-form discovery feeds, turning static archives into compounding reach.
-          </p>
-        </div>
+        <div class="section-label">WHAT WE DO</div>
+        <h2 class="work-headline">
+          You make the content.<br>
+          <span class="text-lime">We make sure it travels.</span>
+        </h2>
+        <ul class="minimal-list">
+          <li class="minimal-list-item">
+            <span class="list-bullet">&mdash;</span>
+            <span class="list-text">Dedicated channels for your content</span>
+          </li>
+          <li class="minimal-list-item">
+            <span class="list-bullet">&mdash;</span>
+            <span class="list-text">Short-form made for every platform</span>
+          </li>
+          <li class="minimal-list-item">
+            <span class="list-bullet">&mdash;</span>
+            <span class="list-text">Posted daily, grown steadily</span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- SECTION 3: WHAT WE DO (3 CARDS) -->
-    <section class="section section-what" id="what-we-do">
+    <!-- HOW IT WORKS -->
+    <section class="section section-how" id="how">
       <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">CAPABILITIES</div>
-          <h2 class="section-title">Built for content that travels.</h2>
-          <p class="section-desc">We build and manage dedicated distribution channels as an end-to-end media operation around your existing content.</p>
-        </div>
-
-        <div class="cards-grid cards-grid-3">
-          <!-- Card 1 -->
-          <div class="feature-card reveal">
-            <div class="card-num">01</div>
-            <h3 class="card-title">Dedicated Distribution Channels</h3>
-            <p class="card-body">
-              We architect, brand, and operate independent distribution channels designed specifically to syndicate your content. Your primary feed remains pristine while dedicated channels systematically discover new audiences.
-            </p>
-            <div class="card-highlights">
-              <span class="highlight-pill">Independent Channel Nodes</span>
-              <span class="highlight-pill">Algorithmic Reach</span>
-              <span class="highlight-pill">Zero Feed Clutter</span>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="feature-card reveal">
-            <div class="card-num">02</div>
-            <h3 class="card-title">Short-Form Content Built to Travel</h3>
-            <p class="card-body">
-              Every long-form video, podcast, or keynote is deconstructed into narrative-driven short-form assets. Engineered with meticulous pacing, cinematic framing, and clear hooks designed to capture modern attention spans.
-            </p>
-            <div class="card-highlights">
-              <span class="highlight-pill">Narrative Hook Engineering</span>
-              <span class="highlight-pill">High-Retention Pacing</span>
-              <span class="highlight-pill">Archival Leverage</span>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="feature-card reveal">
-            <div class="card-num">03</div>
-            <h3 class="card-title">Multi-Platform Growth</h3>
-            <p class="card-body">
-              Continuous, synchronized distribution across YouTube Shorts, Instagram Reels, and emerging vertical feeds. We maintain relentless daily publishing so your library compounds reach week over week.
-            </p>
-            <div class="card-highlights">
-              <span class="highlight-pill">Multi-Platform Syndication</span>
-              <span class="highlight-pill">Daily Publishing Cadence</span>
-              <span class="highlight-pill">Compounding Reach</span>
-            </div>
-          </div>
-        </div>
+        <div class="section-label">HOW IT WORKS</div>
+        <ol class="how-steps">
+          <li class="step-item">
+            <span class="step-num">1.</span>
+            <span class="step-text">We get to know your content.</span>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2.</span>
+            <span class="step-text">We build your channels.</span>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3.</span>
+            <span class="step-text">We post every day.</span>
+          </li>
+          <li class="step-item">
+            <span class="step-num">4.</span>
+            <span class="step-text">We keep what works and grow it.</span>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- SECTION 4: HOW IT WORKS (4 STEPS) -->
-    <section class="section section-how" id="how-it-works">
+    <!-- WHO IT'S FOR -->
+    <section class="section section-who" id="who">
       <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">PROCESS</div>
-          <h2 class="section-title">How it works.</h2>
-          <p class="section-desc">A systematic, hands-off pipeline that transforms long-form catalogues into omnipresent distribution.</p>
-        </div>
-
-        <div class="steps-grid">
-          <!-- Step 1 -->
-          <div class="step-card reveal">
-            <div class="step-badge">Step 01</div>
-            <h3 class="step-title">Understand your content and audience.</h3>
-            <p class="step-body">
-              We audit your full archive of podcasts, keynotes, and long-form video. We analyze your core thesis, audience demographics, and high-resonance moments to define your distribution blueprint.
-            </p>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="step-card reveal">
-            <div class="step-badge">Step 02</div>
-            <h3 class="step-title">Build your dedicated channels.</h3>
-            <p class="step-body">
-              We establish, brand, and configure independent distribution channels tailored to specific viewer verticals across platforms, establishing algorithmic trust from day one.
-            </p>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="step-card reveal">
-            <div class="step-badge">Step 03</div>
-            <h3 class="step-title">Create and distribute short-form daily.</h3>
-            <p class="step-body">
-              Our editorial team transforms your long-form footage into short-form assets built to travel. We schedule, optimize, and publish them every single day across your dedicated channels.
-            </p>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="step-card reveal">
-            <div class="step-badge">Step 04</div>
-            <h3 class="step-title">Report, refine, scale.</h3>
-            <p class="step-body">
-              We track retention curves, watch-time telemetry, and audience migration weekly. We double down on breakout formats and scale channel volume as momentum compounds.
-            </p>
-          </div>
+        <div class="section-label">WHO IT'S FOR</div>
+        <div class="who-statement">
+          Creators. Founders. Brands.
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: WHO IT'S FOR -->
-    <section class="section section-who" id="who-its-for">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">CLIENTELE</div>
-          <h2 class="section-title">Who it's for.</h2>
-          <p class="section-desc">Dedicated distribution for those producing content worth remembering.</p>
-        </div>
-
-        <div class="cards-grid cards-grid-3">
-          <!-- Item 1 -->
-          <div class="client-card reveal">
-            <div class="client-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-            </div>
-            <h3 class="client-title">Creators and podcasters.</h3>
-            <p class="client-body">
-              You record hours of valuable conversations each month. We ensure the best moments reach millions of new viewers on vertical discovery feeds, driving listeners back to your core show.
-            </p>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="client-card reveal">
-            <div class="client-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="client-title">Founders and personal brands.</h3>
-            <p class="client-body">
-              Turn your interviews, keynotes, and insights into omnipresent category authority. We build dedicated channels that keep your ideas in front of investors, partners, and future customers.
-            </p>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="client-card reveal">
-            <div class="client-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
-            </div>
-            <h3 class="client-title">Brands and businesses.</h3>
-            <p class="client-body">
-              Transform brand films, executive discussions, and customer stories into an ongoing short-form presence that drives organic brand affinity without demanding extra internal bandwidth.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 6: THORVON TALENT -->
+    <!-- TALENT -->
     <section class="section section-talent" id="talent">
       <div class="container">
-        <div class="talent-feature-card reveal">
-          <div class="talent-content">
-            <div class="section-tag">ECOSYSTEM</div>
-            <h2 class="talent-headline">Distribution meets talent.</h2>
-            <p class="talent-description">
-              Our talent division, Thorvon Talent, manages creators, and our distribution engine grows them. By uniting dedicated distribution channels with elite creator management, we unlock exponential reach and tier-1 brand opportunities.
-            </p>
-            <div class="talent-actions">
-              <a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
-                Explore Thorvon Talent <span class="arrow-ext">&nearr;</span>
-              </a>
-            </div>
-          </div>
-          <div class="talent-graphic" aria-hidden="true">
-            <div class="talent-graphic-card">
-              <div class="graphic-badge">TALENT &amp; DISTRIBUTION</div>
-              <div class="graphic-title">Thorvon Talent Division</div>
-              <div class="graphic-stat-row">
-                <div class="graphic-stat">
-                  <span class="graphic-number">1:1</span>
-                  <span class="graphic-sub">Representation</span>
-                </div>
-                <div class="graphic-divider"></div>
-                <div class="graphic-stat">
-                  <span class="graphic-number">360&deg;</span>
-                  <span class="graphic-sub">Distribution</span>
-                </div>
-              </div>
-              <div class="graphic-footer-tag">talent.thorvonmedia.in &nearr;</div>
-            </div>
-          </div>
+        <div class="section-label">TALENT</div>
+        <h2 class="talent-title">
+          We also manage creators.
+        </h2>
+        <div class="talent-link-wrap">
+          <a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="talent-link">
+            Thorvon Talent &rarr;
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 7: PROOF SECTION -->
-    <section class="section section-proof" id="proof">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">MEASURED IMPACT</div>
-          <h2 class="section-title">Results that compound.</h2>
-          <p class="section-desc">Clean architecture engineered for measurable reach and sustained audience growth.</p>
-        </div>
-
-        <!-- Metric Placeholders (No fabricated numbers) -->
-        <div class="metrics-grid">
-          <div class="metric-placeholder-box reveal">
-            <span class="metric-tag">DISTRIBUTED REACH</span>
-            <div class="metric-placeholder-title">[ Compounding Monthly Reach ]</div>
-            <p class="metric-placeholder-text">Verified view velocity across dedicated YouTube Shorts and Instagram Reels channels.</p>
-          </div>
-
-          <div class="metric-placeholder-box reveal">
-            <span class="metric-tag">INFRASTRUCTURE</span>
-            <div class="metric-placeholder-title">[ Dedicated Channels Deployed ]</div>
-            <p class="metric-placeholder-text">Independent distribution nodes actively managed, formatted, and grown per client.</p>
-          </div>
-
-          <div class="metric-placeholder-box reveal">
-            <span class="metric-tag">RETENTION</span>
-            <div class="metric-placeholder-title">[ Average Watch-Time Curve ]</div>
-            <p class="metric-placeholder-text">Hook engineering and retention pacing calibrated for algorithmic momentum.</p>
-          </div>
-
-          <div class="metric-placeholder-box reveal">
-            <span class="metric-tag">CONVERSION</span>
-            <div class="metric-placeholder-title">[ Core Audience Migration ]</div>
-            <p class="metric-placeholder-text">Measurable subscriber and listener uplift back to client primary flagship feeds.</p>
-          </div>
-        </div>
-
-        <!-- Selected Partner Logos Placeholders -->
-        <div class="proof-partners reveal">
-          <div class="proof-partners-note">
-            <span>Client case studies and real-time telemetry shared during introductory consultation.</span>
-          </div>
-          <div class="partner-placeholders-grid">
-            <div class="partner-slot"><span>[ Partner Podcast ]</span></div>
-            <div class="partner-slot"><span>[ Creator Network ]</span></div>
-            <div class="partner-slot"><span>[ Venture Brand ]</span></div>
-            <div class="partner-slot"><span>[ Personal Brand ]</span></div>
-            <div class="partner-slot"><span>[ Media Company ]</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 8: FAQ (5 QUESTIONS) -->
+    <!-- FAQ (3 ONLY, ONE LINE ANSWERS) -->
     <section class="section section-faq" id="faq">
       <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">CLARITY</div>
-          <h2 class="section-title">Frequently asked questions.</h2>
-          <p class="section-desc">Everything you need to know about partnering with Thorvon Media.</p>
-        </div>
-
-        <div class="faq-accordion">
-          <!-- Q1 -->
-          <div class="faq-item reveal">
-            <button type="button" class="faq-trigger" aria-expanded="false">
-              <span class="faq-question">How is this different from a clipping agency?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              <p>
-                We do not cut random excerpts and send video files back for you to manually upload. Thorvon builds and operates dedicated distribution channels on your behalf as an autonomous media arm. We oversee the entire lifecycle—editorial curation, narrative hook engineering, multi-platform publishing, and audience growth—so your content travels without requiring your daily operational time.
-              </p>
-            </div>
+        <div class="section-label">FAQ</div>
+        <div class="faq-list">
+          <div class="faq-row">
+            <div class="faq-q">Is this a clipping agency?</div>
+            <div class="faq-a">No. Clips are part of it. We build and run the channels too.</div>
           </div>
-
-          <!-- Q2 -->
-          <div class="faq-item reveal">
-            <button type="button" class="faq-trigger" aria-expanded="false">
-              <span class="faq-question">Do I need to create new content?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              <p>
-                No. Our model is built specifically to extract maximum leverage from the work you are already producing. We build dedicated distribution around your existing podcasts, long-form videos, keynote speeches, interviews, and archival material. You focus entirely on creating; we ensure it travels.
-              </p>
-            </div>
+          <div class="faq-row">
+            <div class="faq-q">Do I need new content?</div>
+            <div class="faq-a">No. We work with what you already have.</div>
           </div>
-
-          <!-- Q3 -->
-          <div class="faq-item reveal">
-            <button type="button" class="faq-trigger" aria-expanded="false">
-              <span class="faq-question">Which platforms do you cover?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              <p>
-                We syndicate natively across YouTube Shorts, Instagram Reels, and other vertical discovery feeds where high-intent audiences spend their attention. Each piece of content is calibrated specifically for each platform's algorithmic and behavioral nuances.
-              </p>
-            </div>
-          </div>
-
-          <!-- Q4 -->
-          <div class="faq-item reveal">
-            <button type="button" class="faq-trigger" aria-expanded="false">
-              <span class="faq-question">How soon can we start?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              <p>
-                Our onboarding cycle takes 5 to 7 business days. During this initial window, we ingest your content archives, establish editorial and brand guardrails, configure your dedicated channels, and launch your daily distribution schedule.
-              </p>
-            </div>
-          </div>
-
-          <!-- Q5 -->
-          <div class="faq-item reveal">
-            <button type="button" class="faq-trigger" aria-expanded="false">
-              <span class="faq-question">Do you work with brands as well as creators?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              <p>
-                Yes. While we work extensively with top creators and podcasters, we also partner with venture-backed founders, executive leaders, and established brands looking to build an omnipresent short-form footprint without expanding their internal production overhead.
-              </p>
-            </div>
+          <div class="faq-row">
+            <div class="faq-q">Which platforms?</div>
+            <div class="faq-a">Instagram, YouTube Shorts, and more.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 9: FINAL CTA -->
-    <section class="section section-cta" id="cta">
-      <div class="container">
-        <div class="cta-box reveal">
-          <div class="section-tag">TAKE THE NEXT STEP</div>
-          <h2 class="cta-headline">Your content deserves to travel.</h2>
-          <p class="cta-subline">
-            Build dedicated distribution channels around your content. Expand your reach across every platform that matters.
-          </p>
-          <div class="cta-actions">
-            <button type="button" class="btn btn-accent btn-large" data-action="open-booking">
-              Book a Call
-            </button>
-            <a href="mailto:zonack@thorvonmedia.in" class="cta-direct-link">
-              Or email us directly &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT INQUIRY SECTION (DIRECT ACCESS) -->
+    <!-- CONTACT -->
     <section class="section section-contact" id="contact">
       <div class="container">
-        <div class="contact-inner reveal">
-          <div class="contact-header">
-            <div class="section-tag">DIRECT INQUIRY</div>
-            <h2 class="contact-title">Start the conversation.</h2>
-            <p class="contact-desc">
-              Have questions or ready to initiate dedicated distribution? Write to us directly at <a href="mailto:zonack@thorvonmedia.in" class="inline-link">zonack@thorvonmedia.in</a> or submit your details below.
-            </p>
-          </div>
-
-          <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); window.ThorvonApp.handleContactSubmit(this);">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contact-name">Name</label>
-                <input type="text" id="contact-name" name="name" placeholder="Your name" required>
-              </div>
-              <div class="form-group">
-                <label for="contact-email">Email</label>
-                <input type="email" id="contact-email" name="email" placeholder="you@domain.com" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contact-channel">Channel or Podcast Link</label>
-                <input type="url" id="contact-channel" name="channel" placeholder="https://youtube.com/... or podcast link" required>
-              </div>
-              <div class="form-group">
-                <label for="contact-type">You are a</label>
-                <select id="contact-type" name="type" required>
-                  <option value="" disabled selected>Select category</option>
-                  <option value="Creator / Podcaster">Creator / Podcaster</option>
-                  <option value="Founder / Personal Brand">Founder / Personal Brand</option>
-                  <option value="Brand / Business">Brand / Business</option>
-                  <option value="Agency / Production">Agency / Production</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="contact-message">Notes on your content &amp; goals</label>
-              <textarea id="contact-message" name="message" rows="3" placeholder="Tell us about your existing catalogue and distribution goals..."></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-accent btn-large">
-                Send Inquiry &rarr;
-              </button>
-              <span class="form-note">Inquiries answered within 24 hours.</span>
-            </div>
-          </form>
+        <div class="section-label">CONTACT</div>
+        <h2 class="contact-headline">
+          Your content deserves to travel.
+        </h2>
+        <div class="contact-actions">
+          <button type="button" class="btn btn-accent contact-btn" data-action="open-modal">
+            Let's talk
+          </button>
+          <a href="mailto:zonack@thorvonmedia.in" class="contact-email">
+            zonack@thorvonmedia.in
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- SECTION 10: FOOTER -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <span class="footer-logo-text">THORVON MEDIA</span>
-          </div>
-          <p class="footer-mission">
-            The premium short-form distribution house for creators and brands. Dedicated distribution channels engineered for content that travels.
-          </p>
-          <div class="footer-contact-item">
-            <span class="footer-label">Inquiries:</span>
-            <a href="mailto:zonack@thorvonmedia.in" class="footer-email">zonack@thorvonmedia.in</a>
-          </div>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#what-we-do">What We Do</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#who-its-for">Who It's For</a></li>
-            <li><a href="#proof">Proof</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4 class="footer-col-title">Ecosystem</h4>
-          <ul class="footer-links">
-            <li>
-              <a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="talent-footer-link">
-                Thorvon Talent <span class="nav-ext-arrow">&nearr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/thorvonmedia" target="_blank" rel="noopener noreferrer">
-                Instagram <span class="nav-ext-arrow">&nearr;</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Thorvon Media. All rights reserved.</p>
-        <p class="footer-tagline">Distribution for content that travels.</p>
+      <div class="footer-line">
+        <a href="#hero" class="footer-link">Thorvon Media</a>
+        <span class="footer-dot">&middot;</span>
+        <a href="https://talent.thorvonmedia.in" target="_blank" rel="noopener noreferrer" class="footer-link">Thorvon Talent</a>
+        <span class="footer-dot">&middot;</span>
+        <span class="footer-copy">&copy; 2026</span>
       </div>
     </div>
   </footer>
 
-  <!-- BOOKING MODAL -->
-  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
-    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- LET'S TALK SIMPLE MODAL -->
+  <div class="modal-backdrop" id="contactModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button type="button" class="modal-close" id="modalClose" aria-label="Close dialog">&times;</button>
       
-      <div class="modal-header">
-        <div class="section-tag">SCHEDULE A CALL</div>
-        <h3 class="modal-title" id="modalTitle">Build your distribution engine.</h3>
-        <p class="modal-sub">Tell us about your content catalogue. We'll explore how dedicated channels can expand your reach.</p>
+      <div class="modal-top">
+        <div class="section-label">LET'S TALK</div>
+        <h3 class="modal-heading" id="modalTitle">Your content deserves to travel.</h3>
       </div>
 
-      <form class="modal-form" id="bookingForm" onsubmit="event.preventDefault(); window.ThorvonApp.handleBookingSubmit(this);">
-        <div class="form-group">
-          <label for="modal-name">Your Name</label>
-          <input type="text" id="modal-name" name="name" placeholder="Full name" required>
+      <form class="modal-form" id="contactForm" onsubmit="event.preventDefault(); window.ThorvonApp.submitForm(this);">
+        <div class="form-field">
+          <label for="form-name">Name</label>
+          <input type="text" id="form-name" name="name" placeholder="Your name" required autofocus>
         </div>
-        <div class="form-group">
-          <label for="modal-email">Work Email</label>
-          <input type="email" id="modal-email" name="email" placeholder="you@company.com" required>
+
+        <div class="form-field">
+          <label for="form-email">Email</label>
+          <input type="email" id="form-email" name="email" placeholder="you@domain.com" required>
         </div>
-        <div class="form-group">
-          <label for="modal-link">Channel / Podcast / Content Link</label>
-          <input type="url" id="modal-link" name="link" placeholder="https://youtube.com/@channel or podcast url" required>
+
+        <div class="form-field">
+          <label for="form-link">Link to your content</label>
+          <input type="url" id="form-link" name="link" placeholder="https://..." required>
         </div>
-        <div class="form-group">
-          <label for="modal-volume">Monthly Content Production</label>
-          <select id="modal-volume" name="volume" required>
-            <option value="" disabled selected>Select typical volume</option>
-            <option value="1-2 episodes/videos per month">1-2 episodes or long-form videos / mo</option>
-            <option value="4+ episodes/videos per month">4+ episodes or long-form videos / mo</option>
-            <option value="Daily / High-frequency catalogue">Daily or high-frequency catalogue</option>
-            <option value="Deep existing archive (10+ hours)">Deep existing archive to distribute</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-accent btn-large btn-block">
-          Submit &amp; Schedule &rarr;
+
+        <button type="submit" class="btn btn-accent btn-block form-btn">
+          Let's talk &rarr;
         </button>
-        <p class="modal-disclaimer">
-          Direct questions? Email <a href="mailto:zonack@thorvonmedia.in">zonack@thorvonmedia.in</a>
-        </p>
+
+        <div class="form-alt">
+          Direct email: <a href="mailto:zonack@thorvonmedia.in">zonack@thorvonmedia.in</a>
+        </div>
       </form>
     </div>
   </div>
 
-  <script src="script.js?v=2.0"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 </html>
