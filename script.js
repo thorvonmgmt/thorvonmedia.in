@@ -4,8 +4,8 @@
   document.documentElement.classList.add('js');
 
   /* ---------- Config ---------- */
-  var WHATSAPP_NUMBER = '917002889463';           // same number as talent.thorvonmedia.in
-  var WHATSAPP_LINK = 'https://wa.me/917002889463';
+  var WHATSAPP_NUMBER = '916000156191';
+  var WHATSAPP_LINK = 'https://wa.me/916000156191';
   // Contact form delivery: Web3Forms (same access key the original thorvonmedia.in used).
   var WEB3FORMS_ACCESS_KEY = '5b5b43c9-47f0-4a4f-8508-36a60a953561';
 
